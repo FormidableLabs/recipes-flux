@@ -26,6 +26,7 @@ app.use("/app/js-dist/*.map", function (req, res) {
   res.send(404, "404"); // Prevent sourcemap serving.
 });
 app.use("/app/js-dist", express["static"]("app/js-dist"));
+app.use("/app/css-dist", express["static"]("app/css-dist"));
 
 // ----------------------------------------------------------------------------
 // API

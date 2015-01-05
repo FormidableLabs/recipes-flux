@@ -1,0 +1,56 @@
+// BASE
+// Styles applied directly to elements usually using the element selector
+//
+
+html {
+  box-sizing: border-box;
+}
+
+
+/* necessary for footer */
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 16px;
+  // color: $text-color;
+  font-family: $serif-font;
+  // line-height: $default-leading;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin-top: 0;
+  font-family: inherit;
+}
+
+
+/**
+Make this responsive
+*/
+
+.epicureContainer {
+  margin: 20px
+}
+
+/**
+Links -- add when variables added
+
+a {
+  &, &:link {
+    color: $link-color;
+    text-decoration: none;
+  }
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+*/

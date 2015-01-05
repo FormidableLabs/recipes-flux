@@ -13,6 +13,7 @@
     "lodash": "2.4.1",
     "markdown": "0.5.0",
     "node-jsx": "0.12.0",
+    "node-sass": "2.0.0-beta",
     "ps-tree": "0.0.3",
     "react-router": "0.11.6",
     "reflux": "0.2.2",
@@ -29,6 +30,8 @@
   },
   "scripts": {
     "test": "gulp build check",
-    "build": "webpack --config webpack.config.js"
+    "build-js": "webpack --config webpack.config.js",
+    "build-css": "rm -rf app/css-dist && mkdir -p app/css-dist && node-sass --output-style compressed styles/main.scss app/css-dist/bundle.css",
+    "build": "npm run-script build-js && npm run-script build-css"
   }
 }
