@@ -102,13 +102,18 @@ var _webpack = function (cfg, pluginExcludes, pluginExtras) {
 gulp.task("clean:all", function () {
   return gulp
     .src([
+        "app/css-dist",
         "app/js-dist"
       ], { read: false })
     .pipe(rimraf());
 });
 
 gulp.task("clean:dist", function () {
-  return gulp.src(["app/js-dist"], { read: false })
+  return gulp
+    .src([
+        "app/css-dist",
+        "app/js-dist"
+      ], { read: false })
     .pipe(rimraf());
 });
 
