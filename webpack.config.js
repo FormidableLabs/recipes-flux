@@ -18,6 +18,9 @@ module.exports = {
       { test: /\.jsx$/, loader: "jsx-loader" }
     ]
   },
+  resolve: {
+    extensions: ["", ".js", ".jsx"]
+  },
   plugins: [
     // Optimize
     new webpack.optimize.DedupePlugin(),

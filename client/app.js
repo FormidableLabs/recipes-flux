@@ -1,5 +1,6 @@
-/** @jsx React.DOM */
 /**
  * Entry point.
  */
-window.console.log("TODO HERE APP");
+
+/** ROUTER **/
+var router = require('./router');
