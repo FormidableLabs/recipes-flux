@@ -12,6 +12,7 @@ var webpack = require("webpack");
 var rimraf = require("gulp-rimraf");
 
 var buildCfg = require("./webpack.config");
+var buildDevCfg = require("./webpack.dev-config");
 
 // ----------------------------------------------------------------------------
 // Helpers
@@ -57,45 +58,6 @@ gulp.task("check",      ["jshint"]);
 gulp.task("check:ci",   ["jshint"]);
 gulp.task("check:all",  ["jshint"]);
 
-// ----------------------------------------------------------------------------
-// Builders
-// ----------------------------------------------------------------------------
-// Create webpack task.
-var _webpack = function (cfg, pluginExcludes, pluginExtras) {
-  // Filter plugins by constructor name.
-  if (pluginExcludes) {
-    cfg = _.extend({}, cfg, {
-      plugins: _.reject(cfg.plugins, function (plugin) {
-        return _.indexOf(pluginExcludes, plugin.constructor.name) !== -1;
-      })
-    });
-  }
-
-  // Now add plugin extras to front.
-  if (pluginExtras) {
-    cfg = _.extend({}, cfg, {
-      plugins: pluginExtras.concat(cfg.plugins)
-    });
-  }
-
-  // Single compiler for caching.
-  var compiler = webpack(cfg);
-
-  return function (done) {
-    compiler.run(function (err, stats) {
-      if (err) { throw new gutil.PluginError("webpack", err); }
-
-      gutil.log("[webpack]", stats.toString({
-        hash: true,
-        colors: true,
-        cached: false
-      }));
-
-      done();
-    });
-  };
-};
-
 // -----------
 // Cleaning
 // -----------
@@ -117,15 +79,20 @@ gulp.task("clean:dist", function () {
     .pipe(rimraf());
 });
 
-// -----------
-// Development
-// -----------
-gulp.task("build:dev", _webpack(buildCfg, [
-  // Exclude optimize plugins.
-  "DedupePlugin",
-  "UglifyJsPlugin",
-  "DefinePlugin"
-]));
+gulp.task("build:dev", function (done) {
+  webpack(buildDevCfg).run(function (err, stats) {
+    if (err) { throw new gutil.PluginError("webpack", err); }
+
+    gutil.log("[webpack]", stats.toString({
+      hash: true,
+      colors: true,
+      cached: false
+    }));
+
+    done();
+  });
+});
+
 gulp.task("watch:dev", function () {
   gulp.watch([
     "client/**/*.{js,jsx}"
@@ -136,8 +103,24 @@ gulp.task("watch", ["watch:dev"]);
 // -----------
 // Production
 // -----------
-gulp.task("build:prod", _webpack(buildCfg));
-gulp.task("build:prod-full", ["clean:dist"], _webpack(buildCfg));
+gulp.task("build:prod", function (done) {
+  webpack(buildCfg).run(function (err, stats) {
+    if (err) { throw new gutil.PluginError("webpack", err); }
+
+    gutil.log("[webpack]", stats.toString({
+      hash: true,
+      colors: true,
+      cached: false
+    }));
+
+    done();
+  });
+});
+
+gulp.task("build:prod-full", ["clean:dist"], function () {
+  return gulp.run("build:prod");
+});
+
 gulp.task("watch:prod", function () {
   gulp.watch([
     "client/**/*.{js,jsx}"
