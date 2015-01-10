@@ -2,10 +2,10 @@
  * Gulpfile
  */
 var fs = require("fs");
-var _ = require("lodash");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var jshint = require("gulp-jshint");
+var livereload = require("gulp-livereload");
 var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
 var webpack = require("webpack");
@@ -89,11 +89,13 @@ gulp.task("build:dev", function (done) {
       cached: false
     }));
 
+    livereload.server.changed({ body: { files: ["/"] } });
     done();
   });
 });
 
 gulp.task("watch:dev", function () {
+  livereload.listen();
   gulp.watch([
     "client/**/*.{js,jsx}"
   ], ["build:dev"]);
