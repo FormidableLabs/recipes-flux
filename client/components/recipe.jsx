@@ -15,19 +15,17 @@ var Recipe = React.createClass({
   getInitialState : function() { return null },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
+  
   render : function() {return(
     <div className="recipe">
-    	<p> 
-    		<Link to="RecipeDetails" params={{recipeId: this.props.recipe.id}}> 
-    			{this.props.recipe.title}
+      <p> 
+        <Link to="RecipeDetails" params={{recipeId: this.props.recipe.id}}> 
+          {this.props.recipe.title}
         </Link>
-    	</p>
+      </p>
       <RouteHandler/>
     </div>
   )}
 });
 
 module.exports = Recipe;
-
-
-

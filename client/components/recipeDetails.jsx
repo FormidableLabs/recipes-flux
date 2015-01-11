@@ -4,13 +4,14 @@ React
 
 var React = require('react');
 
-/**
+/** 
 Router & Data
 */
 
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 // RecipeStore = require('recipe').RecipeStore
+// var request = require('superagent');
 var db = require('../mock_db');
 var _ = require('lodash');
 
@@ -21,18 +22,18 @@ Child Components
 var Ingredient = require('./ingredient');
 
 /**
-Component
+Component 
 */
 
-var RecipeDetails = React.createClass({
+var RecipeDetails = React.createClass({  
   displayName : 'RecipeDetails',
   propTypes: {},
   mixins : [],
-  getInitialState : function() {
+  getInitialState : function() { 
 
     /**
-    We'll build an API here to fetch the data, passing in
-    the id. This will look like:
+    We'll build an API here to fetch the data, passing in 
+    the id. This will look like: 
 
     request.get()
     this.state = {data: data}
@@ -44,7 +45,7 @@ var RecipeDetails = React.createClass({
     console.log(this.props.params.recipeId)
     recipe = getRecipeFromDb(this.props.params.recipeId)
     console.log(recipe)
-    return {recipe : recipe}
+    return {recipe : recipe} 
   },
   componentWillMount : function() {
     /**
@@ -56,9 +57,9 @@ var RecipeDetails = React.createClass({
     this.state.parsedInstructions = html;
 
     /**
-    Make servings a controlled input and
+    Make servings a controlled input and 
     http://facebook.github.io/react/docs/forms.html#controlled-components
-    */
+    */ 
 
   },
   componentWillUnmount : function() {},
@@ -71,15 +72,15 @@ var RecipeDetails = React.createClass({
     return(
     <div className="Recipe">
       <p className="Recipe-title">{this.state.recipe.title}</p>
-      <p> Serves: {this.state.recipe.portions} (change)</p>
+      <p> Serves: {this.state.recipe.portions} (change)</p>      
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-lg-4"> 
           {ingredientNodes}
         </div>
-        <div
-          className="Recipe-instructions col-lg-4"
+        <div 
+          className="Recipe-instructions col-lg-4" 
           dangerouslySetInnerHTML={{__html: this.state.parsedInstructions}}
-        />
+        /> 
       </div>
       <RouteHandler {...this.props}/>
     </div>
@@ -90,7 +91,7 @@ module.exports = RecipeDetails;
 
 
 /**
-Ingredient
+Ingredient 
 
   render : function() {
 

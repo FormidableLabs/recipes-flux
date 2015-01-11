@@ -5,6 +5,7 @@ var Recipes = require('./components/recipes')
 var RecipeDetails = require('./components/recipeDetails')
 var NotFound = require('./components/notfound')
 var Home = require('./components/home')
+var Add = require('./components/addRecipe')
 
 /**
 Set up the Router object
@@ -24,6 +25,7 @@ var routes = (
   <Route handler={App} path="/">
     <DefaultRoute name="app" handler={Home} />
     <Route name="recipes" handler={Recipes}/>
+    <Route name="add" handler={Add}/>
     <Route name="RecipeDetails" path="/recipe/:recipeId" handler={RecipeDetails} />
     <NotFoundRoute handler={NotFound} />
   </Route>
@@ -35,11 +37,11 @@ Using the HTML5 history API for cleaner URLs:
 */
 
 Router.run(routes, function (Handler, state) {
-	/**
-	"Alternatively, you can pass the param data down..."
-	https://github.com/rackt/react-router/blob/master/docs/guides/overview.md#dynamic-segments
-	*/
-	var params = state.params;
+  /**
+  "Alternatively, you can pass the param data down..."
+  https://github.com/rackt/react-router/blob/master/docs/guides/overview.md#dynamic-segments
+  */
+  var params = state.params;
 
-  React.render(<Handler params={params}/>, document.querySelector(".js-content"));
+  React.render(<Handler params={params}/>, document.body);
 });
