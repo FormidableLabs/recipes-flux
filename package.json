@@ -18,7 +18,9 @@
     "react-router": "0.11.6",
     "reflux": "0.2.2",
     "vulgarities": "0.0.2",
-    "webpack": "1.4.11"
+    "webpack": "1.4.11",
+    "superagent": "~0.21.0",
+    "uuid": "~2.0.1"
   },
   "devDependencies": {
     "gulp": "3.8.7",
