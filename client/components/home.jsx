@@ -11,14 +11,14 @@ var Home = React.createClass({
   getInitialState : function() { return null },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() {return(
+  render : function() {return(/*jshint ignore:start */
     <div>
       <p> 
         home rendered 
       </p>
       <RouteHandler/>
     </div>
-  )}
+  /*jshint ignore:end */)}
 });
 
 module.exports = Home;

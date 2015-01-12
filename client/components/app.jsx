@@ -1,10 +1,10 @@
-var React = require('react');
+var React = require("react");
 
 /**
 Router
 */
 
-var Router = require('react-router');
+var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
@@ -25,20 +25,21 @@ var App = React.createClass({
   getInitialState : function() { return null },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() { return (
+  render : function() { return (/*jshint ignore:start */
     <div className="epicureContainer">
       <Nav/>
       <RouteHandler {...this.props}/>
     </div>
-		)
+		/*jshint ignore:end */)
   }
 });
 
 /**
-Note {...this.props}, see:
-
-http://facebook.github.io/react/docs/jsx-spread.html
-https://github.com/rackt/react-router/blob/master/docs/guides/overview.md#dynamic-segments
+* Note {...this.props}, see:
+* 
+* http://facebook.github.io/react/docs/jsx-spread.html
+* https://github.com/rackt/react-router/
+* blob/master/docs/guides/overview.md#dynamic-segments
 */
 
 module.exports = App;

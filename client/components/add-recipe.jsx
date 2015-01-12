@@ -56,7 +56,7 @@ var Recipe = React.createClass({
     * But then we have to use this.refs to get the data out of the child
     * Why didn't that work? 
     */
-    
+
     var newValue = event.target.id;
 
     var isNumInput = event.target.id === "portionsInput" || "totalTimeInMinutesInput";
@@ -96,7 +96,7 @@ var Recipe = React.createClass({
 
   },
   render : function() {
-    return(
+    return(/*jshint ignore:start */
     <div className="recipe">
       <p> Time to add a new recipe :) </p>
       <input 
@@ -130,7 +130,7 @@ var Recipe = React.createClass({
       <button onClick={this.addClicked}>Submit Recipe</button>
       <RouteHandler/>
     </div>
-  )}
+  /*jshint ignore:end */)}
 });
 
 module.exports = Recipe;

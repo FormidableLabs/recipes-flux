@@ -2,50 +2,40 @@
 React
 */
 
-var React = require('react');
+var React = require("react");
 
 /** 
 Router & Data
 */
 
-var Router = require('react-router');
+var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
-// RecipeStore = require('recipe').RecipeStore
-// var request = require('superagent');
-var db = require('../mock-db');
-var _ = require('lodash');
+var db = require("../mock-db");
+var _ = require("lodash");
 
 /**
 Child Components
 */
 
-var Ingredient = require('./ingredient');
+var Ingredient = require("./ingredient");
 
 /**
 Component 
 */
 
 var RecipeDetails = React.createClass({  
-  displayName : 'RecipeDetails',
+  displayName : "RecipeDetails",
   propTypes: {},
   mixins : [],
   getInitialState : function() { 
 
-    /**
-    We'll build an API here to fetch the data, passing in 
-    the id. This will look like: 
-
-    request.get()
-    this.state = {data: data}
-
-    */
     function getRecipeFromDb (id) {
-      return _.find(db, {id: id})
+      return _.find(db, {id: id});
     }
-    console.log(this.props.params.recipeId)
-    recipe = getRecipeFromDb(this.props.params.recipeId)
-    console.log(recipe)
-    return {recipe : recipe} 
+    window.console.log(this.props.params.recipeId);
+    var recipe = getRecipeFromDb(this.props.params.recipeId);
+    window.console.log(recipe);
+    return {recipe : recipe};
   },
   componentWillMount : function() {
     /**
@@ -53,7 +43,8 @@ var RecipeDetails = React.createClass({
     */
 
     var str = this.state.recipe.instructions;
-    var html = "<p>" + str.replace(/\n([ \t]*\n)+/g, '</p><p>').replace(/\n/g, '</p><p>') + "</p>";
+    var html = "<p>" + str.replace(/\n([ \t]*\n)+/g, "</p><p>")
+                          .replace(/\n/g, "</p><p>") + "</p>";
     this.state.parsedInstructions = html;
 
     /**
@@ -64,11 +55,14 @@ var RecipeDetails = React.createClass({
   },
   componentWillUnmount : function() {},
   render : function() {
-    var ingredientNodes = recipe.ingredients.map(function(ingredient){
-    return (
+    function createNodes (ingredient) {
+      return (/*jshint ignore:start */
         <Ingredient ingredient={ingredient}/>
-      )
-    })
+      /*jshint ignore:end */);
+    }
+
+    var ingredientNodes = this.state.recipe.ingredients.map(createNodes)
+    /*jshint ignore:start */
     return(
     <div className="Recipe">
       <p className="Recipe-title">{this.state.recipe.title}</p>
@@ -84,7 +78,8 @@ var RecipeDetails = React.createClass({
       </div>
       <RouteHandler {...this.props}/>
     </div>
-  )}
+  /*jshint ignore:end */);
+  }
 });
 
 module.exports = RecipeDetails;

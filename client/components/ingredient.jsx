@@ -54,7 +54,7 @@ var Ingredient = React.createClass({
 
   },
   componentWillUnmount : function() {},
-  render : function() {return(
+  render : function() {return(/*jshint ignore:start */
     <div className="row Recipe-ingredient">
       <div className="col-lg-6">
         <p className="Recipe-ingredientLeft">
@@ -68,7 +68,7 @@ var Ingredient = React.createClass({
       </div>
       <RouteHandler/>
     </div>
-  )}
+  /*jshint ignore:end */)}
 });
 
 module.exports = Ingredient;

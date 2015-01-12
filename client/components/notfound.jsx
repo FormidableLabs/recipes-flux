@@ -1,17 +1,17 @@
-var React = require('react');
+var React = require("react");
 
 var NotFound = React.createClass({  
-  displayName : '404',
+  displayName : "404",
   propTypes: {},
   mixins : [],
   getInitialState : function() { return null },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() {return(
+  render : function() {return(/*jshint ignore:start */
   	<p> 
   		Page not found
   	</p>
-  )}
+  /*jshint ignore:end */)}
 });
 
 module.exports = NotFound;

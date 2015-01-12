@@ -26,7 +26,7 @@ var Recipe = React.createClass({
   componentWillMount : function() {},
   componentWillUnmount : function() {},
   render : function() {
-    return(
+    return(/*jshint ignore:start */
     <div className="recipe">
       <input 
         type="text" 
@@ -49,7 +49,7 @@ var Recipe = React.createClass({
         onChange={this.handleInputChange} 
         ref="modifierInput"/>
     </div>
-  )}
+  /*jshint ignore:end */)}
 });
 
 module.exports = Recipe;

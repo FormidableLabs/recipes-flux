@@ -24,13 +24,13 @@ var Nav = React.createClass({
   getInitialState : function() { return null },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() { return (
+  render : function() { return (/*jshint ignore:start */
     <div>
       <span className="navLink"> <Link to="app"> Home</Link> </span>
       <span className="navLink"> <Link to="recipes"> Recipes</Link></span>
       <span className="navLink"> <Link to="add">Add Recipe</Link></span>
     </div>
-    )
+    /*jshint ignore:end */)
   }
 });
 
