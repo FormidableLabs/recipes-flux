@@ -1,6 +1,6 @@
 var Reflux = require("reflux");
 var RecipeActions = require("./actions");
-// var api = require('api');
+var request = require("superagent")
 
 // Creates a DataStore
 var RecipeStore = Reflux.createStore({
@@ -24,10 +24,18 @@ var RecipeStore = Reflux.createStore({
     */
 
     recipeAddedCallback: function(data) {
-        var result = data.foo += " ...and the store recieved it...";
-        // Pass on the arg to listening components
-        this.trigger(result);
-    }
+        request.post("/recipeAdded")
+            .send(data)
+            .end(function(err, res){
+                if(err) {
+                    console.log("error posting to recipeAdded", err)
+                }
+                /**
+                * Pass on the arg to listening components
+                */
+                this.trigger("we're back");
+            })
+        }
 
 });
 

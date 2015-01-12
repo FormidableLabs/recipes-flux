@@ -2,10 +2,10 @@ var Router = require('react-router');
 var React = require('react');
 var App = require('./components/app');
 var Recipes = require('./components/recipes')
-var RecipeDetails = require('./components/recipeDetails')
+var RecipeDetails = require('./components/recipe-details')
 var NotFound = require('./components/notfound')
 var Home = require('./components/home')
-var Add = require('./components/addRecipe')
+var Add = require('./components/add-recipe')
 
 /**
 Set up the Router object

@@ -7,7 +7,7 @@ Router & Data
 
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
-var db = require('../mock_db')
+var db = require('../mock-db')
 
 /**
 Component
