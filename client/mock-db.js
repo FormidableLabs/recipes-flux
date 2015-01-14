@@ -4,7 +4,8 @@ Mock Database of Recipes
 
 module.exports = [
 	{
-		id: "781493c4-0b32-4186-aaa0-b7c6cb4b0c49",
+		_id: "781493c4-0b32-4186-aaa0-b7c6cb4b0c49",
+		saved: true,
 		title: "Stuffed Chard Leaves",
 		portions: 6,
 		totalTimeInMinutes: 60,
@@ -83,7 +84,8 @@ module.exports = [
 		"filling and serve with stuffed leaves." 
 	},
 	{
-		id: "70dd964b-6225-4d7c-8b1e-7e983d901a80",
+		_id: "70dd964b-6225-4d7c-8b1e-7e983d901a80",
+		saved: true,
 		title: "Helen's Polenta with Eggplant",
 		portions: 6,
 		totalTimeInMinutes: 120,

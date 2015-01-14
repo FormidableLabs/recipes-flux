@@ -24,9 +24,10 @@ var Recipe = React.createClass({
     }
   },
   componentWillMount : function() {},
-  componentWillUnmount : function() {},
+  componentWillUnmount : function() {}, 
   render : function() {
-    return(/*jshint ignore:start */
+    return(
+      /*jshint ignore:start unused:false*/
     <div className="recipe">
       <input 
         type="text" 

@@ -6,9 +6,10 @@ var Reflux = require("reflux");
 * to be fired by UI elements and listened to by 'stores'
 */
 
-var RecipeActions = Reflux.createActions({
-    "recipeAdded": {children: ["completed", "failed"]},
-    "recipeUpdated": {children: ["completed", "failed"]}
-  });
+var RecipeActions = Reflux.createActions([
+	"recipeAdded",
+	"inputChange",
+	"addIngredientInputChange"
+]);
 
 module.exports = RecipeActions;

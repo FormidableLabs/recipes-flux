@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require("react");
 
 /**
 Create fractions from decimals
@@ -6,15 +6,15 @@ https://www.npmjs.com/package/lb-ratio
 https://www.npmjs.com/package/vulgarities
 */
 
-var ratio = require('lb-ratio');
-var characterFor = require('vulgarities/charFor');
-var vulgarities = require('vulgarities');
+var ratio = require("lb-ratio");
+var characterFor = require("vulgarities/charFor");
+var vulgarities = require("vulgarities");
 
 /** 
 Router
 */
 
-var Router = require('react-router');
+var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
@@ -23,15 +23,15 @@ Component
 */
 
 var Ingredient = React.createClass({  
-  displayName : 'Ingredient',
+  displayName : "Ingredient",
   propTypes: {},
   mixins : [],
-  getInitialState : function() { return {} },
+  getInitialState : function() { return {}; },
   componentWillMount : function() {
     
     function toUnicode(fractionString) {
-      var f = fractionString.split("/")
-      uni = characterFor(f[0],f[1]);
+      var f = fractionString.split("/");
+      var uni = characterFor(f[0],f[1]);
       if (uni) {
         return uni;
       } else { 
@@ -54,7 +54,8 @@ var Ingredient = React.createClass({
 
   },
   componentWillUnmount : function() {},
-  render : function() {return(/*jshint ignore:start */
+  render : function() {return(
+    /*jshint ignore:start unused:false*/
     <div className="row Recipe-ingredient">
       <div className="col-lg-6">
         <p className="Recipe-ingredientLeft">

@@ -26,7 +26,7 @@ var Recipes = React.createClass({
   render : function() {
     var recipeNodes = this.state.db.map(function(recipe){
     return (/*jshint ignore:start */
-        <Recipe recipe={recipe} key={recipe.id}>
+        <Recipe recipe={recipe} key={recipe._id}>
         </Recipe>
       /*jshint ignore:end */);
     });

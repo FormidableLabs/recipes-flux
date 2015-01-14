@@ -5,10 +5,7 @@ var Recipes = require("./components/recipes");
 var RecipeDetails = require("./components/recipe-details");
 var NotFound = require("./components/notfound");
 var Home = require("./components/home");
-var Add = require("./components/add-recipe");
-
-
-
+var RecipeForm = require("./components/recipe-form");
 
 /**
 Set up the Router object
@@ -27,9 +24,10 @@ var RouteHandler = Router.RouteHandler;
 var routes = (/*jshint ignore:start */
   <Route handler={App} path="/">
     <DefaultRoute name="app" handler={Home} />
-    <Route name="recipes" handler={Recipes}/>
-    <Route name="add" handler={Add}/>
-    <Route name="RecipeDetails" path="/recipe/:recipeId" handler={RecipeDetails} />
+    <Route name="recipes" handler={Recipes}/> 
+    <Route name="edit" path="/edit/:_id" handler={RecipeForm}/>
+    <Route name="create" handler={RecipeForm}/>
+    <Route name="RecipeDetails" path="/recipe/:_id" handler={RecipeDetails} />
     <NotFoundRoute handler={NotFound} />
   </Route>
 /*jshint ignore:end */);

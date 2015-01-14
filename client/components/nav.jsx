@@ -1,10 +1,10 @@
-var React = require('react');
+var React = require("react");
 
 /** 
 Router
 */
 
-var Router = require('react-router');
+var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
@@ -18,19 +18,20 @@ Component
 */
 
 var Nav = React.createClass({  
-  displayName : 'Nav',
+  displayName : "Nav",
   propTypes: {},
   mixins : [],
-  getInitialState : function() { return null },
+  getInitialState : function() { return null; },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() { return (/*jshint ignore:start */
+  render : function() { return (
+    /*jshint ignore:start unused:false*/
     <div>
       <span className="navLink"> <Link to="app"> Home</Link> </span>
       <span className="navLink"> <Link to="recipes"> Recipes</Link></span>
-      <span className="navLink"> <Link to="add">Add Recipe</Link></span>
+      <span className="navLink"> <Link to="create">New Recipe</Link></span>
     </div>
-    /*jshint ignore:end */)
+    /*jshint ignore:end */);
   }
 });
 

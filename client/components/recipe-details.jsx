@@ -56,13 +56,13 @@ var RecipeDetails = React.createClass({
   componentWillUnmount : function() {},
   render : function() {
     function createNodes (ingredient) {
-      return (/*jshint ignore:start */
+      return (/*jshint ignore:start unused:false*/
         <Ingredient ingredient={ingredient}/>
       /*jshint ignore:end */);
     }
 
     var ingredientNodes = this.state.recipe.ingredients.map(createNodes)
-    /*jshint ignore:start */
+    /*jshint ignore:start unused:false*/
     return(
     <div className="Recipe">
       <p className="Recipe-title">{this.state.recipe.title}</p>

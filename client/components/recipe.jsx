@@ -16,11 +16,15 @@ var Recipe = React.createClass({
   componentWillMount : function() {},
   componentWillUnmount : function() {},
   
-  render : function() {return(/*jshint ignore:start */
+  render : function() {return(
+    /*jshint ignore:start unused:false */
     <div className="recipe">
       <p> 
-        <Link to="RecipeDetails" params={{recipeId: this.props.recipe.id}}> 
+        <Link to="RecipeDetails" params={{recipeId: this.props.recipe._id}}> 
           {this.props.recipe.title}
+        </Link>
+        <Link to="edit" params={{recipeId: this.props.recipe._id}}> 
+          Edit
         </Link>
       </p>
       <RouteHandler/>

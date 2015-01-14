@@ -25,7 +25,8 @@ var App = React.createClass({
   getInitialState : function() { return null },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() { return (/*jshint ignore:start */
+  render : function() { return (
+    /*jshint ignore:start unused:false*/
     <div className="epicureContainer">
       <Nav/>
       <RouteHandler {...this.props}/>
