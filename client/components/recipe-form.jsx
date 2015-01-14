@@ -19,7 +19,6 @@ var RecipeForm = React.createClass({
   propTypes: {},
   mixins : [Reflux.ListenerMixin],
   getInitialState : function() {  
-    this.listenTo(RecipeStore, "recipeAdded");
     if (this.props.params._id) {
       /**
       * User came in from the edit button of an existing recipe,
@@ -27,7 +26,7 @@ var RecipeForm = React.createClass({
       * so that we can populate the forms 
       */
       this.listenTo(
-        RecipeStore, "inputChange", this.initialInputValues
+        RecipeStore, this.onInputUpdate, this.initialInputValues
       )
 
       return this.state;
@@ -38,7 +37,7 @@ var RecipeForm = React.createClass({
       * this will create an empty record if they leave, but that's
       * not terrible because they can edit or delete it from the inbox
       */
-      this.listenTo(RecipeStore, "inputChange")
+      this.listenTo(RecipeStore, this.onInputUpdate  )
 
       var implicitCreate = {
         _id: uuid.v4(),
@@ -58,18 +57,11 @@ var RecipeForm = React.createClass({
     this.state = _.find(storeData, {_id: this.props.params._id});
     return;
   },
-  componentWillMount : function() {
-    RecipeStore.listen(this.onInputUpdate);
-  },
-  componentWillUnmount : function() {
-
-  },
-  handleInputChange: function (event) {
-    console.log(event.target.id)
-  },
-  onInputUpdate: function(data) {
-    console.log("component sees: ", data);
-    this.setState({data: data});
+  componentWillMount : function() {},
+  componentWillUnmount : function() {},
+  handleInputChange: function () {},
+  onInputUpdate: function(storeData) {
+    this.setState(storeData.data[storeData.index]);
   },
   addClicked: function () {
     RecipeActions.recipeAdded({foo: "bar"});

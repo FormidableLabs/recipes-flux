@@ -13,6 +13,7 @@ var RecipeStore = Reflux.createStore({
         /* set the store value to the mock database data */
         this._recipes = db;
 
+
         /**
         Reflux Step 3: Register the store to listen to the action
         */
@@ -55,15 +56,16 @@ var RecipeStore = Reflux.createStore({
         if (indexInRecipes !== -1) {
             /* it exists, manipulate in place */
             this._recipes[indexInRecipes][data.variableNameInStore] = data.value;
-            this.trigger(this._recipes);
+            this.trigger({data: this._recipes, index: indexInRecipes});
             // this.trigger(this._recipes);
+            window.recipes = this._recipes
 
         } else {
             /* it doesn't exist, create it */
             console.log("this id doesn't exist in the store, creating it");
             this._recipes.push();
             console.log(this._recipes);
-            this.trigger(this._recipes);
+            this.trigger({data: this._recipes, index: indexInRecipes});
         }
 
         /**
