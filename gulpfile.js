@@ -2,7 +2,7 @@
  * Gulpfile
  */
 var fs = require("fs");
-var _ = require("lodash");
+// var _ = require("lodash");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var jshint = require("gulp-jshint");
@@ -83,11 +83,11 @@ gulp.task("build:dev", function (done) {
   webpack(buildDevCfg).run(function (err, stats) {
     if (err) { throw new gutil.PluginError("webpack", err); }
 
-    // gutil.log("[webpack]", stats.toString({
-    //   hash: true,
-    //   colors: true,
-    //   cached: false
-    // }));
+    gutil.log("[webpack]", stats.toString({
+      hash: true,
+      colors: true,
+      cached: false
+    }));
 
     done();
   });
@@ -157,4 +157,4 @@ gulp.task("ls",       ["build:ls", "watch:ls", "server:sources"]);
 gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
 gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
 gulp.task("build",    ["build:prod-full"]);
-gulp.task("default",  ["build:dev"]); //Add "check" when JSX issue resolved
+gulp.task("default",  ["build:dev", ]); 
