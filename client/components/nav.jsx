@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react");
 
 /** 
@@ -25,7 +26,7 @@ var Nav = React.createClass({
   componentWillMount : function() {},
   componentWillUnmount : function() {},
   render : function() { return (
-    /*jshint ignore:start unused:false*/
+    /*jshint ignore:start*/
     <div>
       <span className="navLink"> <Link to="app"> Home</Link> </span>
       <span className="navLink"> <Link to="recipes"> Recipes</Link></span>

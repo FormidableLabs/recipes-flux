@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var Router = require("react-router");
 var React = require("react");
 var App = require("./components/app");

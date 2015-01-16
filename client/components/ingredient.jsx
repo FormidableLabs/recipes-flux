@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react");
 
 /**
@@ -45,17 +46,24 @@ var Ingredient = React.createClass({
 
     var q = this.props.ingredient.quantity;
     if (q < 1) {
-      return this.state.fraction = toUnicode(ratio.parse(q).simplify().toString());
+      var uni = toUnicode(ratio.parse(q).simplify().toString());
+      this.state.fraction = uni;
+      return;
     } else if (q % 1 !== 0) {
-      return this.state.fraction = Math.floor(q) + " " + toUnicode(ratio.parse(q%1).simplify().toString());
+      var frac = Math.floor(q) + 
+                  " " + 
+                  toUnicode(ratio.parse(q%1).simplify().toString());
+      this.state.fraction = frac;
+      return;
     } else /* whole number */ {
-      return this.state.fraction = q;
+      this.state.fraction = q;
+      return;
     }
 
   },
   componentWillUnmount : function() {},
   render : function() {return(
-    /*jshint ignore:start unused:false*/
+    /*jshint ignore:start*/
     <div className="row Recipe-ingredient">
       <div className="col-lg-6">
         <p className="Recipe-ingredientLeft">
@@ -69,7 +77,8 @@ var Ingredient = React.createClass({
       </div>
       <RouteHandler/>
     </div>
-  /*jshint ignore:end */)}
+  /*jshint ignore:end */);
+  }
 });
 
 module.exports = Ingredient;

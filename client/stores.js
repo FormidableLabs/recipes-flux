@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var Reflux = require("reflux");
 var RecipeActions = require("./actions");
 var request = require("superagent");
@@ -58,17 +59,17 @@ var RecipeStore = Reflux.createStore({
             payload.accessor,
             payload.index,
             payload.value
-        )
+        );
         this.shipToComponent(payload._id);
     },
     /**
     * TALK TO STORE
     */
     updateRecipeIngredientList: function (_id, index) {
-        var recipe = this.getRecipe(_id)
-        if (index) {
+        var recipe = this.getRecipe(_id);
+        if (index || index === 0) {
             /* delete operation */
-            recipe.ingredients.splice(index, 1)
+            recipe.ingredients.splice(index, 1);
         } else {
             /* create operation */
             recipe.ingredients.push(
@@ -78,12 +79,12 @@ var RecipeStore = Reflux.createStore({
                     measurement: "", 
                     modifier: ""
                 }
-            )    
+            );
         }
     },
     updateRecipe : function(_id, accessor, index, value) {
         var recipe = this.getRecipe(_id);
-        if (index) {
+        if (index || index === 0) {
             recipe.ingredients[index][accessor] = value;
         } else {
             recipe[accessor] = value;

@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react");
 var Reflux = require("reflux");
 var RecipeStore = require("../stores");
@@ -15,7 +16,7 @@ var Link = Router.Link;
 Child Components
 */
 
-var Button = require("./button")
+var Button = require("./button");
 
 var Recipe = React.createClass({  
   displayName : "Recipe",
@@ -27,10 +28,10 @@ var Recipe = React.createClass({
   deleteRecipe : function () {
     RecipeActions.recipeDeleted({
       _id: this.props.recipe._id
-    })
+    });
   },
   render : function() {return(
-    /*jshint ignore:start unused:false */
+    /* jshint ignore:start */
     <div className="recipe">
       <p> 
         <Link to="RecipeDetails" params={{_id: this.props.recipe._id}}> 
@@ -47,7 +48,7 @@ var Recipe = React.createClass({
       </p>
       <RouteHandler/>
     </div>
-  /*jshint ignore:end */);
+  /* jshint ignore:end */);
   }
 });
 

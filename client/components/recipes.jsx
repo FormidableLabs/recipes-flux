@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react");
 var Recipe = require("./recipe");
 var Reflux = require("reflux");
@@ -32,7 +33,7 @@ var Recipes = React.createClass({
     return nodes;
   },  
   render : function() {
-    var recipeNodes = this.createRecipeNodes()
+    var recipeNodes = this.createRecipeNodes();
     return (/*jshint ignore:start */
     <div className="Recipes">
       <p className="Recipes-title"> Recipe Bank: </p>

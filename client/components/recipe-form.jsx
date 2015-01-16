@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react");
 var Reflux = require("reflux");
 var RecipeStore = require("../stores");
@@ -34,7 +35,7 @@ var RecipeForm = React.createClass({
       * so let's use the params to figure out which recipe
       * so that we can populate the forms 
       */
-      return RecipeStore.getRecipe(this.props.params._id)
+      return RecipeStore.getRecipe(this.props.params._id);
 
     } else {
       /** 
@@ -67,13 +68,13 @@ var RecipeForm = React.createClass({
       };
 
       RecipeActions.recipeCreated(newRecipe);
-      console.log(newRecipe)
+      console.log(newRecipe);
       return newRecipe;
     }
 
   },
   componentWillMount : function() {
-    this.listenTo(RecipeStore, this.onInputUpdate)
+    this.listenTo(RecipeStore, this.onInputUpdate);
   },
   componentWillUnmount : function() {},
   inputCallback: function (_id, accessor, index, value) {
@@ -90,16 +91,17 @@ var RecipeForm = React.createClass({
   ingredientCreated : function () {
     RecipeActions.ingredientCreated({
       _id: this.state._id
-    })
+    });
   },
   ingredientDeleted : function (_id, accessor, index) {
     RecipeActions.ingredientDeleted({
       _id: this.state._id,
       index: index
-    })
+    });
   },
   createNodes : function (ingredient, index) {
       return(
+      /*jshint ignore:start*/ 
       <div className="Ingredient" key={index}>
         <Input 
           placeholder="Ingredient" 
@@ -134,6 +136,7 @@ var RecipeForm = React.createClass({
           index={index}
           value="Delete Ingredient"/> 
       </div>
+      /*jshint ignore:end */
       )
   },
   render : function() {
@@ -141,33 +144,32 @@ var RecipeForm = React.createClass({
       this.createNodes
       )
     return(
-      /*jshint ignore:start*/
+      /*jshint ignore:start */
     <div className="recipe">
-      <p> Time to add a new recipe :) </p>
       <Input 
         placeholder="Title"
         accessor="title" 
         value={this.state.title}
         _id={this.state._id}
-        inputCallback={this.inputCallback} />
+        inputCallback={this.inputCallback}></Input>
       <Input 
         placeholder="Portions"
         accessor="portions" 
         value={this.state.portions}
         _id={this.state._id}
-        inputCallback={this.inputCallback} />
+        inputCallback={this.inputCallback}></Input>
       <Input 
         placeholder="Total time in minutes"
         accessor="totalTimeInMinutes" 
         value={this.state.totalTimeInMinutes}
         _id={this.state._id}
-        inputCallback={this.inputCallback} />
+        inputCallback={this.inputCallback}></Input>
       <Input 
         placeholder="Instructions"
         accessor="instructions" 
         value={this.state.instructions}
         _id={this.state._id}
-        inputCallback={this.inputCallback} />
+        inputCallback={this.inputCallback}></Input>
         {ingredientFormNodes}
         <Button 
           buttonCallback={this.ingredientCreated}

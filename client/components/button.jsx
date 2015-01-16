@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react");
 var Reflux = require("reflux");
 var RecipeStore = require("../stores");
@@ -23,7 +24,7 @@ var Input = React.createClass({
       this.props._id,
       this.props.accessor,
       this.props.index
-    )
+    );
   },
   componentWillUnmount : function() {},
   render : function() {

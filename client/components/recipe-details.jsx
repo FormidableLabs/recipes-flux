@@ -1,7 +1,8 @@
+/*jshint unused:false */
+
 /**
 React
 */
-
 var React = require("react");
 var Reflux = require("reflux");
 var RecipeStore = require("../stores");
@@ -33,7 +34,7 @@ var RecipeDetails = React.createClass({
     return RecipeStore.getRecipe(this.props.params._id);
   }, 
   componentWillMount : function() {
-    this.parseInstructions()
+    this.parseInstructions();
   },
   componentWillUnmount : function() {},
   parseInstructions : function () {
@@ -50,15 +51,15 @@ var RecipeDetails = React.createClass({
     */ 
   },
   render : function() {
-    console.log(this.state)
+    console.log(this.state);
     function createNodes (ingredient) {
-      return (/*jshint ignore:start unused:false*/
+      return ( /*jshint ignore:start*/
         <Ingredient ingredient={ingredient}/>
       /*jshint ignore:end */);
     }
 
     var ingredientNodes = this.state.ingredients.map(createNodes)
-    /*jshint ignore:start unused:false*/
+    /*jshint ignore:start */
     return(
     <div className="Recipe">
       <p className="Recipe-title">{this.state.title}</p>

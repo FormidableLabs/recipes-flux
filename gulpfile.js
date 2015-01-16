@@ -157,4 +157,4 @@ gulp.task("ls",       ["build:ls", "watch:ls", "server:sources"]);
 gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
 gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
 gulp.task("build",    ["build:prod-full"]);
-gulp.task("default",  ["build:dev", ]); 
+gulp.task("default",  ["build:dev", "check"]); 
