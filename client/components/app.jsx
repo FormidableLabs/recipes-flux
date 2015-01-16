@@ -35,12 +35,4 @@ var App = React.createClass({
   }
 });
 
-/**
-* Note {...this.props}, see:
-* 
-* http://facebook.github.io/react/docs/jsx-spread.html
-* https://github.com/rackt/react-router/
-* blob/master/docs/guides/overview.md#dynamic-segments
-*/
-
 module.exports = App;

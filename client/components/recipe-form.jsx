@@ -2,8 +2,6 @@ var React = require("react");
 var Reflux = require("reflux");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
-var IngredientForm = require("./ingredient-form");
-var Input = require("./input")
 var uuid = require("uuid");
 
 /** 
@@ -14,22 +12,28 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
+/**
+Child Components
+*/
+
+var Input = require("./input")
+
+/**
+Component
+*/
+
 var RecipeForm = React.createClass({  
   displayName : "RecipeForm",
   propTypes: {},
   mixins : [Reflux.ListenerMixin],
-  getInitialState : function() {  
+  getInitialState : function() {
     if (this.props.params._id) {
       /**
       * User came in from the edit button of an existing recipe,
       * so let's use the params to figure out which recipe
       * so that we can populate the forms 
       */
-      this.listenTo(
-        RecipeStore, this.onInputUpdate, this.initialInputValues
-      )
-
-      return this.state;
+      return RecipeStore.getRecipe(this.props.params._id)
 
     } else {
       /** 
@@ -37,78 +41,107 @@ var RecipeForm = React.createClass({
       * this will create an empty record if they leave, but that's
       * not terrible because they can edit or delete it from the inbox
       */
-      this.listenTo(RecipeStore, this.onInputUpdate  )
 
-      var implicitCreate = {
+      var newRecipe = {
         _id: uuid.v4(),
-        title: "",
+        title: "New Recipe (edit me)",
         portions: "",
         totalTimeInMinutes: "",
         instructions: "",
         ingredients: [],
         saved: false
-      }
-      return implicitCreate;
+      };
+
+      RecipeActions.recipeCreated(newRecipe);
+      console.log(newRecipe)
+      return newRecipe;
     }
 
-
   },
-  initialInputValues : function (storeData) {
-    this.state = _.find(storeData, {_id: this.props.params._id});
-    return;
+  componentWillMount : function() {
+    this.listenTo(RecipeStore, this.onInputUpdate)
   },
-  componentWillMount : function() {},
   componentWillUnmount : function() {},
-  handleInputChange: function () {},
-  onInputUpdate: function(storeData) {
-    this.setState(storeData.data[storeData.index]);
+  inputCallback: function (_id, accessor, index, value) {
+    RecipeActions.inputChanged({
+      _id: _id,
+      accessor: accessor,
+      index: index,
+      value: value
+    });
   },
-  addClicked: function () {
-    RecipeActions.recipeAdded({foo: "bar"});
-
-    /* the store is already current, trigger ajax */
-
-    // this.setState({
-    //   title: "",
-    //   portions: "",
-    //   totalTimeInMinutes: "",
-    //   ingredients: [],
-    //   instructions: ""
-    // });
-
-    /**
-    * This is where we would do an ajax success alert for the user -- Alex
-    */
-
+  onInputUpdate: function(storeData) {
+    this.setState(storeData.data);
+  },
+  createNodes : function (ingredient, index) {
+      return(
+      <div className="Ingredient" key={index}>
+        <Input 
+          placeholder="Ingredient" 
+          value={ingredient.ingredient}
+          index={index}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}
+          accessor="ingredient"/>
+        <Input 
+          placeholder="Quantity"
+          value={ingredient.quantity}
+          index={index}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}
+          accessor="quantity"/>
+        <Input 
+          placeholder="Measurement Units" 
+          value={ingredient.measurement}
+          index={index}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}
+          accessor="measurement"/>
+        <Input 
+          placeholder="Modifier (e.g. 'chopped')" 
+          value={ingredient.modifier}
+          index={index}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}
+          accessor="modifier"/>
+      </div>
+      )
   },
   render : function() {
+    var ingredientFormNodes = this.state.ingredients.map(
+      this.createNodes
+      )
     return(
       /*jshint ignore:start*/
     <div className="recipe">
       <p> Time to add a new recipe :) </p>
       <Input 
-        _id={this.state._id}
-        value={this.state.title}
         placeholder="Title"
-        variableNameInStore="title" />
-      <Input 
+        accessor="title" 
+        value={this.state.title}
         _id={this.state._id}
-        value={this.state.portions}
+        inputCallback={this.inputCallback} />
+      <Input 
         placeholder="Portions"
-        variableNameInStore="portions" />
-      <Input 
+        accessor="portions" 
+        value={this.state.portions}
         _id={this.state._id}
-        value={this.state.totalTimeInMinutes}
+        inputCallback={this.inputCallback} />
+      <Input 
         placeholder="Total time in minutes"
-        variableNameInStore="totalTimeInMinutes" />
-      <Input 
+        accessor="totalTimeInMinutes" 
+        value={this.state.totalTimeInMinutes}
         _id={this.state._id}
-        value={this.state.instructions}
+        inputCallback={this.inputCallback} />
+      <Input 
         placeholder="Instructions"
-        variableNameInStore="instructions" />
-
+        accessor="instructions" 
+        value={this.state.instructions}
+        _id={this.state._id}
+        inputCallback={this.inputCallback} />
+        {ingredientFormNodes}
       <button onClick={this.addClicked}>Submit Recipe</button>
-      <RouteHandler/>
+      <RouteHandler {...this.props}/>
     </div>
   /*jshint ignore:end */)}
 });

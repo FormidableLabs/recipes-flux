@@ -1,5 +1,7 @@
 var React = require("react");
 var Recipe = require("./recipe");
+var Reflux = require("reflux");
+var RecipeStore = require("../stores");
 
 /** 
 Router & Data
@@ -7,7 +9,6 @@ Router & Data
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
-var db = require("../mock-db");
 
 /**
 Component
@@ -15,21 +16,23 @@ Component
 
 var Recipes = React.createClass({
   displayName : "Recipes",
-  propTypes: {},
-  mixins : [],
-  /**
-  Get initial state grabs our fake data...
-  */
-  getInitialState : function() { return {db: db}; },
+  mixins : [Reflux.connect(RecipeStore, "recipeStore")],
+  getInitialState : function() {
+    return {store: RecipeStore.getRecipes()};
+  },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() {
-    var recipeNodes = this.state.db.map(function(recipe){
+  createRecipeNodes : function () {
+    var nodes = this.state.store.map(function(recipe){
     return (/*jshint ignore:start */
         <Recipe recipe={recipe} key={recipe._id}>
         </Recipe>
       /*jshint ignore:end */);
     });
+    return nodes;
+  },  
+  render : function() {
+    var recipeNodes = this.createRecipeNodes()
     return (/*jshint ignore:start */
     <div className="Recipes">
       <p className="Recipes-title"> Recipe Bank: </p>

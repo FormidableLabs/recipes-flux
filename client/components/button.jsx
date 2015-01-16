@@ -17,26 +17,24 @@ var Input = React.createClass({
   mixins : [],
   getInitialState : function() { return null;},
   componentWillMount : function() {},
-  handleInputChange : function () {
+  handleButtonClick : function () {
     /* proxy to parent moving to generalize input */
-    this.props.inputCallback(
+    this.props.buttonCallback(
       this.props._id,
       this.props.accessor,
-      this.props.index,
-      this.refs.inputValue.getDOMNode().value
+      this.props.index
     )
   },
   componentWillUnmount : function() {},
   render : function() {
     return(
       /*jshint ignore:start*/
-      <input 
+      <button 
         _id={this.props._id}
-        type="text"
-        ref="inputValue"
-        value={this.props.value}
-        placeholder={this.props.placeholder}
-        onChange={this.handleInputChange} />
+        type="button"
+        ref="theButton"
+        onClick={this.handleButtonClick}
+        > {this.props.value} </button>
       /*jshint ignore:end */);
   }
 });

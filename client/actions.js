@@ -7,9 +7,11 @@ var Reflux = require("reflux");
 */
 
 var RecipeActions = Reflux.createActions([
-	"recipeAdded",
-	"inputChange",
-	"addIngredientInputChange"
+	"recipeCreated",
+	"recipeDeleted",
+	"inputChanged",
+	"ingredientDeleted",
+	"ingredientCreated"
 ]);
 
 module.exports = RecipeActions;

@@ -1,4 +1,7 @@
 var React = require("react");
+var Reflux = require("reflux");
+var RecipeStore = require("../stores");
+var RecipeActions = require("../actions");
 
 /** 
 Router
@@ -8,6 +11,12 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
+/**
+Child Components
+*/
+
+var Button = require("./button")
+
 var Recipe = React.createClass({  
   displayName : "Recipe",
   propTypes: {},
@@ -15,17 +24,28 @@ var Recipe = React.createClass({
   getInitialState : function() { return null; },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  
+  deleteRecipe : function () {
+    RecipeActions.recipeDeleted({
+      _id: this.props.recipe._id
+    })
+  },
   render : function() {return(
     /*jshint ignore:start unused:false */
     <div className="recipe">
       <p> 
-        <Link to="RecipeDetails" params={{recipeId: this.props.recipe._id}}> 
+        <Link to="RecipeDetails" params={{_id: this.props.recipe._id}}> 
           {this.props.recipe.title}
         </Link>
-        <Link to="edit" params={{recipeId: this.props.recipe._id}}> 
-          Edit
+        &nbsp;
+        <Link to="edit" params={{_id: this.props.recipe._id}}> 
+          *Edit*
         </Link>
+        <Button 
+          _id={this.props.recipe._id}
+          buttonCallback={this.deleteRecipe}
+          value="Delete"
+          > 
+        </Button>
       </p>
       <RouteHandler/>
     </div>

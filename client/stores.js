@@ -9,69 +9,94 @@ var _ = require("lodash");
 var RecipeStore = Reflux.createStore({
     // Initial setup
     init: function() {
+        
+        this._recipes = db; /* todo api */
 
-        /* set the store value to the mock database data */
-        this._recipes = db;
-
-
-        /**
-        Reflux Step 3: Register the store to listen to the action
-        */
-        this.listenTo(RecipeActions.recipeAdded, this.recipeAddedCallback);
-    	this.listenTo(RecipeActions.inputChange, this.inputChange)
-        //api.getRecipes();
+        this.listenTo(
+            RecipeActions.recipeCreated, 
+            this.recipeCreated
+        );
+    	this.listenTo(
+            RecipeActions.inputChanged, 
+            this.inputChange
+        );
+        this.listenTo(
+            RecipeActions.ingredientDeleted, 
+            this.ingredientDeleted
+        );
+        this.listenTo(
+            RecipeActions.ingredientCreated, 
+            this.ingredientCreated
+        );
+        this.listenTo(
+            RecipeActions.recipeDeleted, 
+            this.recipeDeleted
+        );    
     },
-
-    /** 
-    * Step 5: Callback **receives arg from component** and
-    * Step 6: does something with that arg 
-    * like update itself or manipulate the data
-    * Step 7: calls trigger which broadcasts data 
-    * to send back to any components listening
+    /**
+    * HANDLE ACTIONS FROM COMPONENT
     */
+    ingredientDeleted : function (payload) {
 
-    recipeAddedCallback: function(data) {
-        /**
-        * API
-        */
-        this.trigger("receipeAddedCallback received data: ", data);
     },
-    getInitialState : function () {
-        /** 
-        * For the edit case where we need to bootstrap data,
-        * return some data
-        */
+    ingredientCreated : function (payload) {
+
+    },
+    recipeCreated : function(payload) {
+        this.createRecipe(payload);
+        this.shipToComponent(payload._id)
+    },
+    recipeDeleted : function(payload) {
+        this.deleteRecipe(payload._id)
+        this.shipToComponent()
+    },
+    inputChange : function(payload) {
+        this.updateRecipe(
+            payload._id,
+            payload.accessor,
+            payload.index,
+            payload.value
+        )
+        this.shipToComponent(payload._id);
+    },
+    /**
+    * TALK TO STORE
+    */
+    updateRecipe : function(_id, accessor, index, value) {
+        var recipe = this.getRecipe(_id);
+        if (index) {
+            recipe.ingredients[index][accessor] = value;
+        } else {
+            recipe[accessor] = value;
+        }
+        return;
+    },
+    createRecipe : function (recipe) {
+        this._recipes.push(recipe);
+        return;
+    },
+    createIngredient : function () {
+
+    },
+    deleteRecipe : function (_id) {
+        _.remove(this._recipes, {_id: _id});
+        return;        
+    },
+    getRecipe : function (_id) {
+        return _.find(this._recipes, {_id: _id});
+    },
+    getRecipes : function () {
         return this._recipes;
     },
-    inputChange: function(data) {
-
-        /**
-        * We have some new info from an input.
-        * Let's reach into our data structure and find the index
-        * of the recipe being manipulated, or create it
-        * if it doesn't exist
-        */
-        var indexInRecipes = _.findIndex(this._recipes, {_id: data._id})
-
-        if (indexInRecipes !== -1) {
-            /* it exists, manipulate in place */
-            this._recipes[indexInRecipes][data.variableNameInStore] = data.value;
-            this.trigger({data: this._recipes, index: indexInRecipes});
-            // this.trigger(this._recipes);
-            window.recipes = this._recipes
-
+    /**
+    * TALK TO COMPONENT
+    */ 
+    shipToComponent : function(_id) {
+        if(_id) {
+            this.trigger({data: this.getRecipe(_id)});      
         } else {
-            /* it doesn't exist, create it */
-            console.log("this id doesn't exist in the store, creating it");
-            this._recipes.push();
-            console.log(this._recipes);
-            this.trigger({data: this._recipes, index: indexInRecipes});
+            this.trigger({data: this._recipes});
         }
-
-        /**
-        * Pass this._recipes to listening components
-        */        
-        //this.trigger(this._recipes);
     }
 });
 
