@@ -43,9 +43,7 @@ var Recipe = React.createClass({
         <Button 
           _id={this.props.recipe._id}
           buttonCallback={this.deleteRecipe}
-          value="Delete"
-          > 
-        </Button>
+          value="Delete"/>
       </p>
       <RouteHandler/>
     </div>

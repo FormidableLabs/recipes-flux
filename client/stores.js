@@ -37,18 +37,20 @@ var RecipeStore = Reflux.createStore({
     * HANDLE ACTIONS FROM COMPONENT
     */
     ingredientDeleted : function (payload) {
-
+        this.updateRecipeIngredientList(payload._id, payload.index);
+        this.shipToComponent(payload._id);
     },
     ingredientCreated : function (payload) {
-
+        this.updateRecipeIngredientList(payload._id);
+        this.shipToComponent(payload._id);
     },
     recipeCreated : function(payload) {
         this.createRecipe(payload);
-        this.shipToComponent(payload._id)
+        this.shipToComponent(payload._id);
     },
     recipeDeleted : function(payload) {
-        this.deleteRecipe(payload._id)
-        this.shipToComponent()
+        this.deleteRecipe(payload._id);
+        this.shipToComponent(payload._id);
     },
     inputChange : function(payload) {
         this.updateRecipe(
@@ -62,6 +64,23 @@ var RecipeStore = Reflux.createStore({
     /**
     * TALK TO STORE
     */
+    updateRecipeIngredientList: function (_id, index) {
+        var recipe = this.getRecipe(_id)
+        if (index) {
+            /* delete operation */
+            recipe.ingredients.splice(index, 1)
+        } else {
+            /* create operation */
+            recipe.ingredients.push(
+                { 
+                    ingredient: "", 
+                    quantity: "", 
+                    measurement: "", 
+                    modifier: ""
+                }
+            )    
+        }
+    },
     updateRecipe : function(_id, accessor, index, value) {
         var recipe = this.getRecipe(_id);
         if (index) {

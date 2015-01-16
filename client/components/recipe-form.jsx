@@ -16,7 +16,8 @@ var Link = Router.Link;
 Child Components
 */
 
-var Input = require("./input")
+var Input = require("./input");
+var Button = require("./button");
 
 /**
 Component
@@ -48,7 +49,20 @@ var RecipeForm = React.createClass({
         portions: "",
         totalTimeInMinutes: "",
         instructions: "",
-        ingredients: [],
+        ingredients: [
+          { 
+            ingredient: "Brown Rice", 
+            quantity: 2.5, 
+            measurement: "cups", 
+            modifier: "cooked"
+          },
+          { 
+            ingredient: "", 
+            quantity: "", 
+            measurement: "", 
+            modifier: ""
+          }
+        ],
         saved: false
       };
 
@@ -72,6 +86,17 @@ var RecipeForm = React.createClass({
   },
   onInputUpdate: function(storeData) {
     this.setState(storeData.data);
+  },
+  ingredientCreated : function () {
+    RecipeActions.ingredientCreated({
+      _id: this.state._id
+    })
+  },
+  ingredientDeleted : function (_id, accessor, index) {
+    RecipeActions.ingredientDeleted({
+      _id: this.state._id,
+      index: index
+    })
   },
   createNodes : function (ingredient, index) {
       return(
@@ -104,6 +129,10 @@ var RecipeForm = React.createClass({
           _id={this.state._id}
           inputCallback={this.inputCallback}
           accessor="modifier"/>
+        <Button 
+          buttonCallback={this.ingredientDeleted}
+          index={index}
+          value="Delete Ingredient"/> 
       </div>
       )
   },
@@ -140,7 +169,9 @@ var RecipeForm = React.createClass({
         _id={this.state._id}
         inputCallback={this.inputCallback} />
         {ingredientFormNodes}
-      <button onClick={this.addClicked}>Submit Recipe</button>
+        <Button 
+          buttonCallback={this.ingredientCreated}
+          value="Add Another Ingredient"/> 
       <RouteHandler {...this.props}/>
     </div>
   /*jshint ignore:end */)}
