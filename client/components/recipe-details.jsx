@@ -8,7 +8,7 @@ var Reflux = require("reflux");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 
-/** 
+/**
 Router & Data
 */
 
@@ -23,16 +23,16 @@ Child Components
 var Ingredient = require("./ingredient");
 
 /**
-Component 
+Component
 */
 
-var RecipeDetails = React.createClass({  
+var RecipeDetails = React.createClass({
   displayName : "RecipeDetails",
   propTypes: {},
   mixins : [Reflux.connect(RecipeStore, "recipeStore")],
-  getInitialState : function() { 
+  getInitialState : function() {
     return RecipeStore.getRecipe(this.props.params._id);
-  }, 
+  },
   componentWillMount : function() {
     this.parseInstructions();
   },
@@ -46,36 +46,35 @@ var RecipeDetails = React.createClass({
                           .replace(/\n/g, "</p><p>") + "</p>";
     this.state.parsedInstructions = html;
     /**
-    Make servings a controlled input and 
+    Make servings a controlled input and
     http://facebook.github.io/react/docs/forms.html#controlled-components
-    */ 
+    */
   },
   render : function() {
-    console.log(this.state);
     function createNodes (ingredient) {
-      return ( /*jshint ignore:start*/
+      return (/*jshint ignore:start*/
         <Ingredient ingredient={ingredient}/>
       /*jshint ignore:end */);
     }
 
-    var ingredientNodes = this.state.ingredients.map(createNodes)
-    /*jshint ignore:start */
-    return(
-    <div className="Recipe">
-      <p className="Recipe-title">{this.state.title}</p>
-      <p> Serves: {this.state.portions} (change)</p>      
-      <div className="row">
-        <div className="col-lg-4"> 
-          {ingredientNodes}
+    var ingredientNodes = this.state.ingredients.map(createNodes);
+
+    return(/*jshint ignore:start */
+      <div className="Recipe">
+        <p className="Recipe-title">{this.state.title}</p>
+        <p> Serves: {this.state.portions} (change)</p>
+        <div className="row">
+          <div className="col-lg-4">
+            {ingredientNodes}
+          </div>
+          <div
+            className="Recipe-instructions col-lg-4"
+            dangerouslySetInnerHTML={{__html: this.state.parsedInstructions}}
+          />
         </div>
-        <div 
-          className="Recipe-instructions col-lg-4" 
-          dangerouslySetInnerHTML={{__html: this.state.parsedInstructions}}
-        /> 
+        <RouteHandler {...this.props}/>
       </div>
-      <RouteHandler {...this.props}/>
-    </div>
-  /*jshint ignore:end */);
+    /*jshint ignore:end */);
   }
 });
 
@@ -83,7 +82,7 @@ module.exports = RecipeDetails;
 
 
 /**
-Ingredient 
+Ingredient
 
   render : function() {
 

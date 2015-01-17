@@ -5,7 +5,7 @@ var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 var uuid = require("uuid");
 
-/** 
+/**
 Router
 */
 
@@ -24,7 +24,7 @@ var Button = require("./button");
 Component
 */
 
-var RecipeForm = React.createClass({  
+var RecipeForm = React.createClass({
   displayName : "RecipeForm",
   propTypes: {},
   mixins : [Reflux.ListenerMixin],
@@ -33,13 +33,13 @@ var RecipeForm = React.createClass({
       /**
       * User came in from the edit button of an existing recipe,
       * so let's use the params to figure out which recipe
-      * so that we can populate the forms 
+      * so that we can populate the forms
       */
       return RecipeStore.getRecipe(this.props.params._id);
 
     } else {
-      /** 
-      * create the blank recipe in the store to edit 
+      /**
+      * create the blank recipe in the store to edit
       * this will create an empty record if they leave, but that's
       * not terrible because they can edit or delete it from the inbox
       */
@@ -51,16 +51,16 @@ var RecipeForm = React.createClass({
         totalTimeInMinutes: "",
         instructions: "",
         ingredients: [
-          { 
-            ingredient: "Brown Rice", 
-            quantity: 2.5, 
-            measurement: "cups", 
+          {
+            ingredient: "Brown Rice",
+            quantity: 2.5,
+            measurement: "cups",
             modifier: "cooked"
           },
-          { 
-            ingredient: "", 
-            quantity: "", 
-            measurement: "", 
+          {
+            ingredient: "",
+            quantity: "",
+            measurement: "",
             modifier: ""
           }
         ],
@@ -68,7 +68,6 @@ var RecipeForm = React.createClass({
       };
 
       RecipeActions.recipeCreated(newRecipe);
-      console.log(newRecipe);
       return newRecipe;
     }
 
@@ -100,83 +99,85 @@ var RecipeForm = React.createClass({
     });
   },
   createNodes : function (ingredient, index) {
-      return(
-      /*jshint ignore:start*/ 
+    return(
+      /*jshint ignore:start*/
       <div className="Ingredient" key={index}>
-        <Input 
-          placeholder="Ingredient" 
+        <Input
+          placeholder="Ingredient"
           value={ingredient.ingredient}
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
           accessor="ingredient"/>
-        <Input 
+        <Input
           placeholder="Quantity"
           value={ingredient.quantity}
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
           accessor="quantity"/>
-        <Input 
-          placeholder="Measurement Units" 
+        <Input
+          placeholder="Measurement Units"
           value={ingredient.measurement}
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
           accessor="measurement"/>
-        <Input 
-          placeholder="Modifier (e.g. 'chopped')" 
+        <Input
+          placeholder="Modifier (e.g. 'chopped')"
           value={ingredient.modifier}
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
           accessor="modifier"/>
-        <Button 
+        <Button
           buttonCallback={this.ingredientDeleted}
           index={index}
-          value="Delete Ingredient"/> 
+          value="Delete Ingredient"/>
       </div>
       /*jshint ignore:end */
-      )
+    );
   },
-  render : function() {
+
+  render: function () {
     var ingredientFormNodes = this.state.ingredients.map(
       this.createNodes
-      )
-    return(
-      /*jshint ignore:start */
-    <div className="recipe">
-      <Input 
-        placeholder="Title"
-        accessor="title" 
-        value={this.state.title}
-        _id={this.state._id}
-        inputCallback={this.inputCallback}></Input>
-      <Input 
-        placeholder="Portions"
-        accessor="portions" 
-        value={this.state.portions}
-        _id={this.state._id}
-        inputCallback={this.inputCallback}></Input>
-      <Input 
-        placeholder="Total time in minutes"
-        accessor="totalTimeInMinutes" 
-        value={this.state.totalTimeInMinutes}
-        _id={this.state._id}
-        inputCallback={this.inputCallback}></Input>
-      <Input 
-        placeholder="Instructions"
-        accessor="instructions" 
-        value={this.state.instructions}
-        _id={this.state._id}
-        inputCallback={this.inputCallback}></Input>
-        {ingredientFormNodes}
-        <Button 
-          buttonCallback={this.ingredientCreated}
-          value="Add Another Ingredient"/> 
-      <RouteHandler {...this.props}/>
-    </div>
-  /*jshint ignore:end */)}
+    );
+
+    return(/*jshint ignore:start */
+      <div className="recipe">
+        <Input
+          placeholder="Title"
+          accessor="title"
+          value={this.state.title}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}></Input>
+        <Input
+          placeholder="Portions"
+          accessor="portions"
+          value={this.state.portions}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}></Input>
+        <Input
+          placeholder="Total time in minutes"
+          accessor="totalTimeInMinutes"
+          value={this.state.totalTimeInMinutes}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}></Input>
+        <Input
+          placeholder="Instructions"
+          accessor="instructions"
+          value={this.state.instructions}
+          _id={this.state._id}
+          inputCallback={this.inputCallback}></Input>
+          {ingredientFormNodes}
+          <Button
+            buttonCallback={this.ingredientCreated}
+            value="Add Another Ingredient"/>
+        <RouteHandler {...this.props}/>
+      </div>
+    /*jshint ignore:end */);
+  }
 });
 
 module.exports = RecipeForm;
