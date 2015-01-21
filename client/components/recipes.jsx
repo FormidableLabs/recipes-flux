@@ -1,7 +1,7 @@
 /*jshint unused:false */
 var React = require("react");
 var Recipe = require("./recipe");
-var Reflux = require("reflux");
+var McFly = require("../McFly");
 var RecipeStore = require("../stores");
 
 /** 
@@ -15,11 +15,17 @@ var RouteHandler = Router.RouteHandler;
 Component
 */
 
+function getState() {
+  return {
+    store: RecipeStore.getRecipes()
+  }
+}
+
 var Recipes = React.createClass({
   displayName : "Recipes",
-  mixins : [Reflux.connect(RecipeStore, "recipeStore")],
+  mixins : [RecipeStore.mixin],
   getInitialState : function() {
-    return {store: RecipeStore.getRecipes()};
+    return getState();
   },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
@@ -31,7 +37,10 @@ var Recipes = React.createClass({
       /*jshint ignore:end */);
     });
     return nodes;
-  },  
+  },
+  onChange: function() {
+    this.setState(getState());
+  },
   render : function() {
     var recipeNodes = this.createRecipeNodes();
     return (/*jshint ignore:start */

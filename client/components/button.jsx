@@ -1,8 +1,5 @@
 /*jshint unused:false */
 var React = require("react");
-var Reflux = require("reflux");
-var RecipeStore = require("../stores");
-var RecipeActions = require("../actions");
 
 /** 
 Router

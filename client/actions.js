@@ -1,17 +1,36 @@
-var Reflux = require("reflux");
-// var api = require('api')
+var McFly = require('./McFly');
 
-/**
-* Reflux Step 0: create 'actions' 
-* to be fired by UI elements and listened to by 'stores'
-*/
-
-var RecipeActions = Reflux.createActions([
-	"recipeCreated",
-	"recipeDeleted",
-	"inputChanged",
-	"ingredientDeleted",
-	"ingredientCreated"
-]);
+var RecipeActions = McFly.createActions({
+  recipeCreated: function(data){
+    return {
+      actionType: 'RECIPE_CREATE',
+      data: data
+    }
+  },
+  recipeDeleted: function(data){
+    return {
+      actionType: 'RECIPE_DELETE',
+      data: data
+    }
+  },
+  inputChanged: function(data){
+    return {
+      actionType: 'INPUT_CHANGED',
+      data: data
+    }
+  },
+  ingredientDeleted: function(data){
+    return {
+      actionType: 'INGREDIENT_DELETED',
+      data: data
+    }
+  },
+  ingredientCreated: function(data){
+    return {
+      actionType: 'INGREDIENT_CREATED',
+      data: data
+    }
+  },
+})
 
 module.exports = RecipeActions;
