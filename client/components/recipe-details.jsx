@@ -4,7 +4,6 @@
 React
 */
 var React = require("react");
-var Reflux = require("reflux");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 
@@ -26,17 +25,24 @@ var Ingredient = require("./ingredient");
 Component
 */
 
+function getState(id) {
+  return RecipeStore.getRecipe(id);
+}
+
 var RecipeDetails = React.createClass({
   displayName : "RecipeDetails",
   propTypes: {},
-  mixins : [Reflux.connect(RecipeStore, "recipeStore")],
+  mixins : [RecipeStore.mixin],
   getInitialState : function() {
-    return RecipeStore.getRecipe(this.props.params._id);
+    return getState(this.props.params._id);
   },
   componentWillMount : function() {
     this.parseInstructions();
   },
   componentWillUnmount : function() {},
+  onChange: function() {
+    this.setState(getState(this.props.params._id));
+  },
   parseInstructions : function () {
     /**
     Process instructions to split string on newline
@@ -51,9 +57,9 @@ var RecipeDetails = React.createClass({
     */
   },
   render : function() {
-    function createNodes (ingredient) {
+    function createNodes (ingredient, index) {
       return (/*jshint ignore:start*/
-        <Ingredient ingredient={ingredient}/>
+        <Ingredient key={index} ingredient={ingredient}/>
       /*jshint ignore:end */);
     }
 

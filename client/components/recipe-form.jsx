@@ -1,6 +1,5 @@
 /*jshint unused:false */
 var React = require("react");
-var Reflux = require("reflux");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 var uuid = require("uuid");
@@ -24,10 +23,14 @@ var Button = require("./button");
 Component
 */
 
+function getState(id){
+  return RecipeStore.getRecipe(id);
+}
+
 var RecipeForm = React.createClass({
   displayName : "RecipeForm",
   propTypes: {},
-  mixins : [Reflux.ListenerMixin],
+  mixins : [RecipeStore.mixin],
   getInitialState : function() {
     if (this.props.params._id) {
       /**
@@ -35,6 +38,7 @@ var RecipeForm = React.createClass({
       * so let's use the params to figure out which recipe
       * so that we can populate the forms
       */
+      this._id = this.props.params.id;
       return RecipeStore.getRecipe(this.props.params._id);
 
     } else {
@@ -68,13 +72,11 @@ var RecipeForm = React.createClass({
       };
 
       RecipeActions.recipeCreated(newRecipe);
+      this._id = newRecipe._id;
       return newRecipe;
     }
-
   },
-  componentWillMount : function() {
-    this.listenTo(RecipeStore, this.onInputUpdate);
-  },
+  componentWillMount : function() {},
   componentWillUnmount : function() {},
   inputCallback: function (_id, accessor, index, value) {
     RecipeActions.inputChanged({
@@ -84,8 +86,8 @@ var RecipeForm = React.createClass({
       value: value
     });
   },
-  onInputUpdate: function(storeData) {
-    this.setState(storeData.data);
+  onChange: function(){
+    this.setState(getState(this._id));
   },
   ingredientCreated : function () {
     RecipeActions.ingredientCreated({
@@ -98,7 +100,7 @@ var RecipeForm = React.createClass({
       index: index
     });
   },
-  createNodes : function (ingredient, index) {
+  createNodes : function (ingredient, index) { 
     return(
       /*jshint ignore:start*/
       <div className="Ingredient" key={index}>

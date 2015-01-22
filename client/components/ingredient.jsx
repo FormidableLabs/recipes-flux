@@ -45,19 +45,21 @@ var Ingredient = React.createClass({
     */
 
     var q = this.props.ingredient.quantity;
-    if (q < 1) {
-      var uni = toUnicode(ratio.parse(q).simplify().toString());
-      this.state.fraction = uni;
-      return;
-    } else if (q % 1 !== 0) {
-      var frac = Math.floor(q) + 
-                  " " + 
-                  toUnicode(ratio.parse(q%1).simplify().toString());
-      this.state.fraction = frac;
-      return;
-    } else /* whole number */ {
-      this.state.fraction = q;
-      return;
+    if(!isNaN(q)) {
+      if (q < 1) {
+        var uni = toUnicode(ratio.parse(q).simplify().toString());
+        this.state.fraction = uni;
+        return;
+      } else if (q % 1 !== 0) {
+        var frac = Math.floor(q) + 
+                    " " + 
+                    toUnicode(ratio.parse(q%1).simplify().toString());
+        this.state.fraction = frac;
+        return;
+      } else /* whole number */ {
+        this.state.fraction = q;
+        return;
+      }
     }
 
   },
