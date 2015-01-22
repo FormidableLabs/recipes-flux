@@ -1,3 +1,3 @@
-var McFly = require('mcfly');
+var McFly = require("mcfly");
 
 module.exports = new McFly();

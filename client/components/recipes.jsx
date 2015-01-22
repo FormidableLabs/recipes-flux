@@ -18,7 +18,7 @@ Component
 function getState() {
   return {
     store: RecipeStore.getRecipes()
-  }
+  };
 }
 
 var Recipes = React.createClass({

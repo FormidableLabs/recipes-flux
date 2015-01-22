@@ -1,5 +1,5 @@
 /*jshint unused:false */
-var McFly = require('./McFly');
+var McFly = require("./McFly");
 var RecipeActions = require("./actions");
 var request = require("superagent");
 var db = require("./mock-db");
@@ -52,7 +52,7 @@ var RecipeStore = McFly.createStore({
     },
     getRecipes : function () {
         return this._recipes;
-    },
+    }
 },function(payload){
     if(payload.actionType === "RECIPE_CREATE"){
         RecipeStore.createRecipe(payload.data);
@@ -72,7 +72,9 @@ var RecipeStore = McFly.createStore({
         RecipeStore.emitChange();
     }
     if(payload.actionType === "INGREDIENT_DELETED"){
-        RecipeStore.updateRecipeIngredientList(payload.data._id, payload.data.index);
+        RecipeStore.updateRecipeIngredientList(
+            payload.data._id, payload.data.index
+        );
         RecipeStore.emitChange();
     }
     if(payload.actionType === "INGREDIENT_CREATED"){
