@@ -32,6 +32,24 @@ var Home = React.createClass({
         </RadiumButton>
       </p>
 
+      <p>
+        <RadiumButton color="white">
+          Cool Button
+        </RadiumButton>
+      </p>
+
+      <p>
+        <RadiumButton size="small">
+          Cool Button
+        </RadiumButton>
+      </p>
+
+      <p>
+        <RadiumButton size="large">
+          Cool Button
+        </RadiumButton>
+      </p>
+
       <RouteHandler/>
     </div>
   /*jshint ignore:end */);

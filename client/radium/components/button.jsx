@@ -18,13 +18,26 @@ var Button = React.createClass({
       padding: "0.5em 1em",
       cursor: "pointer",
       outline: "none",
+      $hasBoxShadow: true
     },
     modifiers: {
-      large: {
-        fontSize: 21
+      size: {
+        large: {
+          fontSize: 21
+        },
+        small: {
+          fontSize: 14
+        }
       },
-      small: {
-        fontSize: 14
+      color: {
+        blue: {},
+        red: {},
+        white: {
+          backgroundColor: "#fff",
+          color: "#0074d9",
+          border: "1px solid #AEC5D9",
+          $hasBoxShadow: false
+        }
       }
     },
     states: {
@@ -33,8 +46,8 @@ var Button = React.createClass({
       },
       active: {
         backgroundColor: "#b10dc9",
-        boxShadow: "none",
-        transform: "translateY(1px)"
+        transform: "translateY(2px)",
+        $hasBoxShadow: false
       },
       focus: {
         backgroundColor: "#3d9970"
@@ -42,25 +55,12 @@ var Button = React.createClass({
     }
   },
 
-  // TODO: Need good interface for building modifier styles, with understanding
-  // that multiple modifiers can be applied at once. Also need to figure out
-  // states for modifiers.
-  getModifierStyles: function () {
-    var modifierStyles;
-
-    if (this.props.size) {
-      modifierStyles = this.styles.modifiers[this.props.size];
-    }
-
-    return modifierStyles;
-  },
-
   buildComputedStyles: function (baseStyles) {
     var boxShadowColor = Color(baseStyles.backgroundColor)
       .darken(0.25)
       .hexString();
 
-    var btnBoxShadow = this.state.active ? null : "0 2px 0 " + boxShadowColor
+    var btnBoxShadow = baseStyles.$hasBoxShadow ? "0 2px 0 " + boxShadowColor : null
 
     var computedStyles = {
       boxShadow: btnBoxShadow

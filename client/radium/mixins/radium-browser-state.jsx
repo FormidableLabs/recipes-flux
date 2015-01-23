@@ -101,6 +101,19 @@ var ReactBrowserState = {
     return stateStyles;
   },
 
+  // TODO: Need to figure out states for modifiers.
+  getModifierStyles: function () {
+    var modifierStyles = {};
+
+    _.forEach(this.styles.modifiers, function (modifier, key) {
+      if (this.props[key]) {
+        _.assign(modifierStyles, modifier[this.props[key]]);
+      }
+    }, this);
+
+    return modifierStyles;
+  },
+
   getStyles: function (modifierStyles) {
     return _.assign(
       {},
