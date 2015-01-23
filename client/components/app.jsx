@@ -25,13 +25,21 @@ var App = React.createClass({
   getInitialState : function() { return null; },
   componentWillMount : function() {},
   componentWillUnmount : function() {},
-  render : function() { return (
-    /*jshint ignore:start */
-    <div className="epicureContainer">
-      <Nav/>
-      <RouteHandler {...this.props}/>
-    </div>
-		/*jshint ignore:end */);
+  render : function () {
+    var style = {
+      "maxWidth": 1024,
+      "margin": "0 auto",
+      "padding": "3em 0"
+    }
+
+    return (/*jshint ignore:start */
+      <div
+        style={style}
+        className="epicureContainer">
+        <Nav/>
+        <RouteHandler {...this.props}/>
+      </div>
+  	/*jshint ignore:end */);
   }
 });
 
