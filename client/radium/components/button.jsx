@@ -32,7 +32,9 @@ var Button = React.createClass({
         backgroundColor: "#FF851B"
       },
       active: {
-        backgroundColor: "#b10dc9"
+        backgroundColor: "#b10dc9",
+        boxShadow: "none",
+        transform: "translateY(1px)"
       },
       focus: {
         backgroundColor: "#3d9970"
@@ -58,8 +60,10 @@ var Button = React.createClass({
       .darken(0.25)
       .hexString();
 
+    var btnBoxShadow = this.state.active ? null : "0 2px 0 " + boxShadowColor
+
     var computedStyles = {
-      boxShadow: "0 2px 0 " + boxShadowColor
+      boxShadow: btnBoxShadow
     };
 
     return computedStyles;
