@@ -19,40 +19,86 @@ var Home = React.createClass({
     console.log("Hovered over", component, ev);
   },
 
-  render : function() {return(
-    /*jshint ignore:start*/
-    <div>
-      <p>
-        home rendered
-      </p>
+  render : function() {
+    var paddedCellStyle = {
+      padding: "1em 0"
+    };
 
-      <p>
-        <RadiumButton onRadiumMouseEnter={this.handleBtnHover}>
-          Cool Button
-        </RadiumButton>
-      </p>
+    return (/*jshint ignore:start*/
+      <div>
+        <p>
+          home rendered
+        </p>
 
-      <p>
-        <RadiumButton color="white">
-          Cool Button
-        </RadiumButton>
-      </p>
+        <div style={paddedCellStyle}>
+          <p>
+            <RadiumButton onRadiumMouseEnter={this.handleBtnHover}>
+              Cool Button
+            </RadiumButton>
+          </p>
 
-      <p>
-        <RadiumButton size="small">
-          Cool Button
-        </RadiumButton>
-      </p>
+          <p>
+            <RadiumButton color="green">
+              Cool Button
+            </RadiumButton>
+          </p>
 
-      <p>
-        <RadiumButton size="large">
-          Cool Button
-        </RadiumButton>
-      </p>
+          <p>
+            <RadiumButton color="purple">
+              Cool Button
+            </RadiumButton>
+          </p>
 
-      <RouteHandler/>
-    </div>
-  /*jshint ignore:end */);
+          <p>
+            <RadiumButton color="orange">
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton color="white">
+              Cool Button
+            </RadiumButton>
+          </p>
+        </div>
+
+        <div style={paddedCellStyle}>
+          <p>
+            <RadiumButton size="mini">
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton size="small">
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton>
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton size="large">
+              Cool Button
+            </RadiumButton>
+          </p>
+        </div>
+
+        <div style={paddedCellStyle}>
+          <p>
+            <RadiumButton display="block">
+              Cool Button
+            </RadiumButton>
+          </p>
+        </div>
+
+        <RouteHandler/>
+      </div>
+    /*jshint ignore:end */);
   }
 });
 

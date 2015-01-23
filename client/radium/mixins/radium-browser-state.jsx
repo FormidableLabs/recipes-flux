@@ -87,39 +87,49 @@ var ReactBrowserState = {
     });
   },
 
-  getStateStyles: function () {
+  getStateStyles: function (states) {
     var stateStyles;
 
     if (this.state.active) {
-      stateStyles = this.styles.states.active;
+      stateStyles = states.active;
     } else if (this.state.focus) {
-      stateStyles = this.styles.states.focus;
+      stateStyles = states.focus;
     } else if (this.state.hover) {
-      stateStyles = this.styles.states.hover;
+      stateStyles = states.hover;
     }
 
     return stateStyles;
   },
 
-  // TODO: Need to figure out states for modifiers.
   getModifierStyles: function () {
     var modifierStyles = {};
 
     _.forEach(this.styles.modifiers, function (modifier, key) {
       if (this.props[key]) {
-        _.assign(modifierStyles, modifier[this.props[key]]);
+        var activeModifier = modifier[this.props[key]];
+        var activeModifierStates;
+
+        if (activeModifier.states) {
+          activeModifierStates = this.getStateStyles(activeModifier.states);
+        }
+
+        _.assign(
+          modifierStyles,
+          activeModifier,
+          activeModifierStates
+        );
       }
     }, this);
 
     return modifierStyles;
   },
 
-  getStyles: function (modifierStyles) {
+  getStyles: function () {
     return _.assign(
       {},
       this.styles.default,
-      modifierStyles,
-      this.getStateStyles()
+      this.getStateStyles(this.styles.states),
+      this.getModifierStyles()
     );
   },
 
