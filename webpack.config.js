@@ -15,11 +15,12 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/, loader: "jsx-loader" }
+      { test: /\.jsx$/, loader: "jsx-loader" },
+      { test: /\.json$/, loader: "json-loader"}
     ]
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx", ".json"]
   },
   plugins: [
     // Optimize

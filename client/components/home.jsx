@@ -5,8 +5,7 @@ var React = require("react");
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
-var RadiumButton = require("./radium/button");
-var RadiumButtonAlt = require("./radium/button-alt-events");
+var RadiumButton = require("../radium/components/button");
 
 var Home = React.createClass({
   displayName : "Home",
@@ -16,8 +15,8 @@ var Home = React.createClass({
   componentWillMount : function() {},
   componentWillUnmount : function() {},
 
-  handleBtnHover: function (button) {
-    console.log("Hovered over", button);
+  handleBtnHover: function (component, ev) {
+    console.log("Hovered over", component, ev);
   },
 
   render : function() {return(
@@ -28,19 +27,9 @@ var Home = React.createClass({
       </p>
 
       <p>
-        <RadiumButton
-          onRadiumMouseEnter={this.handleBtnHover}
-          >
+        <RadiumButton onRadiumMouseEnter={this.handleBtnHover}>
           Cool Button
         </RadiumButton>
-      </p>
-
-      <p>
-        <RadiumButtonAlt
-          onMouseEnter={this.handleBtnHover}
-          >
-          Another Button
-        </RadiumButtonAlt>
       </p>
 
       <RouteHandler/>
