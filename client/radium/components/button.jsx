@@ -13,12 +13,12 @@ var Button = React.createClass({
       backgroundColor: "#0074d9",
       backgroundImage: "linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0))",
       color: "#fff",
+      border: 0,
       borderRadius: "0.3em",
-      padding: "0.5em 1em",
+      padding: "0.4em 1em",
       cursor: "pointer",
       $dynamicBorder: true,
-      $dynamicBoxShadow: true,
-      $dynamicBackground: true
+      $dynamicBoxShadow: true
     },
     modifiers: {
       display: {
@@ -58,12 +58,12 @@ var Button = React.createClass({
           boxShadow: "0 2px 0 #aec5d9",
           $dynamicBorder: false,
           $dynamicBoxShadow: false,
-          $dynamicBackground: false,
+          $dynamicBg: false,
           states: {
             hover: {
-              backgroundColor: "#aec5d9",
+              backgroundColor: "#DAE0E5",
               boxShadow: "0 2px 0 #8FA2B2",
-              borderBottomColor: "#aec5d9"
+              borderBottomColor: "#DAE0E5"
             },
             active: {
               color: "#005299",
@@ -82,44 +82,43 @@ var Button = React.createClass({
     },
     states: {
       hover: {
-        $hoverBackgroundColor: true
+        $dynamicBg: {
+          method: "lighten",
+          value: 0.25
+        }
       },
       active: {
-        $activeBackgroundColor: true,
+        $dynamicBg: {
+          method: "darken",
+          value: 0.25
+        },
         transform: "translateY(2px)",
         $dynamicBoxShadow: false
       },
       focus: {
-        $focusBackgroundColor: true
+        $dynamicBg: {
+          method: "lighten",
+          value: 0.25
+        }
       }
     }
   },
 
+  getDynamicBg: function (bgProps, staticBg) {
+    return Color(staticBg)[bgProps.method](bgProps.value).hexString();
+  },
+
   buildComputedStyles: function (baseStyles) {
     var computedStyles = {};
-    var backgroundColor;
 
-    if (baseStyles.$dynamicBackground) {
-      if (baseStyles.$hoverBackgroundColor) {
-        backgroundColor = Color(baseStyles.backgroundColor)
-          .lighten(0.25)
-          .hexString();
-      }
+    if (baseStyles.$dynamicBg) {
+      var bgColor = this.getDynamicBg(
+        baseStyles.$dynamicBg,
+        baseStyles.backgroundColor
+      );
 
-      if (baseStyles.$activeBackgroundColor) {
-        backgroundColor = Color(baseStyles.backgroundColor)
-          .darken(0.25)
-          .hexString();
-      }
-
-      if (baseStyles.$focusBackgroundColor) {
-        backgroundColor = Color(baseStyles.backgroundColor)
-          .lighten(0.25)
-          .hexString();
-      }
-
-      if (backgroundColor) {
-        computedStyles.backgroundColor = backgroundColor;
+      if (bgColor) {
+        computedStyles.backgroundColor = bgColor;
       }
     }
 
@@ -129,7 +128,7 @@ var Button = React.createClass({
 
     if (baseStyles.$dynamicBoxShadow) {
       var boxShadowColor = Color(baseStyles.backgroundColor)
-        .darken(0.25)
+        .darken(0.2)
         .hexString();
 
       var btnBoxShadow = baseStyles.$dynamicBoxShadow ? "0 2px 0 " + boxShadowColor : null
