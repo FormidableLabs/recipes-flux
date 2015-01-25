@@ -8,7 +8,31 @@
     "try",
     "catch"
   ],
+
+  "requireSpaceAfterKeywords": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "switch",
+    "case",
+    "return",
+    "try",
+    "catch",
+    "function",
+    "typeof"
+  ],
+  "requireSpacesInFunctionExpression": {
+    "beforeOpeningCurlyBrace": true,
+    "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInNamedFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+
   "disallowMixedSpacesAndTabs": true,
+  "disallowMultipleLineStrings": true,
   "disallowMultipleVarDecl": true,
   "validateIndentation": 2,
   "validateQuoteMarks": "\""

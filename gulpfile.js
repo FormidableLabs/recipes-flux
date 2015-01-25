@@ -70,9 +70,9 @@ gulp.task("jscs", function () {
 // ----------------------------------------------------------------------------
 // Quality
 // ----------------------------------------------------------------------------
-gulp.task("check",      ["jshint"]);
-gulp.task("check:ci",   ["jshint"]);
-gulp.task("check:all",  ["jshint"]);
+gulp.task("check",      ["jscs", "jshint"]);
+gulp.task("check:ci",   ["jscs", "jshint"]);
+gulp.task("check:all",  ["jscs", "jshint"]);
 
 // -----------
 // Cleaning

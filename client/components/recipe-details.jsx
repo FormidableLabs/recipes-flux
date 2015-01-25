@@ -33,14 +33,14 @@ var RecipeDetails = React.createClass({
   displayName : "RecipeDetails",
   propTypes: {},
   mixins : [RecipeStore.mixin],
-  getInitialState : function() {
+  getInitialState : function () {
     return getState(this.props.params._id);
   },
-  componentWillMount : function() {
+  componentWillMount : function () {
     this.parseInstructions();
   },
-  componentWillUnmount : function() {},
-  onChange: function() {
+  componentWillUnmount : function () {},
+  onChange: function () {
     this.setState(getState(this.props.params._id));
   },
   parseInstructions : function () {
@@ -56,7 +56,7 @@ var RecipeDetails = React.createClass({
     http://facebook.github.io/react/docs/forms.html#controlled-components
     */
   },
-  render : function() {
+  render : function () {
     function createNodes (ingredient, index) {
       return (/*jshint ignore:start*/
         <Ingredient key={index} ingredient={ingredient}/>
@@ -65,7 +65,7 @@ var RecipeDetails = React.createClass({
 
     var ingredientNodes = this.state.ingredients.map(createNodes);
 
-    return(/*jshint ignore:start */
+    return (/*jshint ignore:start */
       <div className="Recipe">
         <p className="Recipe-title">{this.state.title}</p>
         <p> Serves: {this.state.portions} (change)</p>
@@ -90,7 +90,7 @@ module.exports = RecipeDetails;
 /**
 Ingredient
 
-  render : function() {
+  render : function () {
 
     return (
     <div className="Recipes">

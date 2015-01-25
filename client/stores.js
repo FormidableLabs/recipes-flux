@@ -27,7 +27,7 @@ var RecipeStore = McFly.createStore({
       );
     }
   },
-  updateRecipe : function(_id, accessor, index, value) {
+  updateRecipe : function (_id, accessor, index, value) {
     var recipe = this.getRecipe(_id);
     if (index || index === 0) {
       recipe.ingredients[index][accessor] = value;
@@ -53,16 +53,16 @@ var RecipeStore = McFly.createStore({
   getRecipes : function () {
     return this._recipes;
   }
-},function(payload){
-  if(payload.actionType === "RECIPE_CREATE"){
+},function (payload) {
+  if (payload.actionType === "RECIPE_CREATE") {
     RecipeStore.createRecipe(payload.data);
     RecipeStore.emitChange();
   }
-  if(payload.actionType === "RECIPE_DELETE"){
+  if (payload.actionType === "RECIPE_DELETE") {
     RecipeStore.deleteRecipe(payload.data._id);
     RecipeStore.emitChange();
   }
-  if(payload.actionType === "INPUT_CHANGED"){
+  if (payload.actionType === "INPUT_CHANGED") {
     RecipeStore.updateRecipe(
       payload.data._id,
       payload.data.accessor,
@@ -71,13 +71,13 @@ var RecipeStore = McFly.createStore({
     );
     RecipeStore.emitChange();
   }
-  if(payload.actionType === "INGREDIENT_DELETED"){
+  if (payload.actionType === "INGREDIENT_DELETED") {
     RecipeStore.updateRecipeIngredientList(
       payload.data._id, payload.data.index
     );
     RecipeStore.emitChange();
   }
-  if(payload.actionType === "INGREDIENT_CREATED"){
+  if (payload.actionType === "INGREDIENT_CREATED") {
     RecipeStore.updateRecipeIngredientList(payload.data._id);
     RecipeStore.emitChange();
   }

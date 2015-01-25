@@ -22,10 +22,10 @@ var App = React.createClass({
   displayName : "App",
   propTypes: {},
   mixins : [],
-  getInitialState : function() { return null; },
-  componentWillMount : function() {},
-  componentWillUnmount : function() {},
-  render : function() { return (
+  getInitialState : function () { return null; },
+  componentWillMount : function () {},
+  componentWillUnmount : function () {},
+  render : function () { return (
     /*jshint ignore:start */
     <div className="epicureContainer">
       <Nav/>
