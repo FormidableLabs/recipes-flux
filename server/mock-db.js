@@ -9,64 +9,64 @@ module.exports = [
 		portions: 6,
 		totalTimeInMinutes: 60,
 		ingredients: [
-			{ 
-				ingredient: "onion", 
-				quantity: 1, 
-				measurement: null, 
+			{
+				ingredient: "onion",
+				quantity: 1,
+				measurement: null,
 				modifier: "chopped"
 			},
-			{ 
-				ingredient: "oil", 
-				quantity: 1, 
-				measurement: "tablespoon", 
+			{
+				ingredient: "oil",
+				quantity: 1,
+				measurement: "tablespoon",
 				modifier: null
 			},
-			{ 
-				ingredient: "brown rice", 
-				quantity: 2.5, 
-				measurement: "cups", 
+			{
+				ingredient: "brown rice",
+				quantity: 2.5,
+				measurement: "cups",
 				modifier: "cooked"
 			},
-			{ 
-				ingredient: "cottage cheese", 
-				quantity: 1.5, 
-				measurement: "cups", 
+			{
+				ingredient: "cottage cheese",
+				quantity: 1.5,
+				measurement: "cups",
 				modifier: null
 			},
-			{ 
-				ingredient: "egg", 
-				quantity: 1, 
-				measurement: null, 
+			{
+				ingredient: "egg",
+				quantity: 1,
+				measurement: null,
 				modifier: "beaten"
 			},
-			{ 
-				ingredient: "parsley", 
-				quantity: 0.5, 
-				measurement: "cup", 
+			{
+				ingredient: "parsley",
+				quantity: 0.5,
+				measurement: "cup",
 				modifier: "chopped"
 			},
-			{ 
-				ingredient: "raisins", 
-				quantity: 0.75, 
-				measurement: "cup", 
+			{
+				ingredient: "raisins",
+				quantity: 0.75,
+				measurement: "cup",
 				modifier: null
 			},
-			{ 
-				ingredient: "dill", 
-				quantity: 1, 
-				measurement: "teaspoon", 
+			{
+				ingredient: "dill",
+				quantity: 1,
+				measurement: "teaspoon",
 				modifier: null
 			},
-			{ 
-				ingredient: "salt", 
-				quantity: 0.75, 
-				measurement: "teaspoon", 
+			{
+				ingredient: "salt",
+				quantity: 0.75,
+				measurement: "teaspoon",
 				modifier: null
 			},
-			{ 
-				ingredient: "swiss chard leaves", 
-				quantity: 16, 
-				measurement: "leaves", 
+			{
+				ingredient: "swiss chard leaves",
+				quantity: 16,
+				measurement: "leaves",
 				modifier: "large"
 			}
 		],
@@ -80,7 +80,7 @@ module.exports = [
 		"in a greased casserole. Cover and bake for about 30 minutes. \n " +
 		"Alternatively, steam the rolls in a steamer basket over boiling " +
 		"water until the leaves are tender, about 20 minutes. Bake any extra " +
-		"filling and serve with stuffed leaves." 
+		"filling and serve with stuffed leaves."
 	},
 	{
 		id: "70dd964b-6225-4d7c-8b1e-7e983d901a80",
@@ -89,49 +89,49 @@ module.exports = [
 		totalTimeInMinutes: 120,
 		ingredients: [
 			{
-				ingredient: "onion", 
-				quantity: 1, 
-				measurement: null, 
+				ingredient: "onion",
+				quantity: 1,
+				measurement: null,
 				modifier: "chopped fine"},
 			{
-				ingredient: "green pepper", 
-				quantity: 1, 
-				measurement: null, 
+				ingredient: "green pepper",
+				quantity: 1,
+				measurement: null,
 				modifier: "chopped fine"},
 			{
-				ingredient: "garlic clove", 
-				quantity: 1, 
-				measurement: null, 
+				ingredient: "garlic clove",
+				quantity: 1,
+				measurement: null,
 				modifier: null},
 			{
-				ingredient: "olive oil", 
-				quantity: 1, 
-				measurement: "tablespoon", 
+				ingredient: "olive oil",
+				quantity: 1,
+				measurement: "tablespoon",
 				modifier: null},
 			{
-				ingredient: "tomato", 
-				quantity: 3, 
-				measurement: "cups", 
+				ingredient: "tomato",
+				quantity: 3,
+				measurement: "cups",
 				modifier: "chopped"},
 			{
-				ingredient: "parsley", 
-				quantity: 0.25, 
-				measurement: "cup", 
+				ingredient: "parsley",
+				quantity: 0.25,
+				measurement: "cup",
 				modifier: "chopped"},
 			{
-				ingredient: "basil", 
-				quantity: 1, 
-				measurement: "teaspoon", 
+				ingredient: "basil",
+				quantity: 1,
+				measurement: "teaspoon",
 				modifier: "dried"},
 			{
-				ingredient: "eggplant", 
-				quantity: 1.5, 
-				measurement: "pounds", 
+				ingredient: "eggplant",
+				quantity: 1.5,
+				measurement: "pounds",
 				modifier: null},
 			{
-				ingredient: "mozzarella cheese", 
-				quantity: 0.75, 
-				measurement: "cup", 
+				ingredient: "mozzarella cheese",
+				quantity: 0.75,
+				measurement: "cup",
 				modifier: "grated"}
 		],
 		instructions: "Place polenta in top of a double boiler " +

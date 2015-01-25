@@ -34,6 +34,9 @@
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineStrings": true,
   "disallowMultipleVarDecl": true,
+  "disallowTrailingComma": true,
+  "disallowTrailingWhitespace": true,
+  "requireSpaceAfterLineComment": true,
   "validateIndentation": 2,
   "validateQuoteMarks": "\""
 }
