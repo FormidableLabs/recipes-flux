@@ -5,18 +5,18 @@ var React = require("react");
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
-var Home = React.createClass({  
-  displayName : "Home",
+var Home = React.createClass({
+  displayName: "Home",
   propTypes: {},
-  mixins : [],
-  getInitialState : function() { return null; },
-  componentWillMount : function() {},
-  componentWillUnmount : function() {},
-  render : function() {return(
+  mixins: [],
+  getInitialState: function () { return null; },
+  componentWillMount: function () {},
+  componentWillUnmount: function () {},
+  render: function () {return (
     /*jshint ignore:start*/
     <div>
-      <p> 
-        home rendered 
+      <p>
+        home rendered
       </p>
       <RouteHandler/>
     </div>

@@ -11,7 +11,7 @@ var ratio = require("lb-ratio");
 var characterFor = require("vulgarities/charFor");
 var vulgarities = require("vulgarities");
 
-/** 
+/**
 Router
 */
 
@@ -23,36 +23,36 @@ var Link = Router.Link;
 Component
 */
 
-var Ingredient = React.createClass({  
-  displayName : "Ingredient",
+var Ingredient = React.createClass({
+  displayName: "Ingredient",
   propTypes: {},
-  mixins : [],
-  getInitialState : function() { return {}; },
-  componentWillMount : function() {
-    
+  mixins: [],
+  getInitialState: function () { return {}; },
+  componentWillMount: function () {
+
     function toUnicode(fractionString) {
       var f = fractionString.split("/");
       var uni = characterFor(f[0],f[1]);
       if (uni) {
         return uni;
-      } else { 
+      } else {
         return fractionString;
       }
     }
 
-    /** 
+    /**
     Decimal to fraction
     */
 
     var q = this.props.ingredient.quantity;
-    if(!isNaN(q)) {
+    if (!isNaN(q)) {
       if (q < 1) {
         var uni = toUnicode(ratio.parse(q).simplify().toString());
         this.state.fraction = uni;
         return;
       } else if (q % 1 !== 0) {
-        var frac = Math.floor(q) + 
-                    " " + 
+        var frac = Math.floor(q) +
+                    " " +
                     toUnicode(ratio.parse(q%1).simplify().toString());
         this.state.fraction = frac;
         return;
@@ -63,8 +63,8 @@ var Ingredient = React.createClass({
     }
 
   },
-  componentWillUnmount : function() {},
-  render : function() {return(
+  componentWillUnmount: function () {},
+  render: function () {return (
     /*jshint ignore:start*/
     <div className="row Recipe-ingredient">
       <div className="col-lg-6">

@@ -28,10 +28,10 @@ function getState(id){
 }
 
 var RecipeForm = React.createClass({
-  displayName : "RecipeForm",
+  displayName: "RecipeForm",
   propTypes: {},
-  mixins : [RecipeStore.mixin],
-  getInitialState : function() {
+  mixins: [RecipeStore.mixin],
+  getInitialState: function () {
     if (this.props.params._id) {
       /**
       * User came in from the edit button of an existing recipe,
@@ -76,8 +76,8 @@ var RecipeForm = React.createClass({
       return newRecipe;
     }
   },
-  componentWillMount : function() {},
-  componentWillUnmount : function() {},
+  componentWillMount: function () {},
+  componentWillUnmount: function () {},
   inputCallback: function (_id, accessor, index, value) {
     RecipeActions.inputChanged({
       _id: _id,
@@ -86,22 +86,22 @@ var RecipeForm = React.createClass({
       value: value
     });
   },
-  onChange: function(){
+  onChange: function () {
     this.setState(getState(this._id));
   },
-  ingredientCreated : function () {
+  ingredientCreated: function () {
     RecipeActions.ingredientCreated({
       _id: this.state._id
     });
   },
-  ingredientDeleted : function (_id, accessor, index) {
+  ingredientDeleted: function (_id, accessor, index) {
     RecipeActions.ingredientDeleted({
       _id: this.state._id,
       index: index
     });
   },
-  createNodes : function (ingredient, index) { 
-    return(
+  createNodes: function (ingredient, index) {
+    return (
       /*jshint ignore:start*/
       <div className="Ingredient" key={index}>
         <Input
@@ -146,7 +146,7 @@ var RecipeForm = React.createClass({
       this.createNodes
     );
 
-    return(/*jshint ignore:start */
+    return (/*jshint ignore:start */
       <div className="recipe">
         <Input
           placeholder="Title"

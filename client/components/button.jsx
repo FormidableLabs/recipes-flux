@@ -1,7 +1,7 @@
 /*jshint unused:false */
 var React = require("react");
 
-/** 
+/**
 Router
 */
 
@@ -9,13 +9,13 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
-var Input = React.createClass({  
-  displayName : "Input",
+var Input = React.createClass({
+  displayName: "Input",
   propTypes: {},
-  mixins : [],
-  getInitialState : function() { return null;},
-  componentWillMount : function() {},
-  handleButtonClick : function () {
+  mixins: [],
+  getInitialState: function () { return null;},
+  componentWillMount: function () {},
+  handleButtonClick: function () {
     /* proxy to parent moving to generalize input */
     this.props.buttonCallback(
       this.props._id,
@@ -23,11 +23,11 @@ var Input = React.createClass({
       this.props.index
     );
   },
-  componentWillUnmount : function() {},
-  render : function() {
-    return(
+  componentWillUnmount: function () {},
+  render: function () {
+    return (
       /*jshint ignore:start*/
-      <button 
+      <button
         _id={this.props._id}
         type="button"
         ref="theButton"
