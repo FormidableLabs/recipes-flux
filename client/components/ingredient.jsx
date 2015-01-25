@@ -24,11 +24,11 @@ Component
 */
 
 var Ingredient = React.createClass({
-  displayName : "Ingredient",
+  displayName: "Ingredient",
   propTypes: {},
-  mixins : [],
-  getInitialState : function () { return {}; },
-  componentWillMount : function () {
+  mixins: [],
+  getInitialState: function () { return {}; },
+  componentWillMount: function () {
 
     function toUnicode(fractionString) {
       var f = fractionString.split("/");
@@ -63,8 +63,8 @@ var Ingredient = React.createClass({
     }
 
   },
-  componentWillUnmount : function () {},
-  render : function () {return (
+  componentWillUnmount: function () {},
+  render: function () {return (
     /*jshint ignore:start*/
     <div className="row Recipe-ingredient">
       <div className="col-lg-6">

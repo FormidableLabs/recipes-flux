@@ -22,14 +22,14 @@ function getState() {
 }
 
 var Recipes = React.createClass({
-  displayName : "Recipes",
-  mixins : [RecipeStore.mixin],
-  getInitialState : function () {
+  displayName: "Recipes",
+  mixins: [RecipeStore.mixin],
+  getInitialState: function () {
     return getState();
   },
-  componentWillMount : function () {},
-  componentWillUnmount : function () {},
-  createRecipeNodes : function () {
+  componentWillMount: function () {},
+  componentWillUnmount: function () {},
+  createRecipeNodes: function () {
     var nodes = this.state.store.map(function (recipe) {
       return (/*jshint ignore:start */
         <Recipe recipe={recipe} key={recipe._id}>
@@ -41,7 +41,7 @@ var Recipes = React.createClass({
   onChange: function () {
     this.setState(getState());
   },
-  render : function () {
+  render: function () {
     var recipeNodes = this.createRecipeNodes();
     return (/*jshint ignore:start */
     <div className="Recipes">

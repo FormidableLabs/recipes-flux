@@ -19,13 +19,13 @@ Component
 */
 
 var Nav = React.createClass({
-  displayName : "Nav",
+  displayName: "Nav",
   propTypes: {},
-  mixins : [],
-  getInitialState : function () { return null; },
-  componentWillMount : function () {},
-  componentWillUnmount : function () {},
-  render : function () { return (
+  mixins: [],
+  getInitialState: function () { return null; },
+  componentWillMount: function () {},
+  componentWillUnmount: function () {},
+  render: function () { return (
     /*jshint ignore:start*/
     <div>
       <span className="navLink"> <Link to="app"> Home</Link> </span>

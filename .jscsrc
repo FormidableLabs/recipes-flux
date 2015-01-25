@@ -37,6 +37,8 @@
   "disallowTrailingComma": true,
   "disallowTrailingWhitespace": true,
   "requireSpaceAfterLineComment": true,
+  "requireSpaceBeforeObjectValues": true,
+  "disallowSpaceAfterObjectKeys": true,
   "validateIndentation": 2,
   "validateQuoteMarks": "\""
 }

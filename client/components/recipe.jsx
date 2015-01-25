@@ -18,18 +18,18 @@ Child Components
 var Button = require("./button");
 
 var Recipe = React.createClass({
-  displayName : "Recipe",
+  displayName: "Recipe",
   propTypes: {},
-  mixins : [],
-  getInitialState : function () { return null; },
-  componentWillMount : function () {},
-  componentWillUnmount : function () {},
-  deleteRecipe : function () {
+  mixins: [],
+  getInitialState: function () { return null; },
+  componentWillMount: function () {},
+  componentWillUnmount: function () {},
+  deleteRecipe: function () {
     RecipeActions.recipeDeleted({
       _id: this.props.recipe._id
     });
   },
-  render : function () {return (
+  render: function () {return (
     /* jshint ignore:start */
     <div className="recipe">
       <p>
