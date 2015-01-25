@@ -6,6 +6,7 @@ var fs = require("fs");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var jshint = require("gulp-jshint");
+var jsxcs = require("gulp-jsxcs");
 var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
 var webpack = require("webpack");
@@ -50,6 +51,21 @@ gulp.task("jshint:backend", function () {
 });
 
 gulp.task("jshint", ["jshint:client", "jshint:backend"]);
+
+// ----------------------------------------------------------------------------
+// JsCs
+// ----------------------------------------------------------------------------
+gulp.task("jscs", function () {
+  return gulp
+    .src([
+      "client/**/*.{js,jsx}",
+      "scripts/**/*.js",
+      "server/**/*.js",
+      "test/**/*.js",
+      "*.js"
+    ])
+    .pipe(jsxcs(_jsonCfg(".jscsrc")));
+});
 
 // ----------------------------------------------------------------------------
 // Quality
@@ -157,4 +173,4 @@ gulp.task("ls",       ["build:ls", "watch:ls", "server:sources"]);
 gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
 gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
 gulp.task("build",    ["build:prod-full"]);
-gulp.task("default",  ["build:dev", "check"]); 
+gulp.task("default",  ["build:dev", "check"]);

@@ -1,0 +1,15 @@
+{
+  "requireCurlyBraces": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "try",
+    "catch"
+  ],
+  "disallowMixedSpacesAndTabs": true,
+  "disallowMultipleVarDecl": true,
+  "validateIndentation": 2,
+  "validateQuoteMarks": "\""
+}
