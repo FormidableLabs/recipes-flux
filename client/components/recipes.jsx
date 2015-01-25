@@ -4,7 +4,7 @@ var Recipe = require("./recipe");
 var McFly = require("../McFly");
 var RecipeStore = require("../stores");
 
-/** 
+/**
 Router & Data
 */
 
@@ -30,8 +30,8 @@ var Recipes = React.createClass({
   componentWillMount : function() {},
   componentWillUnmount : function() {},
   createRecipeNodes : function () {
-    var nodes = this.state.store.map(function(recipe){
-    return (/*jshint ignore:start */
+    var nodes = this.state.store.map(function (recipe) {
+      return (/*jshint ignore:start */
         <Recipe recipe={recipe} key={recipe._id}>
         </Recipe>
       /*jshint ignore:end */);
