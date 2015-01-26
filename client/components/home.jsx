@@ -6,6 +6,7 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 var RadiumButton = require("../radium/components/button");
+var RadiumButtonGroup = require("../radium/components/button-group");
 
 var Home = React.createClass({
   displayName : "Home",
@@ -24,6 +25,10 @@ var Home = React.createClass({
       padding: "1em 0"
     };
 
+    var customBtn = {
+      borderRadius: 0
+    };
+
     return (/*jshint ignore:start*/
       <div>
         <p>
@@ -33,6 +38,12 @@ var Home = React.createClass({
         <div style={paddedCellStyle}>
           <p>
             <RadiumButton onRadiumMouseEnter={this.handleBtnHover}>
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton color="red">
               Cool Button
             </RadiumButton>
           </p>
@@ -51,6 +62,12 @@ var Home = React.createClass({
 
           <p>
             <RadiumButton color="orange">
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton color="black">
               Cool Button
             </RadiumButton>
           </p>
@@ -90,9 +107,61 @@ var Home = React.createClass({
 
         <div style={paddedCellStyle}>
           <p>
+            <RadiumButton display="block" size="mini" color="white">
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton display="block" size="small" color="green">
+              Cool Button
+            </RadiumButton>
+          </p>
+
+          <p>
             <RadiumButton display="block">
               Cool Button
             </RadiumButton>
+          </p>
+
+          <p>
+            <RadiumButton display="block" size="large" color="black">
+              Cool Button
+            </RadiumButton>
+          </p>
+        </div>
+
+        <div style={paddedCellStyle}>
+          <p>
+            <RadiumButtonGroup>
+              <RadiumButton color="white" size="mini">One</RadiumButton>
+              <RadiumButton color="white" size="mini">Two</RadiumButton>
+              <RadiumButton color="white" size="mini">Three</RadiumButton>
+            </RadiumButtonGroup>
+          </p>
+
+          <p>
+            <RadiumButtonGroup>
+              <RadiumButton color="green" size="small">One</RadiumButton>
+              <RadiumButton color="green" size="small">Two</RadiumButton>
+              <RadiumButton color="green" size="small">Three</RadiumButton>
+            </RadiumButtonGroup>
+          </p>
+
+          <p>
+            <RadiumButtonGroup>
+              <RadiumButton>One</RadiumButton>
+              <RadiumButton>Two</RadiumButton>
+              <RadiumButton>Three</RadiumButton>
+            </RadiumButtonGroup>
+          </p>
+
+          <p>
+            <RadiumButtonGroup>
+              <RadiumButton color="black" size="large">One</RadiumButton>
+              <RadiumButton color="black" size="large">Two</RadiumButton>
+              <RadiumButton color="black" size="large">Three</RadiumButton>
+            </RadiumButtonGroup>
           </p>
         </div>
 

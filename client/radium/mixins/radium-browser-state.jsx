@@ -128,6 +128,7 @@ var ReactBrowserState = {
     return _.assign(
       {},
       this.styles.default,
+      this.props.styleOverrides,
       this.getStateStyles(this.styles.states),
       this.getModifierStyles()
     );

@@ -18,7 +18,8 @@ var Button = React.createClass({
       padding: "0.4em 1em",
       cursor: "pointer",
       $dynamicBorder: true,
-      $dynamicBoxShadow: true
+      $dynamicBoxShadow: true,
+      outline: "none"
     },
     modifiers: {
       display: {
@@ -41,6 +42,9 @@ var Button = React.createClass({
         }
       },
       color: {
+        red: {
+          backgroundColor: "#d90000"
+        },
         green: {
           backgroundColor: "#3d9970"
         },
@@ -49,6 +53,9 @@ var Button = React.createClass({
         },
         purple: {
           backgroundColor: "#b10dc9"
+        },
+        black: {
+          backgroundColor: "#292E33"
         },
         white: {
           backgroundColor: "#fff",
@@ -109,6 +116,10 @@ var Button = React.createClass({
   },
 
   buildComputedStyles: function (baseStyles) {
+    var darkBg = Color(baseStyles.backgroundColor)
+      .darken(0.2)
+      .hexString();
+
     var computedStyles = {};
 
     if (baseStyles.$dynamicBg) {
@@ -124,12 +135,14 @@ var Button = React.createClass({
 
     if (baseStyles.$dynamicBorder) {
       computedStyles.border = "1px solid " + baseStyles.backgroundColor;
+
+      if (this.props.buttonGroupBorder) {
+        computedStyles.borderLeftColor = darkBg;
+      }
     }
 
     if (baseStyles.$dynamicBoxShadow) {
-      var boxShadowColor = Color(baseStyles.backgroundColor)
-        .darken(0.2)
-        .hexString();
+      var boxShadowColor = darkBg;
 
       var btnBoxShadow = baseStyles.$dynamicBoxShadow ? "0 2px 0 " + boxShadowColor : null
 
