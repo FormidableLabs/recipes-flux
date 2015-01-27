@@ -5,7 +5,6 @@ var fs = require("fs");
 // var _ = require("lodash");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
-var jshint = require("gulp-jshint");
 var jsxcs = require("gulp-jsxcs");
 var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
@@ -25,32 +24,9 @@ var _jsonCfg = function (name) {
 };
 
 // ----------------------------------------------------------------------------
-// JsHint
+// EsLint
 // ----------------------------------------------------------------------------
-gulp.task("jshint:client", function () {
-  gulp
-    .src([
-      "client/**/*.{js,jsx}"
-    ])
-    .pipe(jshint(_jsonCfg(".jshint-frontend.json")))
-    .pipe(jshint.reporter("default"))
-    .pipe(jshint.reporter("fail"));
-});
-
-gulp.task("jshint:backend", function () {
-  gulp
-    .src([
-      "scripts/**/*.js",
-      "server/**/*.js",
-      "test/**/*.js",
-      "*.js"
-    ])
-    .pipe(jshint(_jsonCfg(".jshint-backend.json")))
-    .pipe(jshint.reporter("default"))
-    .pipe(jshint.reporter("fail"));
-});
-
-gulp.task("jshint", ["jshint:client", "jshint:backend"]);
+// TODO
 
 // ----------------------------------------------------------------------------
 // JsCs
@@ -70,9 +46,9 @@ gulp.task("jscs", function () {
 // ----------------------------------------------------------------------------
 // Quality
 // ----------------------------------------------------------------------------
-gulp.task("check",      ["jscs", "jshint"]);
-gulp.task("check:ci",   ["jscs", "jshint"]);
-gulp.task("check:all",  ["jscs", "jshint"]);
+gulp.task("check",      ["jscs"]);
+gulp.task("check:ci",   ["jscs"]);
+gulp.task("check:all",  ["jscs"]);
 
 // -----------
 // Cleaning

@@ -25,7 +25,7 @@
   "devDependencies": {
     "gulp": "3.8.7",
     "gulp-connect": "2.0.6",
-    "gulp-jshint": "1.8.4",
+    "gulp-eslint": "0.2.2",
     "gulp-jsxcs": "0.1.6",
     "gulp-nodemon": "1.0.4",
     "gulp-rimraf": "0.1.0",
