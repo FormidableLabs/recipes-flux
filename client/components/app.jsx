@@ -27,9 +27,10 @@ var App = React.createClass({
   componentWillUnmount : function() {},
   render : function () {
     var style = {
-      "maxWidth": 1024,
-      "margin": "0 auto",
-      "padding": "3em 0"
+      maxWidth: 1024,
+      margin: "0 auto",
+      padding: "3em 0",
+      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
     }
 
     return (/*jshint ignore:start */

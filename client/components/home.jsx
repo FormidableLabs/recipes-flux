@@ -5,6 +5,8 @@ var React = require("react");
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
+var RadiumGrid = require("../radium/components/grid");
+var RadiumGridCell = require("../radium/components/grid-cell");
 var RadiumButton = require("../radium/components/button");
 var RadiumButtonGroup = require("../radium/components/button-group");
 
@@ -29,11 +31,52 @@ var Home = React.createClass({
       borderRadius: 0
     };
 
+    var darkBg = {
+      margin: 0,
+      background: "#333",
+      color: "#fff",
+      borderRadius: 5,
+      padding: 10
+    };
+
+    var medBg = {
+      margin: 0,
+      background: "#ccc",
+      borderRadius: 5,
+      padding: 10
+    }
+
     return (/*jshint ignore:start*/
       <div>
         <p>
           home rendered
         </p>
+
+        <RadiumGrid gutters="true">
+          <RadiumGridCell
+            width={1/3}
+            styleOverrides={{
+              textAlign: "right",
+              marginBottom: "1em"
+            }}>
+            <h1 style={darkBg}>Test</h1>
+          </RadiumGridCell>
+          <RadiumGridCell width={2/3}>
+            <p style={medBg}>Here's some content!</p>
+          </RadiumGridCell>
+          <RadiumGridCell width={1/4}>
+            <p style={medBg}>Here's some content!</p>
+          </RadiumGridCell>
+          <RadiumGridCell width={1/4}>
+            <p style={medBg}>Here's some content!</p>
+          </RadiumGridCell>
+          <RadiumGridCell width={1/4}>
+            <p style={medBg}>Here's some content!</p>
+          </RadiumGridCell>
+          <RadiumGridCell width={1/4}>
+            <p style={medBg}>Here's some content!</p>
+          </RadiumGridCell>
+        </RadiumGrid>
 
         <div style={paddedCellStyle}>
           <p>
