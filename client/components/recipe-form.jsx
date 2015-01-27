@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
@@ -106,7 +105,6 @@ var RecipeForm = React.createClass({
 
   createNodes: function (ingredient, index) {
     return (
-      /* jshint ignore:start */
       <div className="Ingredient" key={index}>
         <Input
           placeholder="Ingredient"
@@ -141,7 +139,6 @@ var RecipeForm = React.createClass({
           index={index}
           value="Delete Ingredient"/>
       </div>
-      /* jshint ignore:end */
     );
   },
 
@@ -151,7 +148,6 @@ var RecipeForm = React.createClass({
     );
 
     return (
-      /* jshint ignore:start */
       <div className="recipe">
         <Input
           placeholder="Title"
@@ -183,7 +179,6 @@ var RecipeForm = React.createClass({
             value="Add Another Ingredient"/>
         <RouteHandler {...this.props}/>
       </div>
-      /* jshint ignore:end */
     );
   }
 });

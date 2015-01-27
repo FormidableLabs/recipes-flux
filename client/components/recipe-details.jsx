@@ -1,5 +1,3 @@
-/* jshint unused:false */
-
 /**
  * React
 */
@@ -62,16 +60,13 @@ var RecipeDetails = React.createClass({
   render: function () {
     function createNodes (ingredient, index) {
       return (
-        /* jshint ignore:start */
         <Ingredient key={index} ingredient={ingredient}/>
-        /* jshint ignore:end */
       );
     }
 
     var ingredientNodes = this.state.ingredients.map(createNodes);
 
     return (
-      /* jshint ignore:start */
       <div className="Recipe">
         <p className="Recipe-title">{this.state.title}</p>
         <p> Serves: {this.state.portions} (change)</p>
@@ -86,7 +81,6 @@ var RecipeDetails = React.createClass({
         </div>
         <RouteHandler {...this.props}/>
       </div>
-      /* jshint ignore:end */
     );
   }
 });

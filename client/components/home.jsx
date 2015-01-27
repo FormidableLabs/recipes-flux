@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 
 /**
@@ -20,14 +19,12 @@ var Home = React.createClass({
 
   render: function () {
     return (
-      /* jshint ignore:start */
       <div>
         <p>
           home rendered
         </p>
         <RouteHandler/>
       </div>
-      /* jshint ignore:end */
     );
   }
 });

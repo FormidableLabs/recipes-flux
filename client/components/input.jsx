@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 
 /**
@@ -31,7 +30,6 @@ var Input = React.createClass({
 
   render: function () {
     return (
-      /* jshint ignore:start */
       <input
         _id={this.props._id}
         type="text"
@@ -39,7 +37,6 @@ var Input = React.createClass({
         value={this.props.value}
         placeholder={this.props.placeholder}
         onChange={this.handleInputChange} />
-      /* jshint ignore:end */
     );
   }
 });

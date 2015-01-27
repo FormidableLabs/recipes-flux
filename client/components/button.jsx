@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 
 /**
@@ -30,14 +29,13 @@ var Input = React.createClass({
 
   render: function () {
     return (
-      /* jshint ignore:start */
       <button
         _id={this.props._id}
         type="button"
         ref="theButton"
-        onClick={this.handleButtonClick}
-        > {this.props.value} </button>
-      /* jshint ignore:end */
+        onClick={this.handleButtonClick}>
+        {this.props.value}
+      </button>
     );
   }
 });

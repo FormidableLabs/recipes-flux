@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var Router = require("react-router");
 var React = require("react");
 var App = require("./components/app");
@@ -21,7 +20,6 @@ var RouteHandler = Router.RouteHandler;
 * Declare routes
 */
 var routes = (
-  /* jshint ignore:start */
   <Route handler={App} path="/">
     <DefaultRoute name="app" handler={Home} />
     <Route name="recipes" handler={Recipes}/>
@@ -30,7 +28,6 @@ var routes = (
     <Route name="RecipeDetails" path="/recipe/:_id" handler={RecipeDetails} />
     <NotFoundRoute handler={NotFound} />
   </Route>
-  /* jshint ignore:end */
 );
 
 /**
@@ -44,7 +41,5 @@ Router.run(routes, function (Handler, state) {
   */
   var params = state.params;
 
-  /* jshint ignore:start */
   React.render(<Handler params={params}/>, document.body);
-  /* jshint ignore:end */
 });

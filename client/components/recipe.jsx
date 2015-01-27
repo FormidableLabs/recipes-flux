@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
@@ -34,7 +33,6 @@ var Recipe = React.createClass({
 
   render: function () {
     return (
-      /* jshint ignore:start */
       <div className="recipe">
         <p>
           <Link to="RecipeDetails" params={{_id: this.props.recipe._id}}>
@@ -51,7 +49,6 @@ var Recipe = React.createClass({
         </p>
         <RouteHandler/>
       </div>
-      /* jshint ignore:end */
     );
   }
 });

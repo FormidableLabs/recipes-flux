@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 
 var NotFound = React.createClass({
@@ -14,11 +13,9 @@ var NotFound = React.createClass({
 
   render: function () {
     return (
-      /* jshint ignore:start */
       <p>
         Page not found
       </p>
-      /* jshint ignore:end */
     );
   }
 });

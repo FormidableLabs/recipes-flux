@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 
 /**
@@ -65,7 +64,6 @@ var Ingredient = React.createClass({
 
   render: function () {
     return (
-      /* jshint ignore:start */
       <div className="row Recipe-ingredient">
         <div className="col-lg-6">
           <p className="Recipe-ingredientLeft">
@@ -79,7 +77,6 @@ var Ingredient = React.createClass({
         </div>
         <RouteHandler/>
       </div>
-      /* jshint ignore:end */
     );
   }
 });

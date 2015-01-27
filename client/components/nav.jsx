@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 
 /**
@@ -24,13 +23,11 @@ var Nav = React.createClass({
 
   render: function () {
     return (
-      /* jshint ignore:start */
       <div>
         <span className="navLink"> <Link to="app"> Home</Link> </span>
         <span className="navLink"> <Link to="recipes"> Recipes</Link></span>
         <span className="navLink"> <Link to="create">New Recipe</Link></span>
       </div>
-      /* jshint ignore:end */
     );
   }
 });

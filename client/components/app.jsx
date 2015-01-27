@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var React = require("react");
 
 /**
@@ -27,13 +26,13 @@ var App = React.createClass({
 
   componentWillUnmount: function () {},
 
-  render: function () { return (
-    /* jshint ignore:start */
-    <div className="epicureContainer">
-      <Nav/>
-      <RouteHandler {...this.props}/>
-    </div>
-    /* jshint ignore:end */);
+  render: function () {
+    return (
+      <div className="epicureContainer">
+        <Nav/>
+        <RouteHandler {...this.props}/>
+      </div>
+    );
   }
 });
 

@@ -1,5 +1,3 @@
-/* jshint unused:false */
-
 /**
  * Entry point
  */

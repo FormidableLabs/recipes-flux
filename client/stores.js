@@ -1,4 +1,3 @@
-/* jshint unused:false */
 var McFly = require("./McFly");
 var RecipeActions = require("./actions");
 var request = require("superagent");
