@@ -9,6 +9,7 @@ var RadiumGrid = require("../radium/components/grid");
 var RadiumGridCell = require("../radium/components/grid-cell");
 var RadiumButton = require("../radium/components/button");
 var RadiumButtonGroup = require("../radium/components/button-group");
+var RadiumInput = require("../radium/components/input");
 
 var Home = React.createClass({
   displayName : "Home",
@@ -205,6 +206,19 @@ var Home = React.createClass({
               <RadiumButton color="black" size="large">Two</RadiumButton>
               <RadiumButton color="black" size="large">Three</RadiumButton>
             </RadiumButtonGroup>
+          </p>
+        </div>
+
+        <div style={paddedCellStyle}>
+          <p>
+            <RadiumInput
+              placeholder="A text input!" />
+          </p>
+
+          <p>
+            <RadiumInput
+              type="textarea"
+              placeholder="A textarea!" />
           </p>
         </div>
 
