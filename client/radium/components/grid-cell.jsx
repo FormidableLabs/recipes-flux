@@ -9,8 +9,6 @@ var GridCell = React.createClass({
     default: {
       boxSizing: "border-box",
       display: "inline-block",
-      margin: 0,
-      padding: 0,
       textAlign: "left",
       verticalAlign: "top",
       width: "100%"

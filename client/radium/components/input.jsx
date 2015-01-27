@@ -13,30 +13,83 @@ var Input = React.createClass({
       borderRadius: "0.3em",
       padding: "0.4em",
       border: "1px solid #ccc",
-      lineHeight: 1.2
+      lineHeight: 1.2,
+      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+    }
+  },
+
+  propTypes: {
+    label: function (props, propName, componentName) {
+      if (!props.dangerouslyDisableLabel && typeof props.label !== "string") {
+        return new Error(
+          "Required prop `" + propName + "` was not specified in `" +
+          componentName + "`. Set `" + propName +
+          "` to a string describing the input. If you are implementing your " +
+          "own label, set `dangerouslyDisableLabel` to `true`. For more " +
+          "information on labels, see " +
+          "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label."
+        )
+      }
     }
   },
 
   getDefaultProps: function () {
     return {
-      type: "text"
+      type: "text",
+      dangerouslyDisableLabel: false
     }
   },
 
-  render: function () {
+  buildInput: function () {
+    var textarea = (<textarea style={this.getStyles()} {...this.props} />);
+    var input = (<input style={this.getStyles()} {...this.props} />);
+
     if (this.props.type === "textarea") {
-      return (
-        <textarea
-          style={this.getStyles()}
-          {...this.props} />
-      )
+      return textarea;
+    }
+
+    return input;
+  },
+
+  buildLabel: function (inputEl) {
+    var visibleLabelStyles = {
+      display: "inline-block",
+      marginBottom: "0.25em"
+    };
+    var hiddenLabelStyles = {
+      clip: "rect(0 0 0 0)",
+      height: 1,
+      margin: -1,
+      overflow: "hidden",
+      position: "absolute",
+      width: 1
+    };
+    var labelStyles;
+
+    if (this.props.labelHidden) {
+      labelStyles = hiddenLabelStyles;
+    } else {
+      labelStyles = visibleLabelStyles;
     }
 
     return (
-      <input
-        style={this.getStyles()}
-        {...this.props} />
-    );
+      <label>
+        <span style={labelStyles}>
+          {this.props.label}
+        </span>
+        {inputEl}
+      </label>
+    )
+  },
+
+  render: function () {
+    var inputEl = this.buildInput();
+
+    if (this.props.dangerouslyDisableLabel) {
+      return inputEl;
+    }
+
+    return this.buildLabel(inputEl);
   }
 });
 

@@ -212,11 +212,14 @@ var Home = React.createClass({
         <div style={paddedCellStyle}>
           <p>
             <RadiumInput
+              label="Your name"
               placeholder="A text input!" />
           </p>
 
           <p>
             <RadiumInput
+              label="Review"
+              labelHidden={true}
               type="textarea"
               placeholder="A textarea!" />
           </p>

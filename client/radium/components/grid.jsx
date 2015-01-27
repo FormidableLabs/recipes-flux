@@ -7,9 +7,6 @@ var Grid = React.createClass({
 
   styles: {
     default: {
-      display: "block",
-      margin: 0,
-      padding: 0,
       textAlign: "left"
     },
     modifiers: {
