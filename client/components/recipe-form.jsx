@@ -18,6 +18,7 @@ Child Components
 
 var Input = require("./input");
 var Button = require("./button");
+var RadiumButton = require("../radium/components/button");
 
 /**
 Component
@@ -95,12 +96,16 @@ var RecipeForm = React.createClass({
     });
   },
   ingredientDeleted : function (_id, accessor, index) {
+    console.log("DELETING COOL");
+    console.log(_id, accessor, index);
+
     RecipeActions.ingredientDeleted({
       _id: this.state._id,
       index: index
     });
   },
-  createNodes : function (ingredient, index) { 
+
+  createNodes : function (ingredient, index) {
     return(
       /*jshint ignore:start*/
       <div className="Ingredient" key={index}>
@@ -136,6 +141,12 @@ var RecipeForm = React.createClass({
           buttonCallback={this.ingredientDeleted}
           index={index}
           value="Delete Ingredient"/>
+        <RadiumButton
+          onClick={this.ingredientDeleted}
+          index={index}
+          >
+          Delete Ingredient
+        </RadiumButton>
       </div>
       /*jshint ignore:end */
     );
@@ -183,5 +194,3 @@ var RecipeForm = React.createClass({
 });
 
 module.exports = RecipeForm;
-
-

@@ -3,7 +3,7 @@ var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 
-/** 
+/**
 Router
 */
 
@@ -16,8 +16,9 @@ Child Components
 */
 
 var Button = require("./button");
+var RadiumButton = require("../radium/components/button");
 
-var Recipe = React.createClass({  
+var Recipe = React.createClass({
   displayName : "Recipe",
   propTypes: {},
   mixins : [],
@@ -32,18 +33,21 @@ var Recipe = React.createClass({
   render : function() {return(
     /* jshint ignore:start */
     <div className="recipe">
-      <p> 
-        <Link to="RecipeDetails" params={{_id: this.props.recipe._id}}> 
+      <p>
+        <Link to="RecipeDetails" params={{_id: this.props.recipe._id}}>
           {this.props.recipe.title}
         </Link>
         &nbsp;
-        <Link to="edit" params={{_id: this.props.recipe._id}}> 
+        <Link to="edit" params={{_id: this.props.recipe._id}}>
           *Edit*
         </Link>
-        <Button 
+        <RadiumButton
           _id={this.props.recipe._id}
-          buttonCallback={this.deleteRecipe}
-          value="Delete"/>
+          size="mini"
+          onClick={this.deleteRecipe}
+          >
+          Delete
+        </RadiumButton>
       </p>
       <RouteHandler/>
     </div>

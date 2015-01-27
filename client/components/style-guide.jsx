@@ -67,7 +67,7 @@ var StyleGuide = React.createClass({
 
         <div style={paddedCellStyle}>
           <p>
-            <RadiumButton onRadiumMouseEnter={this.handleBtnHover}>
+            <RadiumButton>
               Cool Button
             </RadiumButton>
           </p>

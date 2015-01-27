@@ -13,9 +13,6 @@ var Home = React.createClass({
   componentWillMount : function() {},
   componentWillUnmount : function() {},
 
-  handleBtnHover: function (component, ev) {
-  },
-
   render : function() {
     return (/*jshint ignore:start*/
       <div>
