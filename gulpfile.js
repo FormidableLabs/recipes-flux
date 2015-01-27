@@ -6,6 +6,7 @@ var fs = require("fs");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
 var jsxcs = require("gulp-jsxcs");
+var eslint = require("gulp-eslint");
 var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
 var webpack = require("webpack");
@@ -26,7 +27,20 @@ var _jsonCfg = function (name) {
 // ----------------------------------------------------------------------------
 // EsLint
 // ----------------------------------------------------------------------------
-// TODO
+gulp.task("eslint-frontend", function (cb) {
+  return gulp
+    .src([
+      "client/**/*.{js,jsx}"
+    ])
+    .pipe(eslint({
+      envs: [
+        "browser"
+      ]
+    }))
+    .pipe(eslint.formatEach("stylish", process.stderr))
+    .pipe(eslint.failOnError());
+});
+gulp.task("eslint", ["eslint-frontend"]);
 
 // ----------------------------------------------------------------------------
 // JsCs
@@ -46,9 +60,9 @@ gulp.task("jscs", function () {
 // ----------------------------------------------------------------------------
 // Quality
 // ----------------------------------------------------------------------------
-gulp.task("check",      ["jscs"]);
-gulp.task("check:ci",   ["jscs"]);
-gulp.task("check:all",  ["jscs"]);
+gulp.task("check",      ["jscs", "eslint"]);
+gulp.task("check:ci",   ["jscs", "eslint"]);
+gulp.task("check:all",  ["jscs", "eslint"]);
 
 // -----------
 // Cleaning
