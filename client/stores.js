@@ -1,4 +1,4 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var McFly = require("./McFly");
 var RecipeActions = require("./actions");
 var request = require("superagent");
@@ -13,10 +13,10 @@ var RecipeStore = McFly.createStore({
   updateRecipeIngredientList: function (_id, index) {
     var recipe = this.getRecipe(_id);
     if (index || index === 0) {
-      /* delete operation */
+      /* Delete operation */
       recipe.ingredients.splice(index, 1);
     } else {
-      /* create operation */
+      /* Create operation */
       recipe.ingredients.push(
         {
           ingredient: "",

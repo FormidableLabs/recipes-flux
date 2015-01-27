@@ -1,11 +1,11 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 var uuid = require("uuid");
 
 /**
-Router
+ * Router
 */
 
 var Router = require("react-router");
@@ -13,14 +13,14 @@ var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
 /**
-Child Components
+ * Child Components
 */
 
 var Input = require("./input");
 var Button = require("./button");
 
 /**
-Component
+ * Component
 */
 
 function getState(id){
@@ -43,7 +43,7 @@ var RecipeForm = React.createClass({
 
     } else {
       /**
-      * create the blank recipe in the store to edit
+      * Create the blank recipe in the store to edit
       * this will create an empty record if they leave, but that's
       * not terrible because they can edit or delete it from the inbox
       */
@@ -102,7 +102,7 @@ var RecipeForm = React.createClass({
   },
   createNodes: function (ingredient, index) {
     return (
-      /*jshint ignore:start*/
+      /* jshint ignore:start*/
       <div className="Ingredient" key={index}>
         <Input
           placeholder="Ingredient"
@@ -137,7 +137,7 @@ var RecipeForm = React.createClass({
           index={index}
           value="Delete Ingredient"/>
       </div>
-      /*jshint ignore:end */
+      /* jshint ignore:end */
     );
   },
 
@@ -146,7 +146,7 @@ var RecipeForm = React.createClass({
       this.createNodes
     );
 
-    return (/*jshint ignore:start */
+    return (/* jshint ignore:start */
       <div className="recipe">
         <Input
           placeholder="Title"
@@ -178,7 +178,7 @@ var RecipeForm = React.createClass({
             value="Add Another Ingredient"/>
         <RouteHandler {...this.props}/>
       </div>
-    /*jshint ignore:end */);
+    /* jshint ignore:end */);
   }
 });
 

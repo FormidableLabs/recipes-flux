@@ -1,5 +1,5 @@
 /**
-Mock Database of Recipes
+ * Mock Database of Recipes
 */
 
 module.exports = [

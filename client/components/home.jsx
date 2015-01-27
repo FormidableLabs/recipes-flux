@@ -1,4 +1,4 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
 
 // Router
@@ -13,14 +13,14 @@ var Home = React.createClass({
   componentWillMount: function () {},
   componentWillUnmount: function () {},
   render: function () {return (
-    /*jshint ignore:start*/
+    /* jshint ignore:start */
     <div>
       <p>
         home rendered
       </p>
       <RouteHandler/>
     </div>
-  /*jshint ignore:end */);
+  /* jshint ignore:end */);
   }
 });
 

@@ -1,8 +1,8 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
 
 /**
-Router
+ * Router
 */
 
 var Router = require("react-router");
@@ -16,7 +16,7 @@ var Input = React.createClass({
   getInitialState: function () { return null;},
   componentWillMount: function () {},
   handleButtonClick: function () {
-    /* proxy to parent moving to generalize input */
+    /* Proxy to parent moving to generalize input */
     this.props.buttonCallback(
       this.props._id,
       this.props.accessor,
@@ -26,14 +26,14 @@ var Input = React.createClass({
   componentWillUnmount: function () {},
   render: function () {
     return (
-      /*jshint ignore:start*/
+      /* jshint ignore:start */
       <button
         _id={this.props._id}
         type="button"
         ref="theButton"
         onClick={this.handleButtonClick}
         > {this.props.value} </button>
-      /*jshint ignore:end */);
+      /* jshint ignore:end */);
   }
 });
 

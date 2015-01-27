@@ -1,10 +1,10 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 
 /**
-Router
+ * Router
 */
 
 var Router = require("react-router");
@@ -12,7 +12,7 @@ var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
 /**
-Child Components
+ * Child Components
 */
 
 var Button = require("./button");

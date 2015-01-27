@@ -1,10 +1,10 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
 
 /**
-Create fractions from decimals
-https://www.npmjs.com/package/lb-ratio
-https://www.npmjs.com/package/vulgarities
+ * Create fractions from decimals
+ * https://www.npmjs.com/package/lb-ratio
+ * https://www.npmjs.com/package/vulgarities
 */
 
 var ratio = require("lb-ratio");
@@ -12,7 +12,7 @@ var characterFor = require("vulgarities/charFor");
 var vulgarities = require("vulgarities");
 
 /**
-Router
+ * Router
 */
 
 var Router = require("react-router");
@@ -20,7 +20,7 @@ var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
 /**
-Component
+ * Component
 */
 
 var Ingredient = React.createClass({
@@ -41,7 +41,7 @@ var Ingredient = React.createClass({
     }
 
     /**
-    Decimal to fraction
+     * Decimal to fraction
     */
 
     var q = this.props.ingredient.quantity;
@@ -65,7 +65,7 @@ var Ingredient = React.createClass({
   },
   componentWillUnmount: function () {},
   render: function () {return (
-    /*jshint ignore:start*/
+    /* jshint ignore:start*/
     <div className="row Recipe-ingredient">
       <div className="col-lg-6">
         <p className="Recipe-ingredientLeft">
@@ -79,7 +79,7 @@ var Ingredient = React.createClass({
       </div>
       <RouteHandler/>
     </div>
-  /*jshint ignore:end */);
+  /* jshint ignore:end */);
   }
 });
 

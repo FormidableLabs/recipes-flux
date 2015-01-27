@@ -1,7 +1,8 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
+
 /**
-Router
+ * Router
 */
 
 var Router = require("react-router");
@@ -9,13 +10,13 @@ var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
 /**
-Child Components
+ * Child Components
 */
 
 var Nav = require("./nav");
 
 /**
-Component
+ * Component
 */
 
 var App = React.createClass({
@@ -26,12 +27,12 @@ var App = React.createClass({
   componentWillMount: function () {},
   componentWillUnmount: function () {},
   render: function () { return (
-    /*jshint ignore:start */
+    /* jshint ignore:start */
     <div className="epicureContainer">
       <Nav/>
       <RouteHandler {...this.props}/>
     </div>
-		/*jshint ignore:end */);
+		/* jshint ignore:end */);
   }
 });
 

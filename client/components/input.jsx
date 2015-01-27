@@ -1,8 +1,8 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
 
 /**
-Router
+ * Router
 */
 
 var Router = require("react-router");
@@ -16,7 +16,7 @@ var Input = React.createClass({
   getInitialState: function () { return null;},
   componentWillMount: function () {},
   handleInputChange: function () {
-    /* proxy to parent moving to generalize input */
+    /* Proxy to parent moving to generalize input */
     this.props.inputCallback(
       this.props._id,
       this.props.accessor,
@@ -27,7 +27,7 @@ var Input = React.createClass({
   componentWillUnmount: function () {},
   render: function () {
     return (
-      /*jshint ignore:start*/
+      /* jshint ignore:start */
       <input
         _id={this.props._id}
         type="text"
@@ -35,7 +35,7 @@ var Input = React.createClass({
         value={this.props.value}
         placeholder={this.props.placeholder}
         onChange={this.handleInputChange} />
-      /*jshint ignore:end */);
+      /* jshint ignore:end */);
   }
 });
 

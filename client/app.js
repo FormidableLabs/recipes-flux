@@ -1,8 +1,10 @@
-/*jshint unused:false */
+/* jshint unused:false */
 
 /**
- * Entry point.
+ * Entry point
  */
 
-/** ROUTER **/
+/**
+ * Router
+*/
 var router = require("./router");

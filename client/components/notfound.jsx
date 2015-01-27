@@ -1,4 +1,4 @@
-/*jshint unused:false */
+/* jshint unused:false */
 var React = require("react");
 
 var NotFound = React.createClass({
@@ -9,11 +9,11 @@ var NotFound = React.createClass({
   componentWillMount: function () {},
   componentWillUnmount: function () {},
   render: function () {return (
-    /*jshint ignore:start */
+    /* jshint ignore:start */
   	<p>
   		Page not found
   	</p>
-  /*jshint ignore:end */);
+  /* jshint ignore:end */);
 }
 });
 
