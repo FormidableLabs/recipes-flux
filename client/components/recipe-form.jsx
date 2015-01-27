@@ -183,5 +183,3 @@ var RecipeForm = React.createClass({
 });
 
 module.exports = RecipeForm;
-
-
