@@ -94,12 +94,14 @@ module.exports = [
         ingredient: "onion",
         quantity: 1,
         measurement: null,
-        modifier: "chopped fine"},
+        modifier: "chopped fine"
+      },
       {
         ingredient: "green pepper",
         quantity: 1,
         measurement: null,
-        modifier: "chopped fine"},
+        modifier: "chopped fine"
+      },
       {
         ingredient: "garlic clove",
         quantity: 1,
@@ -114,12 +116,14 @@ module.exports = [
         ingredient: "tomato",
         quantity: 3,
         measurement: "cups",
-        modifier: "chopped"},
+        modifier: "chopped"
+      },
       {
         ingredient: "parsley",
         quantity: 0.25,
         measurement: "cup",
-        modifier: "chopped"},
+        modifier: "chopped"
+      },
       {
         ingredient: "basil",
         quantity: 1,
@@ -134,7 +138,8 @@ module.exports = [
         ingredient: "mozzarella cheese",
         quantity: 0.75,
         measurement: "cup",
-        modifier: "grated"}
+        modifier: "grated"
+      }
     ],
     instructions: "Place polenta in top of a double boiler " +
     "with 4 cups of boiling water and 1/2 teaspoon of the salt. " +

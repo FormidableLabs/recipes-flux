@@ -6,7 +6,6 @@ var React = require("react");
  * https://www.npmjs.com/package/lb-ratio
  * https://www.npmjs.com/package/vulgarities
 */
-
 var ratio = require("lb-ratio");
 var characterFor = require("vulgarities/charFor");
 var vulgarities = require("vulgarities");
@@ -14,7 +13,6 @@ var vulgarities = require("vulgarities");
 /**
  * Router
 */
-
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
@@ -22,12 +20,13 @@ var Link = Router.Link;
 /**
  * Component
 */
-
 var Ingredient = React.createClass({
   displayName: "Ingredient",
   propTypes: {},
   mixins: [],
+
   getInitialState: function () { return {}; },
+
   componentWillMount: function () {
 
     function toUnicode(fractionString) {
@@ -43,7 +42,6 @@ var Ingredient = React.createClass({
     /**
      * Decimal to fraction
     */
-
     var q = this.props.ingredient.quantity;
     if (!isNaN(q)) {
       if (q < 1) {
@@ -61,25 +59,28 @@ var Ingredient = React.createClass({
         return;
       }
     }
-
   },
+
   componentWillUnmount: function () {},
-  render: function () {return (
-    /* jshint ignore:start*/
-    <div className="row Recipe-ingredient">
-      <div className="col-lg-6">
-        <p className="Recipe-ingredientLeft">
-          {this.props.ingredient.ingredient}
-        </p>
+
+  render: function () {
+    return (
+      /* jshint ignore:start */
+      <div className="row Recipe-ingredient">
+        <div className="col-lg-6">
+          <p className="Recipe-ingredientLeft">
+            {this.props.ingredient.ingredient}
+          </p>
+        </div>
+        <div className="col-lg-6">
+          <p className="Recipe-ingredientRight">
+            {this.state.fraction} {this.props.ingredient.measurement} <em>{this.props.ingredient.modifier}</em>
+          </p>
+        </div>
+        <RouteHandler/>
       </div>
-      <div className="col-lg-6">
-        <p className="Recipe-ingredientRight">
-          {this.state.fraction} {this.props.ingredient.measurement} <em>{this.props.ingredient.modifier}</em>
-        </p>
-      </div>
-      <RouteHandler/>
-    </div>
-  /* jshint ignore:end */);
+      /* jshint ignore:end */
+    );
   }
 });
 

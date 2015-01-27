@@ -10,6 +10,7 @@ var _ = require("lodash");
 var RecipeStore = McFly.createStore({
   // Initial setup
   _recipes: db,
+
   updateRecipeIngredientList: function (_id, index) {
     var recipe = this.getRecipe(_id);
     if (index || index === 0) {
@@ -27,6 +28,7 @@ var RecipeStore = McFly.createStore({
       );
     }
   },
+
   updateRecipe: function (_id, accessor, index, value) {
     var recipe = this.getRecipe(_id);
     if (index || index === 0) {
@@ -36,20 +38,23 @@ var RecipeStore = McFly.createStore({
     }
     return;
   },
+
   createRecipe: function (recipe) {
     this._recipes.push(recipe);
     return;
   },
-  createIngredient: function () {
 
-  },
+  createIngredient: function () {},
+
   deleteRecipe: function (_id) {
     _.remove(this._recipes, {_id: _id});
     return;
   },
+
   getRecipe: function (_id) {
     return _.find(this._recipes, {_id: _id});
   },
+
   getRecipes: function () {
     return this._recipes;
   }
