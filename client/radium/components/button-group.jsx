@@ -10,21 +10,17 @@ var ButtonGroup = React.createClass({
       var newProps = {
         key: index
       };
-      var newStyles = newProps.styleOverrides = {};
-
-      if (index === 0) {
-        newStyles.borderTopRightRadius = 0;
-        newStyles.borderBottomRightRadius = 0;
-      } else if (index === items.length - 1) {
-        newStyles.borderTopLeftRadius = 0;
-        newStyles.borderBottomLeftRadius = 0;
-      } else {
-        newStyles.borderRadius = 0;
-      }
 
       if (index > 0) {
-        newProps.buttonGroupBorder = true;
-        newStyles.marginLeft = -1;
+        newProps.buttonGroupSibling = true;
+      }
+
+      if (index === 0) {
+        newProps.buttonGroupLocation = "first";
+      } else if (index === items.length - 1) {
+        newProps.buttonGroupLocation = "last";
+      } else {
+        newProps.buttonGroupLocation = "middle";
       }
 
       return React.addons.cloneWithProps(item, newProps);

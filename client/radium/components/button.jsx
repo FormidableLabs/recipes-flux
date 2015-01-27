@@ -87,6 +87,22 @@ var Button = React.createClass({
             }
           }
         }
+      },
+      buttonGroupSibling: {
+        marginLeft: -1
+      },
+      buttonGroupLocation: {
+        first: {
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0
+        },
+        middle: {
+          borderRadius: 0
+        },
+        last: {
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0
+        }
       }
     },
     states: {
@@ -138,7 +154,7 @@ var Button = React.createClass({
     if (baseStyles.$dynamicBorder) {
       computedStyles.border = "1px solid " + baseStyles.backgroundColor;
 
-      if (this.props.buttonGroupBorder) {
+      if (this.props.buttonGroupSibling) {
         computedStyles.borderLeftColor = darkBg;
       }
     }
