@@ -72,7 +72,7 @@ var Ingredient = React.createClass({
           {this.props.ingredient.ingredient}
         </p>
       </div>
-    	<div className="col-lg-6">
+      <div className="col-lg-6">
         <p className="Recipe-ingredientRight">
           {this.state.fraction} {this.props.ingredient.measurement} <em>{this.props.ingredient.modifier}</em>
         </p>

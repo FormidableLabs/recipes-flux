@@ -32,7 +32,7 @@ var App = React.createClass({
       <Nav/>
       <RouteHandler {...this.props}/>
     </div>
-		/* jshint ignore:end */);
+    /* jshint ignore:end */);
   }
 });
 

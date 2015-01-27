@@ -10,9 +10,9 @@ var NotFound = React.createClass({
   componentWillUnmount: function () {},
   render: function () {return (
     /* jshint ignore:start */
-  	<p>
-  		Page not found
-  	</p>
+    <p>
+      Page not found
+    </p>
   /* jshint ignore:end */);
 }
 });
