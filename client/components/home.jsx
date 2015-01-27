@@ -20,7 +20,6 @@ var Home = React.createClass({
   componentWillUnmount : function() {},
 
   handleBtnHover: function (component, ev) {
-    console.log("Hovered over", component, ev);
   },
 
   render : function() {
@@ -45,7 +44,7 @@ var Home = React.createClass({
       background: "#ccc",
       borderRadius: 5,
       padding: 10
-    }
+    };
 
     return (/*jshint ignore:start*/
       <div>
@@ -53,7 +52,7 @@ var Home = React.createClass({
           home rendered
         </p>
 
-        <RadiumGrid gutters="true">
+        <RadiumGrid gutters={true}>
           <RadiumGridCell
             width={1/3}
             styleOverrides={{

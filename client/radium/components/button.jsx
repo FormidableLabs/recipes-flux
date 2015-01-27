@@ -1,17 +1,19 @@
+/*jshint unused:false */
 var React = require("react");
 
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
-var Color = require("color");
+var color = require("color");
 
 var Button = React.createClass({
   mixins: [RadiumBrowserState],
 
   styles: {
-    default: {
+    standard: {
       fontSize: 16,
       backgroundColor: "#0074d9",
-      backgroundImage: "linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0))",
+      backgroundImage: "linear-gradient(to bottom, rgba(255,255,255,0.1), " +
+        "rgba(255,255,255,0))",
       color: "#fff",
       border: 0,
       borderRadius: "0.3em",
@@ -112,11 +114,11 @@ var Button = React.createClass({
   },
 
   getDynamicBg: function (bgProps, staticBg) {
-    return Color(staticBg)[bgProps.method](bgProps.value).hexString();
+    return color(staticBg)[bgProps.method](bgProps.value).hexString();
   },
 
   buildComputedStyles: function (baseStyles) {
-    var darkBg = Color(baseStyles.backgroundColor)
+    var darkBg = color(baseStyles.backgroundColor)
       .darken(0.2)
       .hexString();
 
@@ -144,7 +146,9 @@ var Button = React.createClass({
     if (baseStyles.$dynamicBoxShadow) {
       var boxShadowColor = darkBg;
 
-      var btnBoxShadow = baseStyles.$dynamicBoxShadow ? "0 2px 0 " + boxShadowColor : null
+      var btnBoxShadow = baseStyles.$dynamicBoxShadow ?
+        "0 2px 0 " + boxShadowColor :
+        null;
 
       computedStyles.boxShadow = btnBoxShadow;
     }
@@ -156,7 +160,7 @@ var Button = React.createClass({
     var builtStyles = this.getStyles();
     var computedStyles = this.buildComputedStyles(builtStyles);
 
-    return (
+    return (/*jshint ignore:start*/
       <button
         style={this.getComputedStyles(builtStyles, computedStyles)}
         {...this.radiumBrowserStateEvents}
@@ -164,7 +168,7 @@ var Button = React.createClass({
         >
         {this.props.children}
       </button>
-    )
+    /*jshint ignore:end*/);
   }
 });
 

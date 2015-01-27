@@ -1,13 +1,12 @@
-var React = require("react");
 var _ = require("lodash");
 
-var ReactBrowserState = {
+var RadiumBrowserState = {
   getInitialState: function () {
     return {
       hover: false,
       focus: false,
       active: false
-    }
+    };
   },
 
   componentWillMount : function () {
@@ -106,8 +105,16 @@ var ReactBrowserState = {
 
     _.forEach(this.styles.modifiers, function (modifier, key) {
       if (this.props[key]) {
-        var activeModifier = modifier[this.props[key]];
-        var activeModifierStates;
+        var modifierValue = this.props[key];
+        var activeModifier, activeModifierStates;
+
+        if (_.isString(modifierValue)) {
+          activeModifier = modifier[modifierValue];
+        } else if (_.isBoolean(modifierValue)) {
+          activeModifier = modifier;
+        } else {
+          return;
+        }
 
         if (activeModifier.states) {
           activeModifierStates = this.getStateStyles(activeModifier.states);
@@ -127,7 +134,7 @@ var ReactBrowserState = {
   getStyles: function () {
     return _.assign(
       {},
-      this.styles.default,
+      this.styles.standard,
       this.props.styleOverrides,
       this.getStateStyles(this.styles.states),
       this.getModifierStyles()
@@ -143,4 +150,4 @@ var ReactBrowserState = {
   }
 };
 
-module.exports = ReactBrowserState;
+module.exports = RadiumBrowserState;

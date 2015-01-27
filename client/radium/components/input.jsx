@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react");
 
 var RadiumBrowserState = require("../mixins/radium-browser-state");
@@ -6,7 +7,7 @@ var Input = React.createClass({
   mixins: [RadiumBrowserState],
 
   styles: {
-    default: {
+    standard: {
       display: "block",
       width: "100%",
       fontSize: 16,
@@ -28,7 +29,7 @@ var Input = React.createClass({
           "own label, set `dangerouslyDisableLabel` to `true`. For more " +
           "information on labels, see " +
           "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label."
-        )
+        );
       }
     }
   },
@@ -37,12 +38,16 @@ var Input = React.createClass({
     return {
       type: "text",
       dangerouslyDisableLabel: false
-    }
+    };
   },
 
   buildInput: function () {
-    var textarea = (<textarea style={this.getStyles()} {...this.props} />);
-    var input = (<input style={this.getStyles()} {...this.props} />);
+    var textarea = (/*jshint ignore:start*/
+      <textarea style={this.getStyles()} {...this.props} />
+    /*jshint ignore:end*/);
+    var input = (/*jshint ignore:start*/
+      <input style={this.getStyles()} {...this.props} />
+    /*jshint ignore:end*/);
 
     if (this.props.type === "textarea") {
       return textarea;
@@ -72,14 +77,14 @@ var Input = React.createClass({
       labelStyles = visibleLabelStyles;
     }
 
-    return (
+    return (/*jshint ignore:start*/
       <label>
         <span style={labelStyles}>
           {this.props.label}
         </span>
         {inputEl}
       </label>
-    )
+    /*jshint ignore:end*/);
   },
 
   render: function () {

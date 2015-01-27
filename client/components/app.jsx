@@ -31,7 +31,7 @@ var App = React.createClass({
       margin: "0 auto",
       padding: "3em 0",
       fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
-    }
+    };
 
     return (/*jshint ignore:start */
       <div

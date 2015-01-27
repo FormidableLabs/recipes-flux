@@ -1,4 +1,6 @@
+/*jshint unused:false */
 var React = require("react");
+var _ = require("lodash");
 
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
@@ -6,7 +8,7 @@ var GridCell = React.createClass({
   mixins: [RadiumBrowserState],
 
   styles: {
-    default: {
+    standard: {
       boxSizing: "border-box",
       display: "inline-block",
       textAlign: "left",
@@ -15,11 +17,19 @@ var GridCell = React.createClass({
     },
     modifiers: {
       gutter: {
-        true: {
-          padding: "0 0.5em"
-        }
+        padding: "0 0.5em"
       }
     }
+  },
+
+  propTypes: {
+    gutter: React.PropTypes.bool.isRequired
+  },
+
+  getDefaultProps: function () {
+    return {
+      gutter: false
+    };
   },
 
   render: function () {
@@ -27,11 +37,11 @@ var GridCell = React.createClass({
       width: (this.props.width * 100) + "%"
     });
 
-    return (
+    return (/*jshint ignore:start*/
       <div style={builtStyles}>
         {this.props.children}
       </div>
-    )
+    /*jshint ignore:end*/);
   }
 });
 

@@ -1,5 +1,4 @@
 var React = require("react/addons");
-var _ = require("lodash");
 
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
@@ -33,11 +32,11 @@ var ButtonGroup = React.createClass({
   },
 
   render: function () {
-    return (
+    return (/*jshint ignore:start*/
       <div>
         {this.buildChildren(this.props.children)}
       </div>
-    );
+    /*jshint ignore:end*/);
   }
 });
 
