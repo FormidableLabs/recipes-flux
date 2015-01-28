@@ -7,6 +7,6 @@
  */
 
 var Router = require("./router");
-/* eslint-disable no-new */
-new Router();
-/* eslint-enable no-new */
+
+// Fire up the router and attach to DOM.
+Router.run(document.body);

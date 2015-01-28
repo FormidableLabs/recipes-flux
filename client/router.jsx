@@ -30,14 +30,13 @@ var routes = (
   </Route>
 );
 
-/**
- * Initiate the router
- * Using the HTML5 history API for cleaner URLs:
-*/
-
-Router.run(routes, function (Handler, state) {
-  // "Alternatively, you can pass the param data down..."
-  // https://github.com/rackt/react-router/blob/master/docs/guides/overview.md#dynamic-segments
-  var params = state.params;
-  React.render(<Handler params={params}/>, document.body);
-});
+module.exports = {
+  run: function (el) {
+    Router.run(routes, function (Handler, state) {
+      // "Alternatively, you can pass the param data down..."
+      // https://github.com/rackt/react-router/blob/master/docs/guides/overview.md#dynamic-segments
+      var params = state.params;
+      React.render(<Handler params={params} />, el);
+    });
+  }
+};
