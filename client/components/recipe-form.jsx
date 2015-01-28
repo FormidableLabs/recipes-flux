@@ -87,7 +87,7 @@ var RecipeForm = React.createClass({
   },
 
   onChange: function () {
-    this.setState(getState(this._id));
+    this.setState(getState(this.state._id));
   },
 
   ingredientCreated: function () {
