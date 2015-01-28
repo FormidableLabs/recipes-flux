@@ -124,11 +124,10 @@ var RecipeForm = React.createClass({
     return(/*jshint ignore:start */
       <div className="recipe">
         <Grid
-          verticalAlign="bottom"
           gutters={true}
           >
           <GridCell
-            width={3/5}
+            width={4/5}
             styleOverrides={{
               paddingTop: "0.5em",
               paddingBottom: "0.5em"
@@ -143,9 +142,11 @@ var RecipeForm = React.createClass({
               size="large"
               />
           </GridCell>
+        </Grid>
 
+        <Grid gutters={true}>
           <GridCell
-            width={1/10}
+            width={1/5}
             styleOverrides={{
               paddingTop: "0.5em",
               paddingBottom: "0.5em"
@@ -161,7 +162,7 @@ var RecipeForm = React.createClass({
           </GridCell>
 
           <GridCell
-            width={1/10}
+            width={1/5}
             styleOverrides={{
               paddingTop: "0.5em",
               paddingBottom: "0.5em"
@@ -175,7 +176,9 @@ var RecipeForm = React.createClass({
               value={this.state.totalTimeInMinutes}
               />
           </GridCell>
+        </Grid>
 
+        <Grid gutters={true}>
           <GridCell
             styleOverrides={{
               paddingTop: "0.5em",

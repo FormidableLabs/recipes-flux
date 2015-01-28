@@ -25,7 +25,7 @@ var IngredientForm = React.createClass({
   },
 
   buildField: function (field, index) {
-    return (
+    return (/*jshint ignore:start*/
       <GridCell key={index} width={1/5}>
         <IngredientFormInput
           _id={this.props._id}
@@ -36,7 +36,7 @@ var IngredientForm = React.createClass({
           value={this.props.ingredient[field.accessor]}
           />
       </GridCell>
-    )
+    /*jshint ignore:end*/);
   },
 
   render: function () {
@@ -60,7 +60,7 @@ var IngredientForm = React.createClass({
     ];
 
     var ingredients = ingredientFields.map(this.buildField);
-    var button = (
+    var button = (/*jshint ignore:start*/
       <GridCell key="button" width={1/5}>
         <RadiumButton
           size="mini"
@@ -69,11 +69,11 @@ var IngredientForm = React.createClass({
           Delete
         </RadiumButton>
       </GridCell>
-    );
+    /*jshint ignore:end*/);
 
     ingredients.push(button);
 
-    return (
+    return (/*jshint ignore:start*/
       <Grid
         gutters={true}
         verticalAlign="middle"
@@ -82,7 +82,7 @@ var IngredientForm = React.createClass({
         }}>
         {ingredients}
       </Grid>
-    );
+    /*jshint ignore:end*/);
   }
 });
 

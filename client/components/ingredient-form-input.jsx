@@ -23,7 +23,7 @@ var IngredientFormInput = React.createClass({
   },
 
   render: function () {
-    return (
+    return (/*jshint ignore:start*/
       <RadiumInput
         {...this.props}
         size={this.props.size}
@@ -34,7 +34,7 @@ var IngredientFormInput = React.createClass({
         ref="input"
         onChange={this.handleChange}
         />
-    );
+    /*jshint ignore:end*/);
   }
 });
 

@@ -37,13 +37,13 @@ var Grid = React.createClass({
   },
 
   buildChildren: function (items) {
-    return items.map(function (item, index) {
+    return React.Children.map(items, function (item, index) {
       return React.addons.cloneWithProps(item, {
         gutter: this.props.gutters,
         verticalAlign: this.props.verticalAlign,
         key: index
       });
-    }.bind(this));
+    }, this);
   },
 
   render: function () {

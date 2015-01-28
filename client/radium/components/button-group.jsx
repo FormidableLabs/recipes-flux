@@ -6,7 +6,7 @@ var ButtonGroup = React.createClass({
   mixins: [RadiumBrowserState],
 
   buildChildren: function (items) {
-    return items.map(function (item, index) {
+    return React.Children.map(items, function (item, index) {
       var newProps = {
         key: index
       };
