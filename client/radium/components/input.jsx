@@ -15,7 +15,18 @@ var Input = React.createClass({
       padding: "0.4em",
       border: "1px solid #ccc",
       lineHeight: 1.2,
-      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+      boxSizing: "border-box"
+    },
+    modifiers: {
+      size: {
+        large: {
+          fontSize: 21
+        },
+        small: {
+          fontSize: 14
+        }
+      }
     }
   },
 
@@ -41,12 +52,16 @@ var Input = React.createClass({
     };
   },
 
+  getInputElement: function () {
+    return this.refs.input.getDOMNode();
+  },
+
   buildInput: function () {
     var textarea = (/*jshint ignore:start*/
-      <textarea style={this.getStyles()} {...this.props} />
+      <textarea ref="input" style={this.getStyles()} {...this.props} />
     /*jshint ignore:end*/);
     var input = (/*jshint ignore:start*/
-      <input style={this.getStyles()} {...this.props} />
+      <input ref="input" style={this.getStyles()} {...this.props} />
     /*jshint ignore:end*/);
 
     if (this.props.type === "textarea") {

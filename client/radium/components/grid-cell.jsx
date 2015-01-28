@@ -12,23 +12,36 @@ var GridCell = React.createClass({
       boxSizing: "border-box",
       display: "inline-block",
       textAlign: "left",
-      verticalAlign: "top",
       width: "100%"
     },
     modifiers: {
       gutter: {
-        padding: "0 0.5em"
+        paddingRight: "0.5em",
+        paddingLeft: "0.5em"
+      },
+      verticalAlign: {
+        top: {
+          verticalAlign: "top"
+        },
+        middle: {
+          verticalAlign: "middle"
+        },
+        bottom: {
+          verticalAlign: "bottom"
+        }
       }
     }
   },
 
   propTypes: {
-    gutter: React.PropTypes.bool.isRequired
+    gutter: React.PropTypes.bool.isRequired,
+    verticalAlign: React.PropTypes.oneOf(["top", "middle", "bottom"])
   },
 
   getDefaultProps: function () {
     return {
-      gutter: false
+      gutter: false,
+      verticalAlign: "top"
     };
   },
 

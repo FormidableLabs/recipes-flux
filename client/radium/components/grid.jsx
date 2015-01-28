@@ -25,12 +25,14 @@ var Grid = React.createClass({
   },
 
   propTypes: {
-    gutters: React.PropTypes.bool.isRequired
+    gutters: React.PropTypes.bool.isRequired,
+    verticalAlign: React.PropTypes.string.isRequired
   },
 
   getDefaultProps: function () {
     return {
-      gutters: false
+      gutters: false,
+      verticalAlign: "top"
     };
   },
 
@@ -38,6 +40,7 @@ var Grid = React.createClass({
     return items.map(function (item, index) {
       return React.addons.cloneWithProps(item, {
         gutter: this.props.gutters,
+        verticalAlign: this.props.verticalAlign,
         key: index
       });
     }.bind(this));

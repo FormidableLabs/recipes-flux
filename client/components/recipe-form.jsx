@@ -17,8 +17,12 @@ Child Components
 */
 
 var Input = require("./input");
-var Button = require("./button");
 var RadiumButton = require("../radium/components/button");
+var RadiumInput = require("../radium/components/input");
+var IngredientForm = require("./ingredient-form");
+var Grid = require("../radium/components/grid");
+var GridCell = require("../radium/components/grid-cell");
+var IngredientFormInput = require("./ingredient-form-input");
 
 /**
 Component
@@ -39,7 +43,7 @@ var RecipeForm = React.createClass({
       * so let's use the params to figure out which recipe
       * so that we can populate the forms
       */
-      this._id = this.props.params.id;
+      this._id = this.props.params._id;
       return RecipeStore.getRecipe(this.props.params._id);
 
     } else {
@@ -77,8 +81,11 @@ var RecipeForm = React.createClass({
       return newRecipe;
     }
   },
+
   componentWillMount : function() {},
+
   componentWillUnmount : function() {},
+
   inputCallback: function (_id, accessor, index, value) {
     RecipeActions.inputChanged({
       _id: _id,
@@ -87,69 +94,26 @@ var RecipeForm = React.createClass({
       value: value
     });
   },
+
   onChange: function(){
     this.setState(getState(this._id));
   },
+
   ingredientCreated : function () {
     RecipeActions.ingredientCreated({
       _id: this.state._id
     });
   },
-  ingredientDeleted : function (_id, accessor, index) {
-    console.log("DELETING COOL");
-    console.log(_id, accessor, index);
-
-    RecipeActions.ingredientDeleted({
-      _id: this.state._id,
-      index: index
-    });
-  },
 
   createNodes : function (ingredient, index) {
-    return(
-      /*jshint ignore:start*/
-      <div className="Ingredient" key={index}>
-        <Input
-          placeholder="Ingredient"
-          value={ingredient.ingredient}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="ingredient"/>
-        <Input
-          placeholder="Quantity"
-          value={ingredient.quantity}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="quantity"/>
-        <Input
-          placeholder="Measurement Units"
-          value={ingredient.measurement}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="measurement"/>
-        <Input
-          placeholder="Modifier (e.g. 'chopped')"
-          value={ingredient.modifier}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="modifier"/>
-        <Button
-          buttonCallback={this.ingredientDeleted}
-          index={index}
-          value="Delete Ingredient"/>
-        <RadiumButton
-          onClick={this.ingredientDeleted}
-          index={index}
-          >
-          Delete Ingredient
-        </RadiumButton>
-      </div>
-      /*jshint ignore:end */
-    );
+    return (/*jshint ignore:start*/
+      <IngredientForm
+        key={index}
+        index={index}
+        ingredient={ingredient}
+        _id={this.state._id}
+        />
+    /*jshint ignore:end */);
   },
 
   render: function () {
@@ -159,34 +123,88 @@ var RecipeForm = React.createClass({
 
     return(/*jshint ignore:start */
       <div className="recipe">
-        <Input
-          placeholder="Title"
-          accessor="title"
-          value={this.state.title}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
-        <Input
-          placeholder="Portions"
-          accessor="portions"
-          value={this.state.portions}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
-        <Input
-          placeholder="Total time in minutes"
-          accessor="totalTimeInMinutes"
-          value={this.state.totalTimeInMinutes}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
-        <Input
-          placeholder="Instructions"
-          accessor="instructions"
-          value={this.state.instructions}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
-          {ingredientFormNodes}
-          <Button
-            buttonCallback={this.ingredientCreated}
-            value="Add Another Ingredient"/>
+        <Grid
+          verticalAlign="bottom"
+          gutters={true}
+          >
+          <GridCell
+            width={3/5}
+            styleOverrides={{
+              paddingTop: "0.5em",
+              paddingBottom: "0.5em"
+            }}
+            >
+            <IngredientFormInput
+              _id={this.state._id}
+              accessor="title"
+              label="Title"
+              placeholder="Title"
+              value={this.state.title}
+              size="large"
+              />
+          </GridCell>
+
+          <GridCell
+            width={1/10}
+            styleOverrides={{
+              paddingTop: "0.5em",
+              paddingBottom: "0.5em"
+            }}
+            >
+            <IngredientFormInput
+              _id={this.state._id}
+              accessor="portions"
+              label="Portions"
+              placeholder="Portions"
+              value={this.state.portions}
+              />
+          </GridCell>
+
+          <GridCell
+            width={1/10}
+            styleOverrides={{
+              paddingTop: "0.5em",
+              paddingBottom: "0.5em"
+            }}
+            >
+            <IngredientFormInput
+              _id={this.state._id}
+              accessor="totalTimeInMinutes"
+              label="Total time in minutes"
+              placeholder="Total time in minutes"
+              value={this.state.totalTimeInMinutes}
+              />
+          </GridCell>
+
+          <GridCell
+            styleOverrides={{
+              paddingTop: "0.5em",
+              paddingBottom: "0.5em"
+            }}
+            width={4/5}
+            >
+            <IngredientFormInput
+              _id={this.state._id}
+              type="textarea"
+              accessor="instructions"
+              label="Instructions"
+              placeholder="Instructions"
+              value={this.state.instructions}
+              />
+          </GridCell>
+        </Grid>
+
+        {ingredientFormNodes}
+
+        <RadiumButton
+          styleOverrides={{
+            marginTop: "0.5em"
+          }}
+          onClick={this.ingredientCreated}
+          >
+          Add Another Ingredient
+        </RadiumButton>
+
         <RouteHandler {...this.props}/>
       </div>
     /*jshint ignore:end */);
