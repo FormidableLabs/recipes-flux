@@ -116,6 +116,10 @@ var RadiumBrowserState = {
           return;
         }
 
+        if (!activeModifier) {
+          return;
+        }
+
         if (activeModifier.states) {
           activeModifierStates = this.getStateStyles(activeModifier.states);
         }

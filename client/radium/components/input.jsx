@@ -26,6 +26,11 @@ var Input = React.createClass({
         small: {
           fontSize: 14
         }
+      },
+      type: {
+        textarea: {
+          resize: "vertical"
+        }
       }
     }
   },
@@ -45,11 +50,40 @@ var Input = React.createClass({
     }
   },
 
+  getInitialState: function () {
+    return {
+      textareaHeight: null,
+      textareaCloneWidth: null
+    };
+  },
+
   getDefaultProps: function () {
     return {
       type: "text",
-      dangerouslyDisableLabel: false
+      dangerouslyDisableLabel: false,
+      textareaResize: false
     };
+  },
+
+  componentDidMount: function () {
+    this.resizeTextarea();
+  },
+
+  componentDidUpdate: function () {
+    this.resizeTextarea();
+  },
+
+  resizeTextarea: function () {
+    if (this.props.textareaResize) {
+      var oldHeight = this.state.textareaHeight;
+      var newHeight = this.getInputElement().scrollHeight;
+
+      if (oldHeight !== newHeight) {
+        this.setState({
+          textareaHeight: newHeight
+        });
+      }
+    }
   },
 
   getInputElement: function () {
@@ -57,11 +91,24 @@ var Input = React.createClass({
   },
 
   buildInput: function () {
+    var inputStyles = this.getStyles();
+
+    if (this.props.textareaResize && this.state.textareaHeight) {
+      inputStyles.height = this.state.textareaHeight;
+    }
+
     var textarea = (/*jshint ignore:start*/
-      <textarea ref="input" style={this.getStyles()} {...this.props} />
+      <textarea
+        ref="input"
+        style={inputStyles}
+        {...this.props}
+        />
     /*jshint ignore:end*/);
     var input = (/*jshint ignore:start*/
-      <input ref="input" style={this.getStyles()} {...this.props} />
+      <input
+        ref="input"
+        style={inputStyles}
+        {...this.props} />
     /*jshint ignore:end*/);
 
     if (this.props.type === "textarea") {

@@ -186,6 +186,7 @@ var RecipeForm = React.createClass({
             <IngredientFormInput
               _id={this.state._id}
               type="textarea"
+              textareaResize={true}
               accessor="instructions"
               label="Instructions"
               placeholder="Instructions"
