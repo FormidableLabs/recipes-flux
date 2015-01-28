@@ -11,7 +11,7 @@ var ratio = require("lb-ratio");
 var characterFor = require("vulgarities/charFor");
 var vulgarities = require("vulgarities");
 
-/** 
+/**
 Router
 */
 
@@ -20,27 +20,34 @@ var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
 /**
+Child Components
+*/
+
+var Grid = require("../radium/components/grid");
+var GridCell = require("../radium/components/grid-cell");
+
+/**
 Component
 */
 
-var Ingredient = React.createClass({  
+var Ingredient = React.createClass({
   displayName : "Ingredient",
   propTypes: {},
   mixins : [],
   getInitialState : function() { return {}; },
   componentWillMount : function() {
-    
+
     function toUnicode(fractionString) {
       var f = fractionString.split("/");
       var uni = characterFor(f[0],f[1]);
       if (uni) {
         return uni;
-      } else { 
+      } else {
         return fractionString;
       }
     }
 
-    /** 
+    /**
     Decimal to fraction
     */
 
@@ -51,8 +58,8 @@ var Ingredient = React.createClass({
         this.state.fraction = uni;
         return;
       } else if (q % 1 !== 0) {
-        var frac = Math.floor(q) + 
-                    " " + 
+        var frac = Math.floor(q) +
+                    " " +
                     toUnicode(ratio.parse(q%1).simplify().toString());
         this.state.fraction = frac;
         return;
@@ -66,17 +73,20 @@ var Ingredient = React.createClass({
   componentWillUnmount : function() {},
   render : function() {return(
     /*jshint ignore:start*/
-    <div className="row Recipe-ingredient">
-      <div className="col-lg-6">
-        <p className="Recipe-ingredientLeft">
+    <div
+      style={{
+        paddingTop: "0.5em",
+        paddingBottom: "0.5em"
+      }}>
+      <Grid gutters={true}>
+        <GridCell width={1/2} align="right">
           {this.props.ingredient.ingredient}
-        </p>
-      </div>
-    	<div className="col-lg-6">
-        <p className="Recipe-ingredientRight">
+        </GridCell>
+        <GridCell width={1/2}>
           {this.state.fraction} {this.props.ingredient.measurement} <em>{this.props.ingredient.modifier}</em>
-        </p>
-      </div>
+        </GridCell>
+      </Grid>
+
       <RouteHandler/>
     </div>
   /*jshint ignore:end */);

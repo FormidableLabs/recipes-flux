@@ -29,6 +29,14 @@ var GridCell = React.createClass({
         bottom: {
           verticalAlign: "bottom"
         }
+      },
+      align: {
+        right: {
+          textAlign: "right"
+        },
+        center: {
+          textAlign: "center"
+        }
       }
     }
   },

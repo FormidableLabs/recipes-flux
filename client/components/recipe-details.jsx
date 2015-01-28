@@ -20,6 +20,8 @@ Child Components
 */
 
 var Ingredient = require("./ingredient");
+var Grid = require("../radium/components/grid");
+var GridCell = require("../radium/components/grid-cell");
 
 /**
 Component
@@ -66,18 +68,23 @@ var RecipeDetails = React.createClass({
     var ingredientNodes = this.state.ingredients.map(createNodes);
 
     return(/*jshint ignore:start */
-      <div className="Recipe">
-        <p className="Recipe-title">{this.state.title}</p>
-        <p> Serves: {this.state.portions} (change)</p>
-        <div className="row">
-          <div className="col-lg-4">
+      <div>
+        <h1>
+          {this.state.title}
+        </h1>
+        <p>
+          Serves: {this.state.portions} (change)
+        </p>
+
+        <Grid gutters={true}>
+          <GridCell width={1/2}>
             {ingredientNodes}
-          </div>
-          <div
-            className="Recipe-instructions col-lg-4"
-            dangerouslySetInnerHTML={{__html: this.state.parsedInstructions}}
-          />
-        </div>
+          </GridCell>
+          <GridCell width={1/2}>
+            <div dangerouslySetInnerHTML={{__html: this.state.parsedInstructions}}/>
+          </GridCell>
+        </Grid>
+
         <RouteHandler {...this.props}/>
       </div>
     /*jshint ignore:end */);
