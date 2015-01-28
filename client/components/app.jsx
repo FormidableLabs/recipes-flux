@@ -1,21 +1,25 @@
+/**
+ * React
+ */
+
 var React = require("react");
 
 /**
  * Router
-*/
+ */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 /**
  * Child Components
-*/
+ */
 
 var Nav = require("./nav");
 
 /**
  * Component
-*/
+ */
 
 var App = React.createClass({
   displayName: "App",
@@ -31,8 +35,8 @@ var App = React.createClass({
   render: function () {
     return (
       <div className="epicureContainer">
-        <Nav/>
-        <RouteHandler {...this.props}/>
+        <Nav />
+        <RouteHandler {...this.props} />
       </div>
     );
   }

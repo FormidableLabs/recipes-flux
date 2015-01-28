@@ -1,23 +1,27 @@
+/**
+ * React
+ */
+
 var React = require("react");
 
 /**
  * Create fractions from decimals
  * https://www.npmjs.com/package/lb-ratio
-*/
+ */
 
 var ratio = require("lb-ratio");
 var characterFor = require("vulgarities/charFor");
 
 /**
  * Router
-*/
+ */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 /**
  * Component
-*/
+ */
 
 var Ingredient = React.createClass({
   displayName: "Ingredient",
@@ -39,7 +43,7 @@ var Ingredient = React.createClass({
 
     /**
      * Decimal to fraction
-    */
+     */
 
     var q = this.props.ingredient.quantity;
     if (!isNaN(q)) {
@@ -51,7 +55,8 @@ var Ingredient = React.createClass({
                     " " +
                     toUnicode(ratio.parse(q % 1).simplify().toString());
         this.state.fraction = frac;
-      } else /* whole number */ {
+      } else {
+        // Whole number
         this.state.fraction = q;
       }
     }
@@ -70,10 +75,10 @@ var Ingredient = React.createClass({
         <div className="col-lg-6">
           <p className="Recipe-ingredientRight">
             {this.state.fraction} {this.props.ingredient.measurement}
-            <em>{this.props.ingredient.modifier}</em>
+            <em> {this.props.ingredient.modifier}</em>
           </p>
         </div>
-        <RouteHandler/>
+        <RouteHandler />
       </div>
     );
   }

@@ -1,17 +1,21 @@
+/**
+ * React
+ */
+
 var React = require("react");
 var Recipe = require("./recipe");
 var RecipeStore = require("../stores");
 
 /**
- * Router & Data
-*/
+ * Router
+ */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 /**
  * Component
-*/
+ */
 
 function getState() {
   return {
@@ -34,8 +38,7 @@ var Recipes = React.createClass({
   createRecipeNodes: function () {
     var nodes = this.state.store.map(function (recipe) {
       return (
-        <Recipe recipe={recipe} key={recipe._id}>
-        </Recipe>
+        <Recipe recipe={recipe} key={recipe._id} />
       );
     });
     return nodes;
@@ -49,9 +52,9 @@ var Recipes = React.createClass({
     var recipeNodes = this.createRecipeNodes();
     return (
       <div className="Recipes">
-        <p className="Recipes-title"> Recipe Bank: </p>
+        <p className="Recipes-title">Recipe Bank: </p>
         {recipeNodes}
-        <RouteHandler {...this.props}/>
+        <RouteHandler {...this.props} />
       </div>
     );
   }

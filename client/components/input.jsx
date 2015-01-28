@@ -1,4 +1,12 @@
+/**
+ * React
+ */
+
 var React = require("react");
+
+/**
+ * Component
+ */
 
 var Input = React.createClass({
   displayName: "Input",
@@ -10,13 +18,13 @@ var Input = React.createClass({
   componentWillMount: function () {},
 
   handleInputChange: function () {
-    /* Proxy to parent moving to generalize input */
-    this.props.inputCallback(
-      this.props._id,
-      this.props.accessor,
-      this.props.index,
-      this.refs.inputValue.getDOMNode().value
-    );
+    // Proxy to parent moving to generalize input
+    this.props.inputCallback({
+      _id: this.props._id,
+      accessor: this.props.accessor,
+      index: this.props.index,
+      value: this.refs.inputValue.getDOMNode().value
+    });
   },
 
   componentWillUnmount: function () {},

@@ -1,4 +1,12 @@
+/**
+ * React
+ */
+
 var React = require("react");
+
+/**
+ * Component
+ */
 
 var Input = React.createClass({
   displayName: "Input",
@@ -10,7 +18,7 @@ var Input = React.createClass({
   componentWillMount: function () {},
 
   handleButtonClick: function () {
-    /* Proxy to parent moving to generalize input */
+    // Proxy to parent moving to generalize input
     this.props.buttonCallback(
       this.props._id,
       this.props.accessor,

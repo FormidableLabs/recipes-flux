@@ -64,9 +64,9 @@ gulp.task("check",      ["jscs", "eslint"]);
 gulp.task("check:ci",   ["jscs", "eslint"]);
 gulp.task("check:all",  ["jscs", "eslint"]);
 
-// -----------
+// ----------------------------------------------------------------------------
 // Cleaning
-// -----------
+// ----------------------------------------------------------------------------
 gulp.task("clean:all", function () {
   return gulp
     .src([
@@ -106,9 +106,9 @@ gulp.task("watch:dev", function () {
 });
 gulp.task("watch", ["watch:dev"]);
 
-// -----------
+// ----------------------------------------------------------------------------
 // Production
-// -----------
+// ----------------------------------------------------------------------------
 gulp.task("build:prod", function (done) {
   webpack(buildCfg).run(function (err, stats) {
     if (err) { throw new gutil.PluginError("webpack", err); }
