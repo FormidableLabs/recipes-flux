@@ -79,12 +79,12 @@ var RecipeForm = React.createClass({
 
   componentWillUnmount: function () {},
 
-  inputCallback: function (_id, accessor, index, value) {
+  inputCallback: function (data) {
     RecipeActions.inputChanged({
-      _id: _id,
-      accessor: accessor,
-      index: index,
-      value: value
+      _id: data._id,
+      accessor: data.accessor,
+      index: data.index,
+      value: data.value
     });
   },
 
