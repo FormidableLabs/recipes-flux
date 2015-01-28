@@ -1,6 +1,6 @@
 /**
  * React
-*/
+ */
 
 var React = require("react");
 var RecipeStore = require("../stores");
@@ -9,21 +9,21 @@ var uuid = require("uuid");
 
 /**
  * Router
-*/
+ */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 /**
  * Child Components
-*/
+ */
 
 var Input = require("./input");
 var Button = require("./button");
 
 /**
  * Component
-*/
+ */
 
 function getState (id) {
   return RecipeStore.getRecipe(id);
@@ -112,32 +112,32 @@ var RecipeForm = React.createClass({
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
-          accessor="ingredient"/>
+          accessor="ingredient" />
         <Input
           placeholder="Quantity"
           value={ingredient.quantity}
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
-          accessor="quantity"/>
+          accessor="quantity" />
         <Input
           placeholder="Measurement Units"
           value={ingredient.measurement}
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
-          accessor="measurement"/>
+          accessor="measurement" />
         <Input
           placeholder="Modifier (e.g. 'chopped')"
           value={ingredient.modifier}
           index={index}
           _id={this.state._id}
           inputCallback={this.inputCallback}
-          accessor="modifier"/>
+          accessor="modifier" />
         <Button
           buttonCallback={this.ingredientDeleted}
           index={index}
-          value="Delete Ingredient"/>
+          value="Delete Ingredient" />
       </div>
     );
   },
@@ -154,30 +154,30 @@ var RecipeForm = React.createClass({
           accessor="title"
           value={this.state.title}
           _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
+          inputCallback={this.inputCallback} />
         <Input
           placeholder="Portions"
           accessor="portions"
           value={this.state.portions}
           _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
+          inputCallback={this.inputCallback} />
         <Input
           placeholder="Total time in minutes"
           accessor="totalTimeInMinutes"
           value={this.state.totalTimeInMinutes}
           _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
+          inputCallback={this.inputCallback} />
         <Input
           placeholder="Instructions"
           accessor="instructions"
           value={this.state.instructions}
           _id={this.state._id}
-          inputCallback={this.inputCallback}></Input>
+          inputCallback={this.inputCallback} />
           {ingredientFormNodes}
           <Button
             buttonCallback={this.ingredientCreated}
-            value="Add Another Ingredient"/>
-        <RouteHandler {...this.props}/>
+            value="Add Another Ingredient" />
+        <RouteHandler {...this.props} />
       </div>
     );
   }

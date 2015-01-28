@@ -4,7 +4,7 @@
 
 /**
  * Router
-*/
+ */
 
 var Router = require("./router");
 /* eslint-disable no-new */

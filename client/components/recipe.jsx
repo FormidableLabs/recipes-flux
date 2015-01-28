@@ -1,13 +1,13 @@
 /**
  * React
-*/
+ */
 
 var React = require("react");
 var RecipeActions = require("../actions");
 
 /**
  * Router
-*/
+ */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
@@ -15,13 +15,13 @@ var Link = Router.Link;
 
 /**
  * Child Components
-*/
+ */
 
 var Button = require("./button");
 
 /**
  * Component
-*/
+ */
 
 var Recipe = React.createClass({
   displayName: "Recipe",
@@ -54,9 +54,9 @@ var Recipe = React.createClass({
           <Button
             _id={this.props.recipe._id}
             buttonCallback={this.deleteRecipe}
-            value="Delete"/>
+            value="Delete" />
         </p>
-        <RouteHandler/>
+        <RouteHandler />
       </div>
     );
   }

@@ -1,7 +1,6 @@
 var McFly = require("./McFly");
 var db = require("./mock-db");
 var _ = require("lodash");
-// var uuid = require("uuid");
 
 // Creates a DataStore
 var RecipeStore = McFly.createStore({

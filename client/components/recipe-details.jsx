@@ -1,26 +1,26 @@
 /**
  * React
-*/
+ */
 
 var React = require("react");
 var RecipeStore = require("../stores");
 
 /**
  * Router
-*/
+ */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 /**
  * Child Components
-*/
+ */
 
 var Ingredient = require("./ingredient");
 
 /**
  * Component
-*/
+ */
 
 function getState(id) {
   return RecipeStore.getRecipe(id);
@@ -51,8 +51,7 @@ var RecipeDetails = React.createClass({
     var html = "<p>" + str.replace(/\n([ \t]*\n)+/g, "</p><p>")
                           .replace(/\n/g, "</p><p>") + "</p>";
     this.state.parsedInstructions = html;
-
-    // Make servings a controlled input and
+    // Make servings a controlled input
     // http://facebook.github.io/react/docs/forms.html#controlled-components
   },
 
@@ -85,17 +84,3 @@ var RecipeDetails = React.createClass({
 });
 
 module.exports = RecipeDetails;
-
-/**
- * Ingredient
- *
- * render: function () {
- *   return (
- *     <div className="Recipes">
- *       <p> Recipe Bank: </p>
- *       {recipeNodes}
- *       <RouteHandler {...this.props}/>
- *     </div>
- *   );
- * }
-*/

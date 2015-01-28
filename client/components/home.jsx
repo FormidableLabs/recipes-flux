@@ -1,19 +1,19 @@
 /**
  * React
-*/
+ */
 
 var React = require("react");
 
 /**
  * Router
-*/
+ */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 /**
  * Component
-*/
+ */
 
 var Home = React.createClass({
   displayName: "Home",
@@ -32,7 +32,7 @@ var Home = React.createClass({
         <p>
           home rendered
         </p>
-        <RouteHandler/>
+        <RouteHandler />
       </div>
     );
   }
