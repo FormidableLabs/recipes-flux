@@ -46,8 +46,16 @@ var GridCell = React.createClass({
   },
 
   render: function () {
+    var width;
+
+    if (_.isNumber(this.props.width)) {
+      width = (this.props.width * 100) + "%";
+    } else {
+      width = this.props.width;
+    }
+
     var builtStyles = _.assign({}, this.getStyles(), {
-      width: (this.props.width * 100) + "%"
+      width: width
     });
 
     return (/*jshint ignore:start*/

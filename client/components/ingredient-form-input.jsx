@@ -13,6 +13,12 @@ var RadiumButton = require("../radium/components/button");
 var RadiumInput = require("../radium/components/input");
 
 var IngredientFormInput = React.createClass({
+  getDefaultProps: function () {
+    return {
+      labelHidden: true
+    };
+  },
+
   handleChange: function () {
     RecipeActions.inputChanged({
       _id: this.props._id,
@@ -26,11 +32,6 @@ var IngredientFormInput = React.createClass({
     return (/*jshint ignore:start*/
       <RadiumInput
         {...this.props}
-        size={this.props.size}
-        label={this.props.label}
-        labelHidden={true}
-        placeholder={this.props.label}
-        value={this.props.value}
         ref="input"
         onChange={this.handleChange}
         />

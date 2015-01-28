@@ -154,6 +154,7 @@ var RecipeForm = React.createClass({
             >
             <IngredientFormInput
               _id={this.state._id}
+              labelHidden={false}
               accessor="portions"
               label="Portions"
               placeholder="Portions"
@@ -170,6 +171,7 @@ var RecipeForm = React.createClass({
             >
             <IngredientFormInput
               _id={this.state._id}
+              labelHidden={false}
               accessor="totalTimeInMinutes"
               label="Total time in minutes"
               placeholder="Total time in minutes"

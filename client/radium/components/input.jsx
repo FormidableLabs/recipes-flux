@@ -31,6 +31,10 @@ var Input = React.createClass({
         textarea: {
           resize: "vertical"
         }
+      },
+      inline: {
+        display: "inline-block",
+        width: "auto"
       }
     }
   },
@@ -131,10 +135,16 @@ var Input = React.createClass({
       position: "absolute",
       width: 1
     };
+    var inlineLabelStyles = {
+      display: "inline-block",
+      marginRight: "1em"
+    };
     var labelStyles;
 
     if (this.props.labelHidden) {
       labelStyles = hiddenLabelStyles;
+    } else if (this.props.inline) {
+      labelStyles = inlineLabelStyles;
     } else {
       labelStyles = visibleLabelStyles;
     }
