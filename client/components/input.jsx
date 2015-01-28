@@ -1,4 +1,12 @@
+/**
+ * React
+*/
+
 var React = require("react");
+
+/**
+ * Component
+*/
 
 var Input = React.createClass({
   displayName: "Input",

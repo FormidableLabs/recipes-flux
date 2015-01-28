@@ -46,17 +46,14 @@ var RecipeDetails = React.createClass({
   },
 
   parseInstructions: function () {
-    /**
-     * Process instructions to split string on newline
-    */
+    // Process instructions to split string on newline
     var str = this.state.instructions;
     var html = "<p>" + str.replace(/\n([ \t]*\n)+/g, "</p><p>")
                           .replace(/\n/g, "</p><p>") + "</p>";
     this.state.parsedInstructions = html;
-    /**
-     * Make servings a controlled input and
-     * http://facebook.github.io/react/docs/forms.html#controlled-components
-    */
+
+    // Make servings a controlled input and
+    // http://facebook.github.io/react/docs/forms.html#controlled-components
   },
 
   render: function () {

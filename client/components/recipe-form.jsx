@@ -1,3 +1,7 @@
+/**
+ * React
+*/
+
 var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
@@ -32,21 +36,15 @@ var RecipeForm = React.createClass({
 
   getInitialState: function () {
     if (this.props.params._id) {
-      /**
-      * User came in from the edit button of an existing recipe,
-      * so let's use the params to figure out which recipe
-      * so that we can populate the forms
-      */
+      // User came in from the edit button of an existing recipe,
+      // so let's use the params to figure out which recipe so that we can populate the forms
       this._id = this.props.params.id;
       return RecipeStore.getRecipe(this.props.params._id);
-
     }
 
-    /**
-    * Create the blank recipe in the store to edit
-    * this will create an empty record if they leave, but that's
-    * not terrible because they can edit or delete it from the inbox
-    */
+    // Create the blank recipe in the store to edit
+    // this will create an empty record if they leave, but that's
+    // not terrible because they can edit or delete it from the inbox
     var newRecipe = {
       _id: uuid.v4(),
       title: "New Recipe (edit me)",

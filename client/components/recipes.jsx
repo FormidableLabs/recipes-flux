@@ -1,9 +1,13 @@
+/**
+ * React
+*/
+
 var React = require("react");
 var Recipe = require("./recipe");
 var RecipeStore = require("../stores");
 
 /**
- * Router & Data
+ * Router
 */
 
 var Router = require("react-router");

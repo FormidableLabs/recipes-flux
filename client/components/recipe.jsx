@@ -1,3 +1,7 @@
+/**
+ * React
+*/
+
 var React = require("react");
 var RecipeActions = require("../actions");
 
@@ -14,6 +18,10 @@ var Link = Router.Link;
 */
 
 var Button = require("./button");
+
+/**
+ * Component
+*/
 
 var Recipe = React.createClass({
   displayName: "Recipe",
