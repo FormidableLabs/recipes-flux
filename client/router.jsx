@@ -10,15 +10,15 @@ var RecipeForm = require("./components/recipe-form");
 /**
  * Set up the Router object
 */
+
 var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute = Router.DefaultRoute;
-var Link = Router.Link;
-var RouteHandler = Router.RouteHandler;
 
 /**
 * Declare routes
 */
+
 var routes = (
   <Route handler={App} path="/">
     <DefaultRoute name="app" handler={Home} />
@@ -34,6 +34,7 @@ var routes = (
  * Initiate the router
  * Using the HTML5 history API for cleaner URLs:
 */
+
 Router.run(routes, function (Handler, state) {
   /**
    * "Alternatively, you can pass the param data down..."

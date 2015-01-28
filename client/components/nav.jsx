@@ -3,13 +3,14 @@ var React = require("react");
 /**
  * Router
 */
+
 var Router = require("react-router");
-var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
 /**
  * Component
 */
+
 var Nav = React.createClass({
   displayName: "Nav",
   propTypes: {},

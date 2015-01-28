@@ -6,20 +6,22 @@ var uuid = require("uuid");
 /**
  * Router
 */
+
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
 
 /**
  * Child Components
 */
+
 var Input = require("./input");
 var Button = require("./button");
 
 /**
  * Component
 */
-function getState(id){
+
+function getState (id) {
   return RecipeStore.getRecipe(id);
 }
 
@@ -38,39 +40,39 @@ var RecipeForm = React.createClass({
       this._id = this.props.params.id;
       return RecipeStore.getRecipe(this.props.params._id);
 
-    } else {
-      /**
-      * Create the blank recipe in the store to edit
-      * this will create an empty record if they leave, but that's
-      * not terrible because they can edit or delete it from the inbox
-      */
-      var newRecipe = {
-        _id: uuid.v4(),
-        title: "New Recipe (edit me)",
-        portions: "",
-        totalTimeInMinutes: "",
-        instructions: "",
-        ingredients: [
-          {
-            ingredient: "Brown Rice",
-            quantity: 2.5,
-            measurement: "cups",
-            modifier: "cooked"
-          },
-          {
-            ingredient: "",
-            quantity: "",
-            measurement: "",
-            modifier: ""
-          }
-        ],
-        saved: false
-      };
-
-      RecipeActions.recipeCreated(newRecipe);
-      this._id = newRecipe._id;
-      return newRecipe;
     }
+
+    /**
+    * Create the blank recipe in the store to edit
+    * this will create an empty record if they leave, but that's
+    * not terrible because they can edit or delete it from the inbox
+    */
+    var newRecipe = {
+      _id: uuid.v4(),
+      title: "New Recipe (edit me)",
+      portions: "",
+      totalTimeInMinutes: "",
+      instructions: "",
+      ingredients: [
+        {
+          ingredient: "Brown Rice",
+          quantity: 2.5,
+          measurement: "cups",
+          modifier: "cooked"
+        },
+        {
+          ingredient: "",
+          quantity: "",
+          measurement: "",
+          modifier: ""
+        }
+      ],
+      saved: false
+    };
+
+    RecipeActions.recipeCreated(newRecipe);
+    this._id = newRecipe._id;
+    return newRecipe;
   },
 
   componentWillMount: function () {},

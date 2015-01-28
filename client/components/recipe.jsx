@@ -1,10 +1,10 @@
 var React = require("react");
-var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 
 /**
  * Router
 */
+
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
@@ -12,6 +12,7 @@ var Link = Router.Link;
 /**
  * Child Components
 */
+
 var Button = require("./button");
 
 var Recipe = React.createClass({

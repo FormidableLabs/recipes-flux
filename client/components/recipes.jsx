@@ -1,17 +1,18 @@
 var React = require("react");
 var Recipe = require("./recipe");
-var McFly = require("../McFly");
 var RecipeStore = require("../stores");
 
 /**
  * Router & Data
 */
+
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 /**
  * Component
 */
+
 function getState() {
   return {
     store: RecipeStore.getRecipes()

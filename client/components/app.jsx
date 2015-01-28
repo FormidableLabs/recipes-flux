@@ -3,18 +3,20 @@ var React = require("react");
 /**
  * Router
 */
+
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
 
 /**
  * Child Components
 */
+
 var Nav = require("./nav");
 
 /**
  * Component
 */
+
 var App = React.createClass({
   displayName: "App",
   propTypes: {},

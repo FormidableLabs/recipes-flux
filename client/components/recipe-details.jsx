@@ -1,25 +1,27 @@
 /**
  * React
 */
+
 var React = require("react");
 var RecipeStore = require("../stores");
-var RecipeActions = require("../actions");
 
 /**
- * Router & Data
+ * Router
 */
+
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
-var _ = require("lodash");
 
 /**
  * Child Components
 */
+
 var Ingredient = require("./ingredient");
 
 /**
  * Component
 */
+
 function getState(id) {
   return RecipeStore.getRecipe(id);
 }

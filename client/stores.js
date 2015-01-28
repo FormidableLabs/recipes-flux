@@ -1,6 +1,4 @@
 var McFly = require("./McFly");
-var RecipeActions = require("./actions");
-var request = require("superagent");
 var db = require("./mock-db");
 var _ = require("lodash");
 // var uuid = require("uuid");
@@ -35,19 +33,16 @@ var RecipeStore = McFly.createStore({
     } else {
       recipe[accessor] = value;
     }
-    return;
   },
 
   createRecipe: function (recipe) {
     this._recipes.push(recipe);
-    return;
   },
 
   createIngredient: function () {},
 
   deleteRecipe: function (_id) {
     _.remove(this._recipes, {_id: _id});
-    return;
   },
 
   getRecipe: function (_id) {
@@ -57,7 +52,7 @@ var RecipeStore = McFly.createStore({
   getRecipes: function () {
     return this._recipes;
   }
-},function (payload) {
+}, function (payload) {
   if (payload.actionType === "RECIPE_CREATE") {
     RecipeStore.createRecipe(payload.data);
     RecipeStore.emitChange();
