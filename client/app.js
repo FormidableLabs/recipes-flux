@@ -1,8 +1,14 @@
-/*jshint unused:false */
-
 /**
- * Entry point.
+ * Entry point
  */
 
-/** ROUTER **/
-var router = require("./router");
+/**
+ * Router
+*/
+
+var Router = require("./router");
+
+// Side effect: Instantiate the router.
+/* eslint-disable no-new */
+new Router();
+/* eslint-enable no-new */

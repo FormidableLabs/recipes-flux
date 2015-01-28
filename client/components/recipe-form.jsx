@@ -1,29 +1,27 @@
-/*jshint unused:false */
 var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 var uuid = require("uuid");
 
 /**
-Router
+ * Router
 */
 
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
 
 /**
-Child Components
+ * Child Components
 */
 
 var Input = require("./input");
 var Button = require("./button");
 
 /**
-Component
+ * Component
 */
 
-function getState(id){
+function getState (id) {
   return RecipeStore.getRecipe(id);
 }
 
@@ -31,6 +29,7 @@ var RecipeForm = React.createClass({
   displayName: "RecipeForm",
   propTypes: {},
   mixins: [RecipeStore.mixin],
+
   getInitialState: function () {
     if (this.props.params._id) {
       /**
@@ -41,43 +40,45 @@ var RecipeForm = React.createClass({
       this._id = this.props.params.id;
       return RecipeStore.getRecipe(this.props.params._id);
 
-    } else {
-      /**
-      * create the blank recipe in the store to edit
-      * this will create an empty record if they leave, but that's
-      * not terrible because they can edit or delete it from the inbox
-      */
-
-      var newRecipe = {
-        _id: uuid.v4(),
-        title: "New Recipe (edit me)",
-        portions: "",
-        totalTimeInMinutes: "",
-        instructions: "",
-        ingredients: [
-          {
-            ingredient: "Brown Rice",
-            quantity: 2.5,
-            measurement: "cups",
-            modifier: "cooked"
-          },
-          {
-            ingredient: "",
-            quantity: "",
-            measurement: "",
-            modifier: ""
-          }
-        ],
-        saved: false
-      };
-
-      RecipeActions.recipeCreated(newRecipe);
-      this._id = newRecipe._id;
-      return newRecipe;
     }
+
+    /**
+    * Create the blank recipe in the store to edit
+    * this will create an empty record if they leave, but that's
+    * not terrible because they can edit or delete it from the inbox
+    */
+    var newRecipe = {
+      _id: uuid.v4(),
+      title: "New Recipe (edit me)",
+      portions: "",
+      totalTimeInMinutes: "",
+      instructions: "",
+      ingredients: [
+        {
+          ingredient: "Brown Rice",
+          quantity: 2.5,
+          measurement: "cups",
+          modifier: "cooked"
+        },
+        {
+          ingredient: "",
+          quantity: "",
+          measurement: "",
+          modifier: ""
+        }
+      ],
+      saved: false
+    };
+
+    RecipeActions.recipeCreated(newRecipe);
+    this._id = newRecipe._id;
+    return newRecipe;
   },
+
   componentWillMount: function () {},
+
   componentWillUnmount: function () {},
+
   inputCallback: function (_id, accessor, index, value) {
     RecipeActions.inputChanged({
       _id: _id,
@@ -86,23 +87,26 @@ var RecipeForm = React.createClass({
       value: value
     });
   },
+
   onChange: function () {
     this.setState(getState(this._id));
   },
+
   ingredientCreated: function () {
     RecipeActions.ingredientCreated({
       _id: this.state._id
     });
   },
+
   ingredientDeleted: function (_id, accessor, index) {
     RecipeActions.ingredientDeleted({
       _id: this.state._id,
       index: index
     });
   },
+
   createNodes: function (ingredient, index) {
     return (
-      /*jshint ignore:start*/
       <div className="Ingredient" key={index}>
         <Input
           placeholder="Ingredient"
@@ -137,7 +141,6 @@ var RecipeForm = React.createClass({
           index={index}
           value="Delete Ingredient"/>
       </div>
-      /*jshint ignore:end */
     );
   },
 
@@ -146,7 +149,7 @@ var RecipeForm = React.createClass({
       this.createNodes
     );
 
-    return (/*jshint ignore:start */
+    return (
       <div className="recipe">
         <Input
           placeholder="Title"
@@ -178,10 +181,8 @@ var RecipeForm = React.createClass({
             value="Add Another Ingredient"/>
         <RouteHandler {...this.props}/>
       </div>
-    /*jshint ignore:end */);
+    );
   }
 });
 
 module.exports = RecipeForm;
-
-

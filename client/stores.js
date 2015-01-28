@@ -1,7 +1,4 @@
-/*jshint unused:false */
 var McFly = require("./McFly");
-var RecipeActions = require("./actions");
-var request = require("superagent");
 var db = require("./mock-db");
 var _ = require("lodash");
 // var uuid = require("uuid");
@@ -10,13 +7,14 @@ var _ = require("lodash");
 var RecipeStore = McFly.createStore({
   // Initial setup
   _recipes: db,
+
   updateRecipeIngredientList: function (_id, index) {
     var recipe = this.getRecipe(_id);
     if (index || index === 0) {
-      /* delete operation */
+      /* Delete operation */
       recipe.ingredients.splice(index, 1);
     } else {
-      /* create operation */
+      /* Create operation */
       recipe.ingredients.push(
         {
           ingredient: "",
@@ -27,6 +25,7 @@ var RecipeStore = McFly.createStore({
       );
     }
   },
+
   updateRecipe: function (_id, accessor, index, value) {
     var recipe = this.getRecipe(_id);
     if (index || index === 0) {
@@ -34,26 +33,26 @@ var RecipeStore = McFly.createStore({
     } else {
       recipe[accessor] = value;
     }
-    return;
   },
+
   createRecipe: function (recipe) {
     this._recipes.push(recipe);
-    return;
   },
-  createIngredient: function () {
 
-  },
+  createIngredient: function () {},
+
   deleteRecipe: function (_id) {
     _.remove(this._recipes, {_id: _id});
-    return;
   },
+
   getRecipe: function (_id) {
     return _.find(this._recipes, {_id: _id});
   },
+
   getRecipes: function () {
     return this._recipes;
   }
-},function (payload) {
+}, function (payload) {
   if (payload.actionType === "RECIPE_CREATE") {
     RecipeStore.createRecipe(payload.data);
     RecipeStore.emitChange();

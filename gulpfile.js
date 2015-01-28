@@ -5,8 +5,8 @@ var fs = require("fs");
 // var _ = require("lodash");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
-var jshint = require("gulp-jshint");
 var jsxcs = require("gulp-jsxcs");
+var eslint = require("gulp-eslint");
 var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
 var webpack = require("webpack");
@@ -25,32 +25,22 @@ var _jsonCfg = function (name) {
 };
 
 // ----------------------------------------------------------------------------
-// JsHint
+// EsLint
 // ----------------------------------------------------------------------------
-gulp.task("jshint:client", function () {
-  gulp
+gulp.task("eslint-frontend", function (cb) {
+  return gulp
     .src([
       "client/**/*.{js,jsx}"
     ])
-    .pipe(jshint(_jsonCfg(".jshint-frontend.json")))
-    .pipe(jshint.reporter("default"))
-    .pipe(jshint.reporter("fail"));
+    .pipe(eslint({
+      envs: [
+        "browser"
+      ]
+    }))
+    .pipe(eslint.formatEach("stylish", process.stderr))
+    .pipe(eslint.failOnError());
 });
-
-gulp.task("jshint:backend", function () {
-  gulp
-    .src([
-      "scripts/**/*.js",
-      "server/**/*.js",
-      "test/**/*.js",
-      "*.js"
-    ])
-    .pipe(jshint(_jsonCfg(".jshint-backend.json")))
-    .pipe(jshint.reporter("default"))
-    .pipe(jshint.reporter("fail"));
-});
-
-gulp.task("jshint", ["jshint:client", "jshint:backend"]);
+gulp.task("eslint", ["eslint-frontend"]);
 
 // ----------------------------------------------------------------------------
 // JsCs
@@ -70,9 +60,9 @@ gulp.task("jscs", function () {
 // ----------------------------------------------------------------------------
 // Quality
 // ----------------------------------------------------------------------------
-gulp.task("check",      ["jscs", "jshint"]);
-gulp.task("check:ci",   ["jscs", "jshint"]);
-gulp.task("check:all",  ["jscs", "jshint"]);
+gulp.task("check",      ["jscs", "eslint"]);
+gulp.task("check:ci",   ["jscs", "eslint"]);
+gulp.task("check:all",  ["jscs", "eslint"]);
 
 // -----------
 // Cleaning
