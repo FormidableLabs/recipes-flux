@@ -1,13 +1,13 @@
-// Core variables and mixins
+/* VARIABLES & MIXINS */
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
 
-// Reset and dependencies
+/* RESET & DEPENDENCIES */
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
 
-// Core CSS
+/* CORE CSS */
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/type";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/code";
@@ -16,7 +16,7 @@
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/forms";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/buttons";
 
-// Components
+/* COMPONENTS */
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/component-animations";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/dropdowns";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/button-groups";
@@ -39,12 +39,12 @@
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/wells";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/close";
 
-// Components w/ JavaScript
+/* JS COMPONENTS */
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/modals";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/tooltip";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/popovers";
 // @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/carousel";
 
-// Utility classes
+/* UTILITIES */
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/utilities";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-utilities";

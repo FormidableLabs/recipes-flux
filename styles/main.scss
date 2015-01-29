@@ -1,19 +1,16 @@
-//
-// epicure style guide
-//
-
+/* EPICURE STYLE GUIDE */
 @import 'normalize';
 
-// BASE
+/* BASE */
 @import 'base/variables';
 @import 'base/base';
 // @import 'base/content';
 // @import 'base/mixins';
 
-//LAYOUT
+/* LAYOUT */
 @import 'layout/grid';
 
-//MODULES
+/* MODULES */
 // @import 'modules/buttons';
 // @import 'modules/footer';
 // @import 'modules/forms';
@@ -24,17 +21,17 @@
 @import 'modules/_nav';
 @import 'modules/_recipes';
 
-//STATES
+/* STATES */
 // @import 'states/states';
 
-// utilities
+/* UTILITIES */
 // @import 'base/utilities';
 
-//BOOTSTRAP
+/* BOOTSTRAP */
 // TODO: REMOVE?
-//@import '_bootstrap_custom.scss';
+// @import '_bootstrap_custom.scss';
 
-//FONT AWESOME
+/* FONT AWESOME */
 // TODO: REMOVE?
 // @import "../../bower_components/font-awesome/scss/variables";
 // @import "../../bower_components/font-awesome/scss/mixins";
