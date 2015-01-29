@@ -13,7 +13,7 @@ var Input = require("./input");
 var Button = require("./button");
 
 // Component
-function getState (id) {
+function getState(id) {
   return RecipeStore.getRecipe(id);
 }
 

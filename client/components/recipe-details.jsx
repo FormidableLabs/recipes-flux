@@ -44,7 +44,7 @@ var RecipeDetails = React.createClass({
   },
 
   render: function () {
-    function createNodes (ingredient, index) {
+    function createNodes(ingredient, index) {
       return (
         <Ingredient key={index} ingredient={ingredient}/>
       );

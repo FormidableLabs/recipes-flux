@@ -2,6 +2,7 @@
 require("node-jsx").install({ extension: ".jsx" });
 
 // Server
+var path = require("path");
 var express = require("express");
 var compress = require("compression");
 var exphbs = require("express-handlebars");
@@ -17,7 +18,7 @@ app.use(compress());
 app.use(bodyParser());
 app.engine(".hbs", exphbs({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
-app.set("views", __dirname + "/../templates");
+app.set("views", path.join(__dirname, "../templates"));
 
 // ----------------------------------------------------------------------------
 // Static Routes
@@ -25,8 +26,8 @@ app.set("views", __dirname + "/../templates");
 app.use("/app/js-dist/*.map", function (req, res) {
   res.send(404, "404"); // Prevent sourcemap serving.
 });
-app.use("/app/js-dist", express["static"]("app/js-dist"));
-app.use("/app/css-dist", express["static"]("app/css-dist"));
+app.use("/app/js-dist", express.static("app/js-dist"));
+app.use("/app/css-dist", express.static("app/css-dist"));
 
 // ----------------------------------------------------------------------------
 // API

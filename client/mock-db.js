@@ -103,12 +103,14 @@ module.exports = [
         ingredient: "garlic clove",
         quantity: 1,
         measurement: null,
-        modifier: null},
+        modifier: null
+      },
       {
         ingredient: "olive oil",
         quantity: 1,
         measurement: "tablespoon",
-        modifier: null},
+        modifier: null
+      },
       {
         ingredient: "tomato",
         quantity: 3,
@@ -125,12 +127,14 @@ module.exports = [
         ingredient: "basil",
         quantity: 1,
         measurement: "teaspoon",
-        modifier: "dried"},
+        modifier: "dried"
+      },
       {
         ingredient: "eggplant",
         quantity: 1.5,
         measurement: "pounds",
-        modifier: null},
+        modifier: null
+      },
       {
         ingredient: "mozzarella cheese",
         quantity: 0.75,
