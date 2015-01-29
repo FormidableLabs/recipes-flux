@@ -41,11 +41,11 @@ var RecipeStore = McFly.createStore({
   createIngredient: function () {},
 
   deleteRecipe: function (_id) {
-    _.remove(this._recipes, {_id: _id});
+    _.remove(this._recipes, { _id: _id });
   },
 
   getRecipe: function (_id) {
-    return _.find(this._recipes, {_id: _id});
+    return _.find(this._recipes, { _id: _id });
   },
 
   getRecipes: function () {

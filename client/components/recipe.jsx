@@ -1,28 +1,16 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 var RecipeActions = require("../actions");
 
-/**
- * Router
- */
-
+// Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
-/**
- * Child Components
- */
-
+// Child Components
 var Button = require("./button");
 
-/**
- * Component
- */
-
+// Component
 var Recipe = React.createClass({
   displayName: "Recipe",
   propTypes: {},

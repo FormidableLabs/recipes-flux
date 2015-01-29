@@ -1,15 +1,13 @@
-// BASE
-// Styles applied directly to elements usually using the element selector
-
+/* BASE */
 html {
   box-sizing: border-box;
 }
 
-/* Necessary for footer */
+// Necessary for footer
 html,
 body {
   height: 100%;
-  /* The html and body elements cannot have any padding or margin */
+  // html and body elements cannot have any padding or margin
 }
 
 *, *:before, *:after {
@@ -18,23 +16,19 @@ body {
 
 body {
   font-size: 16px;
-  // color: $text-color;
   font-family: $serif-font;
-  // line-height: $default-leading;
   text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol {
   margin-top: 0;
+
   font-family: inherit;
 }
 
-/**
- * Make this responsive
-*/
-
+// Make this responsive
 .epicureContainer {
-  margin: 20px
+  margin: 20px;
 }
 
 /**

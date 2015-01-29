@@ -1,20 +1,11 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 
-/**
- * Router
- */
-
+// Router
 var Router = require("react-router");
 var Link = Router.Link;
 
-/**
- * Component
- */
-
+// Component
 var Nav = React.createClass({
   displayName: "Nav",
   propTypes: {},

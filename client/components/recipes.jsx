@@ -1,22 +1,13 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 var Recipe = require("./recipe");
 var RecipeStore = require("../stores");
 
-/**
- * Router
- */
-
+// Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
-/**
- * Component
- */
-
+// Component
 function getState() {
   return {
     store: RecipeStore.getRecipes()

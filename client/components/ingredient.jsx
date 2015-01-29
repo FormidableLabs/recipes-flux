@@ -1,28 +1,16 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 
-/**
- * Create fractions from decimals
- * https://www.npmjs.com/package/lb-ratio
- */
-
+// Create fractions from decimals
+// https://www.npmjs.com/package/lb-ratio
 var ratio = require("lb-ratio");
 var characterFor = require("vulgarities/charFor");
 
-/**
- * Router
- */
-
+// Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
-/**
- * Component
- */
-
+// Component
 var Ingredient = React.createClass({
   displayName: "Ingredient",
   propTypes: {},
@@ -41,10 +29,7 @@ var Ingredient = React.createClass({
       return fractionString;
     }
 
-    /**
-     * Decimal to fraction
-     */
-
+    // Decimal to fraction
     var q = this.props.ingredient.quantity;
     if (!isNaN(q)) {
       if (q < 1) {

@@ -1,31 +1,19 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 var RecipeStore = require("../stores");
 var RecipeActions = require("../actions");
 var uuid = require("uuid");
 
-/**
- * Router
- */
-
+// Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
-/**
- * Child Components
- */
-
+// Child Components
 var Input = require("./input");
 var Button = require("./button");
 
-/**
- * Component
- */
-
-function getState (id) {
+// Component
+function getState(id) {
   return RecipeStore.getRecipe(id);
 }
 

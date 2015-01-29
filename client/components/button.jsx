@@ -1,13 +1,7 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 
-/**
- * Component
- */
-
+// Component
 var Input = React.createClass({
   displayName: "Input",
   propTypes: {},

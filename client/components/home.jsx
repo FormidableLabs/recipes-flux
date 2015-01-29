@@ -1,20 +1,11 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 
-/**
- * Router
- */
-
+// Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
-/**
- * Component
- */
-
+// Component
 var Home = React.createClass({
   displayName: "Home",
   propTypes: {},

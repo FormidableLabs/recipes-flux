@@ -1,6 +1,4 @@
-/**
- * Gulpfile
- */
+// Gulpfile
 var fs = require("fs");
 // var _ = require("lodash");
 var gulp = require("gulp");
@@ -16,6 +14,20 @@ var buildCfg = require("./webpack.config");
 var buildDevCfg = require("./webpack.dev-config");
 
 // ----------------------------------------------------------------------------
+// Constants
+// ----------------------------------------------------------------------------
+var FRONTEND_FILES = [
+  "client/**/*.{js,jsx}"
+];
+
+var BACKEND_FILES = [
+  "scripts/**/*.js",
+  "server/**/*.js",
+  "test/**/*.js",
+  "*.js"
+];
+
+// ----------------------------------------------------------------------------
 // Helpers
 // ----------------------------------------------------------------------------
 // Strip comments from JsHint JSON files (naive).
@@ -27,11 +39,9 @@ var _jsonCfg = function (name) {
 // ----------------------------------------------------------------------------
 // EsLint
 // ----------------------------------------------------------------------------
-gulp.task("eslint-frontend", function (cb) {
+gulp.task("eslint-frontend", function () {
   return gulp
-    .src([
-      "client/**/*.{js,jsx}"
-    ])
+    .src(FRONTEND_FILES)
     .pipe(eslint({
       envs: [
         "browser"
@@ -40,20 +50,30 @@ gulp.task("eslint-frontend", function (cb) {
     .pipe(eslint.formatEach("stylish", process.stderr))
     .pipe(eslint.failOnError());
 });
-gulp.task("eslint", ["eslint-frontend"]);
+
+gulp.task("eslint-backend", function () {
+  return gulp
+    .src(BACKEND_FILES)
+    .pipe(eslint({
+      envs: [
+        "node"
+      ]
+    }))
+    .pipe(eslint.formatEach("stylish", process.stderr))
+    .pipe(eslint.failOnError());
+});
+
+gulp.task("eslint", ["eslint-frontend", "eslint-backend"]);
 
 // ----------------------------------------------------------------------------
 // JsCs
 // ----------------------------------------------------------------------------
 gulp.task("jscs", function () {
   return gulp
-    .src([
-      "client/**/*.{js,jsx}",
-      "scripts/**/*.js",
-      "server/**/*.js",
-      "test/**/*.js",
-      "*.js"
-    ])
+    .src([].concat(
+      FRONTEND_FILES,
+      BACKEND_FILES
+    ))
     .pipe(jsxcs(_jsonCfg(".jscsrc")));
 });
 
