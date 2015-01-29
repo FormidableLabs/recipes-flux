@@ -106,7 +106,7 @@ var Input = React.createClass({
   },
 
   buildInput: function () {
-    var inputStyles = this.getStaticStyles();
+    var inputStyles = this.buildStyles(this.getStyles());
 
     if (this.props.textareaResize && this.state.textareaHeight) {
       inputStyles.height = this.state.textareaHeight;

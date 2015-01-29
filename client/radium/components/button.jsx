@@ -91,21 +91,23 @@ var Button = React.createClass({
             boxShadow: "0 2px 0 #aec5d9",
             $dynamicBorder: false,
             $dynamicBoxShadow: false,
-            $dynamicBg: false,
 
             states: {
               hover: {
+                $dynamicBg: false,
                 backgroundColor: "#DAE0E5",
                 boxShadow: "0 2px 0 #8FA2B2",
                 borderBottomColor: "#DAE0E5"
               },
               active: {
+                $dynamicBg: false,
                 color: "#005299",
                 boxShadow: "none",
                 backgroundColor: "#8FA2B2",
                 borderBottomColor: "#8FA2B2"
               },
               focus: {
+                $dynamicBg: false,
                 backgroundColor: "#aec5d9",
                 boxShadow: "0 2px 0 #8FA2B2",
                 borderBottomColor: "#aec5d9"
@@ -177,12 +179,11 @@ var Button = React.createClass({
   },
 
   render: function () {
-    var builtStyles = this.getStaticStyles();
-    var computedStyles = this.buildComputedStyles(builtStyles);
+    var styles = this.buildStyles(this.getStyles(), this.buildComputedStyles);
 
     return (/*jshint ignore:start*/
       <button
-        style={this.getFinalStyles(builtStyles, computedStyles)}
+        style={styles}
         {...this.props}
         {...this.radiumBrowserStateEvents}
         >

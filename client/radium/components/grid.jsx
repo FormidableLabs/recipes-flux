@@ -1,3 +1,4 @@
+/*jshint unused:false */
 var React = require("react/addons");
 
 var RadiumBrowserState = require("../mixins/radium-browser-state");
@@ -49,8 +50,10 @@ var Grid = React.createClass({
   },
 
   render: function () {
+    var styles = this.buildStyles(this.getStyles());
+
     return (/*jshint ignore:start*/
-      <div style={this.getStaticStyles()}>
+      <div style={styles}>
         {this.buildChildren(this.props.children)}
       </div>
     /*jshint ignore:end*/);

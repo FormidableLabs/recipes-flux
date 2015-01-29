@@ -92,9 +92,7 @@ var RadiumBrowserState = {
     return stateStyles;
   },
 
-  getModifierStyles: function () {
-    var styles = this.getStyles();
-
+  getModifierStyles: function (styles) {
     var modifierStyles = styles.standard;
 
     // TODO: Replace with reduce?
@@ -125,8 +123,8 @@ var RadiumBrowserState = {
     return modifierStyles;
   },
 
-  getStaticStyles: function () {
-    var elementStyles = this.getModifierStyles();
+  getStaticStyles: function (styles) {
+    var elementStyles = this.getModifierStyles(styles);
 
     return _.merge(
       elementStyles,
@@ -135,8 +133,15 @@ var RadiumBrowserState = {
     );
   },
 
-  getFinalStyles: function (styles, computedStyles) {
-    return _.merge(styles, computedStyles);
+  buildStyles: function (styles, computedStyleFunc) {
+    var staticStyles = this.getStaticStyles(styles);
+    var computedStyles;
+
+    if (computedStyleFunc) {
+      computedStyles = computedStyleFunc(staticStyles);
+    }
+
+    return _.merge(staticStyles, computedStyles);
   }
 };
 

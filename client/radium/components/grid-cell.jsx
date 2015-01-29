@@ -64,9 +64,10 @@ var GridCell = React.createClass({
       width = this.props.width;
     }
 
-    var builtStyles = _.assign({}, this.getStaticStyles(), {
-      width: width
-    });
+    var builtStyles = _.merge(
+      this.buildStyles(this.getStyles()),
+      { width: width }
+    );
 
     return (/*jshint ignore:start*/
       <div style={builtStyles}>
