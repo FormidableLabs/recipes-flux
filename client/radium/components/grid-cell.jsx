@@ -7,38 +7,40 @@ var RadiumBrowserState = require("../mixins/radium-browser-state");
 var GridCell = React.createClass({
   mixins: [RadiumBrowserState],
 
-  styles: {
-    standard: {
-      boxSizing: "border-box",
-      display: "inline-block",
-      textAlign: "left",
-      width: "100%"
-    },
-    modifiers: {
-      gutter: {
-        paddingRight: "0.5em",
-        paddingLeft: "0.5em"
+  getStyles: function() {
+    return {
+      standard: {
+        boxSizing: "border-box",
+        display: "inline-block",
+        textAlign: "left",
+        width: "100%"
       },
-      verticalAlign: {
-        top: {
-          verticalAlign: "top"
+      modifiers: {
+        gutter: {
+          paddingRight: "0.5em",
+          paddingLeft: "0.5em"
         },
-        middle: {
-          verticalAlign: "middle"
+        verticalAlign: {
+          top: {
+            verticalAlign: "top"
+          },
+          middle: {
+            verticalAlign: "middle"
+          },
+          bottom: {
+            verticalAlign: "bottom"
+          }
         },
-        bottom: {
-          verticalAlign: "bottom"
-        }
-      },
-      align: {
-        right: {
-          textAlign: "right"
-        },
-        center: {
-          textAlign: "center"
+        align: {
+          right: {
+            textAlign: "right"
+          },
+          center: {
+            textAlign: "center"
+          }
         }
       }
-    }
+    };
   },
 
   propTypes: {
@@ -62,7 +64,7 @@ var GridCell = React.createClass({
       width = this.props.width;
     }
 
-    var builtStyles = _.assign({}, this.getStyles(), {
+    var builtStyles = _.assign({}, this.getStaticStyles(), {
       width: width
     });
 

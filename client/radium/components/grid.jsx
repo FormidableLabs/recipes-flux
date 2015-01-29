@@ -5,23 +5,25 @@ var RadiumBrowserState = require("../mixins/radium-browser-state");
 var Grid = React.createClass({
   mixins: [RadiumBrowserState],
 
-  styles: {
-    standard: {
-      textAlign: "left"
-    },
-    modifiers: {
-      align: {
-        center: {
-          textAlign: "center"
-        },
-        right: {
-          textAlign: "right"
-        }
+  getStyles: function () {
+    return {
+      standard: {
+        textAlign: "left"
       },
-      gutters: {
-        margin: "0 -0.5em"
+      modifiers: {
+        align: {
+          center: {
+            textAlign: "center"
+          },
+          right: {
+            textAlign: "right"
+          }
+        },
+        gutters: {
+          margin: "0 -0.5em"
+        }
       }
-    }
+    };
   },
 
   propTypes: {
@@ -48,7 +50,7 @@ var Grid = React.createClass({
 
   render: function () {
     return (/*jshint ignore:start*/
-      <div style={this.getStyles()}>
+      <div style={this.getStaticStyles()}>
         {this.buildChildren(this.props.children)}
       </div>
     /*jshint ignore:end*/);

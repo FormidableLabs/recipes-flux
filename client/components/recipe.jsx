@@ -44,8 +44,7 @@ var Recipe = React.createClass({
         <RadiumButton
           _id={this.props.recipe._id}
           size="mini"
-          onClick={this.deleteRecipe}
-          >
+          onClick={this.deleteRecipe}>
           Delete
         </RadiumButton>
       </p>

@@ -6,38 +6,40 @@ var RadiumBrowserState = require("../mixins/radium-browser-state");
 var Input = React.createClass({
   mixins: [RadiumBrowserState],
 
-  styles: {
-    standard: {
-      display: "block",
-      width: "100%",
-      fontSize: 16,
-      borderRadius: "0.3em",
-      padding: "0.4em",
-      border: "1px solid #ccc",
-      lineHeight: 1.2,
-      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-      boxSizing: "border-box"
-    },
-    modifiers: {
-      size: {
-        large: {
-          fontSize: 21
+  getStyles: function () {
+    return {
+      standard: {
+        display: "block",
+        width: "100%",
+        fontSize: 16,
+        borderRadius: "0.3em",
+        padding: "0.4em",
+        border: "1px solid #ccc",
+        lineHeight: 1.2,
+        fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+        boxSizing: "border-box"
+      },
+      modifiers: {
+        size: {
+          large: {
+            fontSize: 21
+          },
+          small: {
+            fontSize: 14
+          }
         },
-        small: {
-          fontSize: 14
+        type: {
+          textarea: {
+            resize: "vertical",
+            minHeight: "4em"
+          }
+        },
+        inline: {
+          display: "inline-block",
+          width: "auto"
         }
-      },
-      type: {
-        textarea: {
-          resize: "vertical",
-          minHeight: "4em"
-        }
-      },
-      inline: {
-        display: "inline-block",
-        width: "auto"
       }
-    }
+    };
   },
 
   propTypes: {
@@ -104,7 +106,7 @@ var Input = React.createClass({
   },
 
   buildInput: function () {
-    var inputStyles = this.getStyles();
+    var inputStyles = this.getStaticStyles();
 
     if (this.props.textareaResize && this.state.textareaHeight) {
       inputStyles.height = this.state.textareaHeight;

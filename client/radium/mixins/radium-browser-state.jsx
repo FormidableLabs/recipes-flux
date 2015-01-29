@@ -77,6 +77,7 @@ var RadiumBrowserState = {
     });
   },
 
+  // TODO: Handle multiple active states. It's an "or" thing right now.
   getStateStyles: function (states) {
     var stateStyles;
 
@@ -92,12 +93,15 @@ var RadiumBrowserState = {
   },
 
   getModifierStyles: function () {
-    var modifierStyles = {};
+    var styles = this.getStyles();
 
-    _.forEach(this.styles.modifiers, function (modifier, key) {
+    var modifierStyles = styles.standard;
+
+    // TODO: Replace with reduce?
+    _.forEach(styles.modifiers, function (modifier, key) {
       if (this.props[key]) {
         var modifierValue = this.props[key];
-        var activeModifier, activeModifierStates;
+        var activeModifier;
 
         if (_.isString(modifierValue)) {
           activeModifier = modifier[modifierValue];
@@ -111,14 +115,9 @@ var RadiumBrowserState = {
           return;
         }
 
-        if (activeModifier.states) {
-          activeModifierStates = this.getStateStyles(activeModifier.states);
-        }
-
-        _.assign(
+        _.merge(
           modifierStyles,
-          activeModifier,
-          activeModifierStates
+          activeModifier
         );
       }
     }, this);
@@ -126,22 +125,18 @@ var RadiumBrowserState = {
     return modifierStyles;
   },
 
-  getStyles: function () {
-    return _.assign(
-      {},
-      this.styles.standard,
+  getStaticStyles: function () {
+    var elementStyles = this.getModifierStyles();
+
+    return _.merge(
+      elementStyles,
       this.props.styleOverrides,
-      this.getStateStyles(this.styles.states),
-      this.getModifierStyles()
+      this.getStateStyles(elementStyles.states)
     );
   },
 
-  getComputedStyles: function (styles, computedStyles) {
-    return _.assign(
-      {},
-      styles,
-      computedStyles
-    );
+  getFinalStyles: function (styles, computedStyles) {
+    return _.merge(styles, computedStyles);
   }
 };
 
