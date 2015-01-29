@@ -6,7 +6,7 @@ var RadiumBrowserState = require("../mixins/radium-browser-state");
 var Input = React.createClass({
   mixins: [RadiumBrowserState],
 
-  getStyles: function () {
+  getInputStyles: function () {
     return {
       standard: {
         display: "block",
@@ -37,6 +37,29 @@ var Input = React.createClass({
         inline: {
           display: "inline-block",
           width: "auto"
+        }
+      }
+    };
+  },
+
+  getLabelStyles: function () {
+    return {
+      standard: {
+        display: "inline-block",
+        marginBottom: "0.25em"
+      },
+      modifiers: {
+        labelHidden: {
+          clip: "rect(0 0 0 0)",
+          height: 1,
+          margin: -1,
+          overflow: "hidden",
+          position: "absolute",
+          width: 1
+        },
+        inline: {
+          marginBottom: 0,
+          marginRight: "1em"
         }
       }
     };
@@ -105,25 +128,34 @@ var Input = React.createClass({
     return this.refs.input.getDOMNode();
   },
 
-  buildInput: function () {
-    var inputStyles = this.buildStyles(this.getStyles());
+  buildComputedStyles: function (styles) {
+    var computedStyles = {};
 
     if (this.props.textareaResize && this.state.textareaHeight) {
-      inputStyles.height = this.state.textareaHeight;
+      computedStyles.height = this.state.textareaHeight;
     }
+
+    return computedStyles;
+  },
+
+  buildInput: function () {
+    var styles = this.buildStyles(
+      this.getInputStyles(),
+      this.buildComputedStyles
+    );
 
     var textarea = (/*jshint ignore:start*/
       <textarea
         {...this.props}
         ref="input"
-        style={inputStyles}
+        style={styles}
         onChange={this.handleChange}
         />
     /*jshint ignore:end*/);
     var input = (/*jshint ignore:start*/
       <input
         ref="input"
-        style={inputStyles}
+        style={styles}
         {...this.props} />
     /*jshint ignore:end*/);
 
@@ -135,35 +167,11 @@ var Input = React.createClass({
   },
 
   buildLabel: function (inputEl) {
-    var visibleLabelStyles = {
-      display: "inline-block",
-      marginBottom: "0.25em"
-    };
-    var hiddenLabelStyles = {
-      clip: "rect(0 0 0 0)",
-      height: 1,
-      margin: -1,
-      overflow: "hidden",
-      position: "absolute",
-      width: 1
-    };
-    var inlineLabelStyles = {
-      display: "inline-block",
-      marginRight: "1em"
-    };
-    var labelStyles;
-
-    if (this.props.labelHidden) {
-      labelStyles = hiddenLabelStyles;
-    } else if (this.props.inline) {
-      labelStyles = inlineLabelStyles;
-    } else {
-      labelStyles = visibleLabelStyles;
-    }
+    var styles = this.buildStyles(this.getLabelStyles());
 
     return (/*jshint ignore:start*/
       <label>
-        <span style={labelStyles}>
+        <span style={styles}>
           {this.props.label}
         </span>
         {inputEl}
