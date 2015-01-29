@@ -1,17 +1,17 @@
 // React
-var Router = require("react-router");
 var React = require("react");
+var Router = require("react-router");
 var App = require("./components/app");
+var Home = require("./components/home");
 var Recipes = require("./components/recipes");
 var RecipeDetails = require("./components/recipe-details");
-var NotFound = require("./components/notfound");
-var Home = require("./components/home");
 var RecipeForm = require("./components/recipe-form");
+var NotFound = require("./components/notfound");
 
 // Set up Router object
 var Route = Router.Route;
-var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute = Router.DefaultRoute;
+var NotFoundRoute = Router.NotFoundRoute;
 
 // Declare routes
 var routes = (
