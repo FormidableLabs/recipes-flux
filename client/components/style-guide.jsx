@@ -198,8 +198,22 @@ var StyleGuide = React.createClass({
         <div style={paddedCellStyle}>
           <p>
             <RadiumInput
-              label="Your name"
+              label="Normal Label"
               placeholder="A text input!" />
+          </p>
+
+          <p>
+            <RadiumInput
+              label="Inline Label"
+              inline={true}
+              placeholder="A text input!" />
+          </p>
+
+          <p>
+            <RadiumInput
+              labelHidden={true}
+              label="Hidden Label"
+              placeholder="Hidden Label (better have good placeholder text)" />
           </p>
 
           <p>
