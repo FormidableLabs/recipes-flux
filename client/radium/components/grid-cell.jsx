@@ -55,7 +55,7 @@ var GridCell = React.createClass({
     };
   },
 
-  render: function () {
+  computeWidth: function (styles) {
     var width;
 
     if (_.isNumber(this.props.width)) {
@@ -64,13 +64,16 @@ var GridCell = React.createClass({
       width = this.props.width;
     }
 
-    var builtStyles = _.merge(
-      this.buildStyles(this.getStyles()),
-      { width: width }
-    );
+    return {
+      width: width
+    };
+  },
+
+  render: function () {
+    var style = this.buildStyles(this.getStyles(), this.computeWidth);
 
     return (/*jshint ignore:start*/
-      <div style={builtStyles}>
+      <div style={style}>
         {this.props.children}
       </div>
     /*jshint ignore:end*/);
