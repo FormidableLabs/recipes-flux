@@ -29,7 +29,8 @@ var Input = React.createClass({
       },
       type: {
         textarea: {
-          resize: "vertical"
+          resize: "vertical",
+          minHeight: "4em"
         }
       },
       inline: {
@@ -65,7 +66,7 @@ var Input = React.createClass({
     return {
       type: "text",
       dangerouslyDisableLabel: false,
-      textareaResize: false
+      textareaResize: true
     };
   },
 
@@ -77,8 +78,16 @@ var Input = React.createClass({
     this.resizeTextarea();
   },
 
+  handleChange: function (ev) {
+    this.resizeTextarea();
+
+    if (this.props.onChange) {
+      this.props.onChange(ev);
+    }
+  },
+
   resizeTextarea: function () {
-    if (this.props.textareaResize) {
+    if (this.props.textareaResize && this.props.type === "textarea") {
       var oldHeight = this.state.textareaHeight;
       var newHeight = this.getInputElement().scrollHeight;
 
@@ -103,9 +112,10 @@ var Input = React.createClass({
 
     var textarea = (/*jshint ignore:start*/
       <textarea
+        {...this.props}
         ref="input"
         style={inputStyles}
-        {...this.props}
+        onChange={this.handleChange}
         />
     /*jshint ignore:end*/);
     var input = (/*jshint ignore:start*/

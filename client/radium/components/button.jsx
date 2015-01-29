@@ -179,8 +179,8 @@ var Button = React.createClass({
     return (/*jshint ignore:start*/
       <button
         style={this.getComputedStyles(builtStyles, computedStyles)}
-        {...this.radiumBrowserStateEvents}
         {...this.props}
+        {...this.radiumBrowserStateEvents}
         >
         {this.props.children}
       </button>

@@ -20,25 +20,16 @@ var RadiumBrowserState = {
     };
   },
 
-  callRadiumHandler: function (handler, component, ev) {
-    var radiumHandlers = {
-      "onMouseEnter": "onRadiumMouseEnter",
-      "onMouseLeave": "onRadiumMouseLeave",
-      "onMouseDown": "onRadiumMouseDown",
-      "onMouseUp": "onRadiumMouseUp",
-      "onFocus": "onRadiumFocus",
-      "onBlur": "onRadiumFocus"
-    };
+  callRadiumHandler: function (handler, ev) {
+    var currentHandler = this.props[handler];
 
-    var currentHandler = this.props[radiumHandlers[handler]];
-
-    if (_.isFunction(currentHandler)) {
-      currentHandler(component, ev);
+    if (currentHandler) {
+      currentHandler(ev);
     }
   },
 
   handleMouseEnter: function (ev) {
-    this.callRadiumHandler("onMouseEnter", this, ev);
+    this.callRadiumHandler("onMouseEnter", ev);
 
     this.setState({
       hover: true
@@ -46,7 +37,7 @@ var RadiumBrowserState = {
   },
 
   handleMouseLeave: function (ev) {
-    this.callRadiumHandler("onMouseLeave", this, ev);
+    this.callRadiumHandler("onMouseLeave", ev);
 
     this.setState({
       hover: false,
@@ -55,7 +46,7 @@ var RadiumBrowserState = {
   },
 
   handleMouseDown: function (ev) {
-    this.callRadiumHandler("onMouseDown", this, ev);
+    this.callRadiumHandler("onMouseDown", ev);
 
     this.setState({
       active: true
@@ -63,7 +54,7 @@ var RadiumBrowserState = {
   },
 
   handleMouseUp: function (ev) {
-    this.callRadiumHandler("onMouseUp", this, ev);
+    this.callRadiumHandler("onMouseUp", ev);
 
     this.setState({
       active: false
@@ -71,7 +62,7 @@ var RadiumBrowserState = {
   },
 
   handleFocus: function (ev) {
-    this.callRadiumHandler("onFocus", this, ev);
+    this.callRadiumHandler("onFocus", ev);
 
     this.setState({
       focus: true
@@ -79,7 +70,7 @@ var RadiumBrowserState = {
   },
 
   handleBlur: function (ev) {
-    this.callRadiumHandler("onBlur", this, ev);
+    this.callRadiumHandler("onBlur", ev);
 
     this.setState({
       focus: false
