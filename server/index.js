@@ -1,4 +1,4 @@
-// Patch require.
+// Patch require
 require("node-jsx").install({ extension: ".jsx" });
 
 // Server

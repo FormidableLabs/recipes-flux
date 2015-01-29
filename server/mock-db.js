@@ -1,7 +1,4 @@
-/**
- * Mock Database of Recipes
- */
-
+// Mock Database of Recipes
 module.exports = [
   {
     id: "781493c4-0b32-4186-aaa0-b7c6cb4b0c49",

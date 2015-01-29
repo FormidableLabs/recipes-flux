@@ -1,26 +1,14 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 
-/**
- * Router
- */
-
+// Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
-/**
- * Child Components
- */
-
+// Child Components
 var Nav = require("./nav");
 
-/**
- * Component
- */
-
+// Component
 var App = React.createClass({
   displayName: "App",
   propTypes: {},

@@ -1,13 +1,7 @@
-/**
- * React
- */
-
+// React
 var React = require("react");
 
-/**
- * Component
- */
-
+// Component
 var NotFound = React.createClass({
   displayName: "404",
   propTypes: {},
