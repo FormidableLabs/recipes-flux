@@ -43,7 +43,7 @@ var RecipeDetails = React.createClass({
     });
   },
 
-  savePortion: function () {
+  savePortions: function () {
     // TODO: Check for not valid values and unchanged values
     RecipeActions.portionsChanged({
       portions: this.state.portions,
@@ -76,7 +76,7 @@ var RecipeDetails = React.createClass({
       <div className="Recipe">
         <p className="Recipe-title">{this.state.title}</p>
         <p> Serves: <input value={this.state.portions} onChange={this.servingChanged} />
-        <button onClick={this.savePortion}>Make Default</button>
+        <button onClick={this.savePortions}>Make Default</button>
         </p>
         <div className="row">
           <div className="col-lg-4">
