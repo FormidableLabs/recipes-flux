@@ -1,31 +1,26 @@
-/*jshint unused:false */
+// React
 var React = require("react");
-/**
-Router
-*/
 
+// Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
 
-/**
-Child Components
-*/
-
+// Child Components
 var Nav = require("./nav");
 
-/**
-Component
-*/
-
+// Component
 var App = React.createClass({
-  displayName : "App",
+  displayName: "App",
   propTypes: {},
-  mixins : [],
-  getInitialState : function() { return null; },
-  componentWillMount : function() {},
-  componentWillUnmount : function() {},
-  render : function () {
+  mixins: [],
+
+  getInitialState: function () { return null; },
+
+  componentWillMount: function () {},
+
+  componentWillUnmount: function () {},
+
+  render: function () {
     var style = {
       maxWidth: 1024,
       margin: "0 auto",
@@ -33,14 +28,14 @@ var App = React.createClass({
       fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
     };
 
-    return (/*jshint ignore:start */
+    return (
       <div
         style={style}
         className="epicureContainer">
         <Nav/>
         <RouteHandler {...this.props}/>
       </div>
-  	/*jshint ignore:end */);
+    );
   }
 });
 

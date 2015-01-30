@@ -1,11 +1,10 @@
-/**
- * Gulpfile
- */
+// Gulpfile
 var fs = require("fs");
 // var _ = require("lodash");
 var gulp = require("gulp");
 var gutil = require("gulp-util");
-var jshint = require("gulp-jshint");
+var jsxcs = require("gulp-jsxcs");
+var eslint = require("gulp-eslint");
 var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
 var webpack = require("webpack");
@@ -13,6 +12,20 @@ var rimraf = require("gulp-rimraf");
 
 var buildCfg = require("./webpack.config");
 var buildDevCfg = require("./webpack.dev-config");
+
+// ----------------------------------------------------------------------------
+// Constants
+// ----------------------------------------------------------------------------
+var FRONTEND_FILES = [
+  "client/**/*.{js,jsx}"
+];
+
+var BACKEND_FILES = [
+  "scripts/**/*.js",
+  "server/**/*.js",
+  "test/**/*.js",
+  "*.js"
+];
 
 // ----------------------------------------------------------------------------
 // Helpers
@@ -24,43 +37,56 @@ var _jsonCfg = function (name) {
 };
 
 // ----------------------------------------------------------------------------
-// JsHint
+// EsLint
 // ----------------------------------------------------------------------------
-gulp.task("jshint:client", function () {
-  gulp
-    .src([
-      "client/**/*.{js,jsx}"
-    ])
-    .pipe(jshint(_jsonCfg(".jshint-frontend.json")))
-    .pipe(jshint.reporter("default"))
-    .pipe(jshint.reporter("fail"));
+gulp.task("eslint-frontend", function () {
+  return gulp
+    .src(FRONTEND_FILES)
+    .pipe(eslint({
+      envs: [
+        "browser"
+      ]
+    }))
+    .pipe(eslint.formatEach("stylish", process.stderr))
+    .pipe(eslint.failOnError());
 });
 
-gulp.task("jshint:backend", function () {
-  gulp
-    .src([
-      "scripts/**/*.js",
-      "server/**/*.js",
-      "test/**/*.js",
-      "*.js"
-    ])
-    .pipe(jshint(_jsonCfg(".jshint-backend.json")))
-    .pipe(jshint.reporter("default"))
-    .pipe(jshint.reporter("fail"));
+gulp.task("eslint-backend", function () {
+  return gulp
+    .src(BACKEND_FILES)
+    .pipe(eslint({
+      envs: [
+        "node"
+      ]
+    }))
+    .pipe(eslint.formatEach("stylish", process.stderr))
+    .pipe(eslint.failOnError());
 });
 
-gulp.task("jshint", ["jshint:client", "jshint:backend"]);
+gulp.task("eslint", ["eslint-frontend", "eslint-backend"]);
+
+// ----------------------------------------------------------------------------
+// JsCs
+// ----------------------------------------------------------------------------
+gulp.task("jscs", function () {
+  return gulp
+    .src([].concat(
+      FRONTEND_FILES,
+      BACKEND_FILES
+    ))
+    .pipe(jsxcs(_jsonCfg(".jscsrc")));
+});
 
 // ----------------------------------------------------------------------------
 // Quality
 // ----------------------------------------------------------------------------
-gulp.task("check",      ["jshint"]);
-gulp.task("check:ci",   ["jshint"]);
-gulp.task("check:all",  ["jshint"]);
+gulp.task("check",      ["jscs", "eslint"]);
+gulp.task("check:ci",   ["jscs", "eslint"]);
+gulp.task("check:all",  ["jscs", "eslint"]);
 
-// -----------
+// ----------------------------------------------------------------------------
 // Cleaning
-// -----------
+// ----------------------------------------------------------------------------
 gulp.task("clean:all", function () {
   return gulp
     .src([
@@ -100,9 +126,9 @@ gulp.task("watch:dev", function () {
 });
 gulp.task("watch", ["watch:dev"]);
 
-// -----------
+// ----------------------------------------------------------------------------
 // Production
-// -----------
+// ----------------------------------------------------------------------------
 gulp.task("build:prod", function (done) {
   webpack(buildCfg).run(function (err, stats) {
     if (err) { throw new gutil.PluginError("webpack", err); }
@@ -157,4 +183,4 @@ gulp.task("ls",       ["build:ls", "watch:ls", "server:sources"]);
 gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
 gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
 gulp.task("build",    ["build:prod-full"]);
-gulp.task("default",  ["build:dev", "check"]); 
+gulp.task("default",  ["build:dev", "check"]);

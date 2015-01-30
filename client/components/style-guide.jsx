@@ -1,4 +1,3 @@
-/*jshint unused:false */
 var React = require("react");
 
 var RadiumGrid = require("../radium/components/grid");
@@ -32,7 +31,7 @@ var StyleGuide = React.createClass({
       padding: 10
     };
 
-    return (/*jshint ignore:start*/
+    return (
       <div style={{paddingTop: 24}}>
         <RadiumGrid gutters={true}>
           <RadiumGridCell
@@ -225,7 +224,7 @@ var StyleGuide = React.createClass({
           </p>
         </div>
       </div>
-    /*jshint ignore:end*/);
+    );
   }
 });
 

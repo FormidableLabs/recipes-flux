@@ -1,8 +1,7 @@
-/*jshint unused:false */
+// ENTRY POINT
 
-/**
- * Entry point.
- */
+// Router
+var Router = require("./router");
 
-/** ROUTER **/
-var router = require("./router");
+// Fire up the router and attach to DOM
+Router.run(document.body);

@@ -1,28 +1,32 @@
-/*jshint unused:false */
+// React
 var React = require("react");
 
 // Router
 var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
+// Component
 var Home = React.createClass({
-  displayName : "Home",
+  displayName: "Home",
   propTypes: {},
-  mixins : [],
-  getInitialState : function() { return null; },
-  componentWillMount : function() {},
-  componentWillUnmount : function() {},
+  mixins: [],
 
-  render : function() {
-    return (/*jshint ignore:start*/
+  getInitialState: function () { return null; },
+
+  componentWillMount: function () {},
+
+  componentWillUnmount: function () {},
+
+  render: function () {
+    return (
       <div>
         <p>
           home rendered
         </p>
 
-        <RouteHandler/>
+        <RouteHandler />
       </div>
-    /*jshint ignore:end */);
+    );
   }
 });
 

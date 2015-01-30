@@ -1,47 +1,20 @@
-/**
-RecipeDetails
-*/
-
-.Recipe {
-}
-
+/* RECIPE DETAILS */
 .Recipe-title {
-	color: black;
-	font-size: 24px;
-	margin-bottom: 0px;
-	margin-top: 10px;
+  margin-top: 10px;
+  margin-bottom: 0;
+
+  color: black;
+  font-size: 24px;
 }
 
-.Recipe-servings {
-
-}
-
-.Recipe-servings--altered {
-
-}
-
-.Recipe-instructions p {
-
-}
-
-/**
-Ingredient specific
-*/
-
-.Recipe-ingredient {
-
-}
-
+/* INGREDIENTS */
 .Recipe-ingredientLeft {
-	font-weight: 700;
-	text-align: right;
-	margin-bottom: 0px;
+  margin-bottom: 0;
+
+  font-weight: 700;
+  text-align: right;
 }
 
 .Recipe-ingredientRight {
-	margin-bottom: 0px;
-}
-
-.Recipe-ingredientSubsectionTitle {
-
+  margin-bottom: 0;
 }

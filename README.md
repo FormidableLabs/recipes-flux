@@ -1,6 +1,8 @@
 Recipes! (w/ Flux)
 ==================
 
+[![Build Status][trav_img]][trav_site]
+
 ## Server
 
 ### Dev Mode
@@ -35,3 +37,7 @@ Run the server.
 ```
 $ NODE_ENV=production node server/index.js
 ```
+
+[trav]: https://travis-ci.org/
+[trav_img]: https://api.travis-ci.org/FormidableLabs/recipes-flux.svg
+[trav_site]: https://travis-ci.org/FormidableLabs/recipes-flux

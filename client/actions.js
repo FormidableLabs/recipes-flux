@@ -1,31 +1,31 @@
 var McFly = require("./McFly");
 
 var RecipeActions = McFly.createActions({
-  recipeCreated: function(data){
+  recipeCreated: function (data) {
     return {
       actionType: "RECIPE_CREATE",
       data: data
     };
   },
-  recipeDeleted: function(data){
+  recipeDeleted: function (data) {
     return {
       actionType: "RECIPE_DELETE",
       data: data
     };
   },
-  inputChanged: function(data){
+  inputChanged: function (data) {
     return {
       actionType: "INPUT_CHANGED",
       data: data
     };
   },
-  ingredientDeleted: function(data){
+  ingredientDeleted: function (data) {
     return {
       actionType: "INGREDIENT_DELETED",
       data: data
     };
   },
-  ingredientCreated: function(data){
+  ingredientCreated: function (data) {
     return {
       actionType: "INGREDIENT_CREATED",
       data: data
