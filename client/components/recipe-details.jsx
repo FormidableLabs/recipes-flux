@@ -39,7 +39,7 @@ var RecipeDetails = React.createClass({
       portions: portions,
       multiplier: portions !== "" && !isNaN(portions) ?
         portions / getRecipeById(this.props.params._id).portions :
-        undefined
+        1
     });
   },
 
