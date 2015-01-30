@@ -9,7 +9,7 @@ var RadiumBrowserState = require("../mixins/radium-browser-state");
 var GridCell = React.createClass({
   mixins: [RadiumBrowserState],
 
-  getStyles: function() {
+  getStyles: function () {
     return {
       standard: {
         boxSizing: "border-box",

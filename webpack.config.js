@@ -1,7 +1,4 @@
-/**
- * Webpack configuration
- */
-
+// Webpack Configuration
 var path = require("path");
 var webpack = require("webpack");
 
@@ -16,7 +13,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx$/, loader: "jsx-loader" },
-      { test: /\.json$/, loader: "json-loader"}
+      { test: /\.json$/, loader: "json-loader" }
     ]
   },
   resolve: {
