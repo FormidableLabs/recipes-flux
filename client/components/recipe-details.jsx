@@ -54,7 +54,7 @@ var RecipeDetails = React.createClass({
 
     var ingredientNodes = this.state.ingredients.map(createNodes);
 
-    return(
+    return (
       <div>
         <h1>
           {this.state.title}
@@ -64,10 +64,10 @@ var RecipeDetails = React.createClass({
         </p>
 
         <Grid gutters={true}>
-          <GridCell width={1/2}>
+          <GridCell width={1 / 2}>
             {ingredientNodes}
           </GridCell>
-          <GridCell width={1/2}>
+          <GridCell width={1 / 2}>
             <div dangerouslySetInnerHTML={{__html: this.state.parsedInstructions}}/>
           </GridCell>
         </Grid>

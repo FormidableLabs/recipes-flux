@@ -1,5 +1,7 @@
+// Dependencies
 var _ = require("lodash");
 
+// Component
 var RadiumBrowserState = {
   getInitialState: function () {
     return {
@@ -9,7 +11,7 @@ var RadiumBrowserState = {
     };
   },
 
-  componentWillMount : function () {
+  componentWillMount: function () {
     this.radiumBrowserStateEvents = {
       onMouseEnter: this.handleMouseEnter,
       onMouseLeave: this.handleMouseLeave,

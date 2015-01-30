@@ -1,21 +1,14 @@
-/*jshint unused:false */
+// React
 var React = require("react");
-var _ = require("lodash");
-
 var RecipeActions = require("../actions");
 
-/**
-Child Components
-*/
-
-var Input = require("./input");
-var Button = require("./button");
+// Child Components
 var RadiumButton = require("../radium/components/button");
-var RadiumInput = require("../radium/components/input");
 var IngredientFormInput = require("./ingredient-form-input");
 var Grid = require("../radium/components/grid");
 var GridCell = require("../radium/components/grid-cell");
 
+// Component
 var IngredientForm = React.createClass({
   deleteIngredient: function () {
     RecipeActions.ingredientDeleted({
@@ -25,8 +18,8 @@ var IngredientForm = React.createClass({
   },
 
   buildField: function (field, index) {
-    return (/*jshint ignore:start*/
-      <GridCell key={index} width={1/5}>
+    return (
+      <GridCell key={index} width={1 / 5}>
         <IngredientFormInput
           _id={this.props._id}
           index={this.props.index}
@@ -36,7 +29,7 @@ var IngredientForm = React.createClass({
           value={this.props.ingredient[field.accessor]}
           />
       </GridCell>
-    /*jshint ignore:end*/);
+    );
   },
 
   render: function () {
@@ -60,8 +53,8 @@ var IngredientForm = React.createClass({
     ];
 
     var ingredients = ingredientFields.map(this.buildField);
-    var button = (/*jshint ignore:start*/
-      <GridCell key="button" width={1/5}>
+    var button = (
+      <GridCell key="button" width={1 / 5}>
         <RadiumButton
           size="mini"
           color="white"
@@ -69,11 +62,11 @@ var IngredientForm = React.createClass({
           Delete
         </RadiumButton>
       </GridCell>
-    /*jshint ignore:end*/);
+    );
 
     ingredients.push(button);
 
-    return (/*jshint ignore:start*/
+    return (
       <Grid
         gutters={true}
         verticalAlign="middle"
@@ -82,7 +75,7 @@ var IngredientForm = React.createClass({
         }}>
         {ingredients}
       </Grid>
-    /*jshint ignore:end*/);
+    );
   }
 });
 

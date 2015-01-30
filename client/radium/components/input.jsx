@@ -1,8 +1,10 @@
-/*jshint unused:false */
+// React
 var React = require("react");
 
+// Mixins
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
+// Component
 var Input = React.createClass({
   mixins: [RadiumBrowserState],
 
@@ -128,7 +130,7 @@ var Input = React.createClass({
     return this.refs.input.getDOMNode();
   },
 
-  buildComputedStyles: function (styles) {
+  buildComputedStyles: function () {
     var computedStyles = {};
 
     if (this.props.textareaResize && this.state.textareaHeight) {
@@ -144,20 +146,22 @@ var Input = React.createClass({
       this.buildComputedStyles
     );
 
-    var textarea = (/*jshint ignore:start*/
+    var textarea = (
       <textarea
         {...this.props}
         ref="input"
         style={styles}
         onChange={this.handleChange}
-        />
-    /*jshint ignore:end*/);
-    var input = (/*jshint ignore:start*/
+      />
+    );
+
+    var input = (
       <input
         ref="input"
         style={styles}
-        {...this.props} />
-    /*jshint ignore:end*/);
+        {...this.props}
+      />
+    );
 
     if (this.props.type === "textarea") {
       return textarea;
@@ -169,14 +173,14 @@ var Input = React.createClass({
   buildLabel: function (inputEl) {
     var styles = this.buildStyles(this.getLabelStyles());
 
-    return (/*jshint ignore:start*/
+    return (
       <label>
         <span style={styles}>
           {this.props.label}
         </span>
         {inputEl}
       </label>
-    /*jshint ignore:end*/);
+    );
   },
 
   render: function () {

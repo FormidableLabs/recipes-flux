@@ -1,9 +1,11 @@
-/*jshint unused:false */
+// React
 var React = require("react");
 var _ = require("lodash");
 
+// Mixins
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
+// Component
 var GridCell = React.createClass({
   mixins: [RadiumBrowserState],
 
@@ -55,7 +57,7 @@ var GridCell = React.createClass({
     };
   },
 
-  computeWidth: function (styles) {
+  computeWidth: function () {
     var width;
 
     if (_.isNumber(this.props.width)) {
@@ -72,11 +74,11 @@ var GridCell = React.createClass({
   render: function () {
     var style = this.buildStyles(this.getStyles(), this.computeWidth);
 
-    return (/*jshint ignore:start*/
+    return (
       <div style={style}>
         {this.props.children}
       </div>
-    /*jshint ignore:end*/);
+    );
   }
 });
 

@@ -12,10 +12,6 @@ var StyleGuide = React.createClass({
       padding: "1em 0"
     };
 
-    var customBtn = {
-      borderRadius: 0
-    };
-
     var darkBg = {
       margin: 0,
       background: "#333",
@@ -35,7 +31,7 @@ var StyleGuide = React.createClass({
       <div style={{paddingTop: 24}}>
         <RadiumGrid gutters={true}>
           <RadiumGridCell
-            width={1/3}
+            width={1 / 3}
             styleOverrides={{
               textAlign: "right",
               marginBottom: "1em"
@@ -43,23 +39,23 @@ var StyleGuide = React.createClass({
             <h1 style={darkBg}>Test</h1>
           </RadiumGridCell>
 
-          <RadiumGridCell width={2/3}>
+          <RadiumGridCell width={2 / 3}>
             <p style={medBg}>Here's some content!</p>
           </RadiumGridCell>
 
-          <RadiumGridCell width={1/4}>
+          <RadiumGridCell width={1 / 4}>
             <p style={medBg}>Here's some content!</p>
           </RadiumGridCell>
 
-          <RadiumGridCell width={1/4}>
+          <RadiumGridCell width={1 / 4}>
             <p style={medBg}>Here's some content!</p>
           </RadiumGridCell>
 
-          <RadiumGridCell width={1/4}>
+          <RadiumGridCell width={1 / 4}>
             <p style={medBg}>Here's some content!</p>
           </RadiumGridCell>
 
-          <RadiumGridCell width={1/4}>
+          <RadiumGridCell width={1 / 4}>
             <p style={medBg}>Here's some content!</p>
           </RadiumGridCell>
         </RadiumGrid>

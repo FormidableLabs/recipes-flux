@@ -1,8 +1,10 @@
-/*jshint unused:false */
+// React
 var React = require("react/addons");
 
+// Mixins
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
+// Component
 var Grid = React.createClass({
   mixins: [RadiumBrowserState],
 
@@ -52,11 +54,11 @@ var Grid = React.createClass({
   render: function () {
     var styles = this.buildStyles(this.getStyles());
 
-    return (/*jshint ignore:start*/
+    return (
       <div style={styles}>
         {this.buildChildren(this.props.children)}
       </div>
-    /*jshint ignore:end*/);
+    );
   }
 });
 

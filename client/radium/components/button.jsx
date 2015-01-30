@@ -1,10 +1,13 @@
-/*jshint unused:false */
+// React
 var React = require("react");
 
+// Mixins
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
+// Dependencies
 var color = require("color");
 
+// Component
 var Button = React.createClass({
   mixins: [RadiumBrowserState],
 
@@ -181,7 +184,7 @@ var Button = React.createClass({
   render: function () {
     var styles = this.buildStyles(this.getStyles(), this.buildComputedStyles);
 
-    return (/*jshint ignore:start*/
+    return (
       <button
         style={styles}
         {...this.props}
@@ -189,7 +192,7 @@ var Button = React.createClass({
         >
         {this.props.children}
       </button>
-    /*jshint ignore:end*/);
+    );
   }
 });
 

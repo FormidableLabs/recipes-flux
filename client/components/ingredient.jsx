@@ -59,10 +59,10 @@ var Ingredient = React.createClass({
           paddingBottom: "0.5em"
         }}>
         <Grid gutters={true}>
-          <GridCell width={1/2} align="right">
+          <GridCell width={1 / 2} align="right">
             {this.props.ingredient.ingredient}
           </GridCell>
-          <GridCell width={1/2}>
+          <GridCell width={1 / 2}>
             {this.state.fraction} {this.props.ingredient.measurement}
             <em> {this.props.ingredient.modifier}</em>
           </GridCell>

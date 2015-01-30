@@ -9,9 +9,7 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 
 // Child Components
-var Input = require("./input");
 var RadiumButton = require("../radium/components/button");
-var RadiumInput = require("../radium/components/input");
 var IngredientForm = require("./ingredient-form");
 var Grid = require("../radium/components/grid");
 var GridCell = require("../radium/components/grid-cell");
@@ -89,49 +87,14 @@ var RecipeForm = React.createClass({
     });
   },
 
-  ingredientDeleted: function (_id, accessor, index) {
-    RecipeActions.ingredientDeleted({
-      _id: this.state._id,
-      index: index
-    });
-  },
-
   createNodes: function (ingredient, index) {
     return (
-      <div className="Ingredient" key={index}>
-        <Input
-          placeholder="Ingredient"
-          value={ingredient.ingredient}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="ingredient" />
-        <Input
-          placeholder="Quantity"
-          value={ingredient.quantity}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="quantity" />
-        <Input
-          placeholder="Measurement Units"
-          value={ingredient.measurement}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="measurement" />
-        <Input
-          placeholder="Modifier (e.g. 'chopped')"
-          value={ingredient.modifier}
-          index={index}
-          _id={this.state._id}
-          inputCallback={this.inputCallback}
-          accessor="modifier" />
-        <Button
-          buttonCallback={this.ingredientDeleted}
-          index={index}
-          value="Delete Ingredient" />
-      </div>
+      <IngredientForm
+        key={index}
+        index={index}
+        ingredient={ingredient}
+        _id={this.state._id}
+      />
     );
   },
 
@@ -146,7 +109,7 @@ var RecipeForm = React.createClass({
           gutters={true}
           >
           <GridCell
-            width={4/5}
+            width={4 / 5}
             styleOverrides={{
               paddingTop: "0.5em",
               paddingBottom: "0.5em"
@@ -165,7 +128,7 @@ var RecipeForm = React.createClass({
 
         <Grid gutters={true}>
           <GridCell
-            width={1/5}
+            width={1 / 5}
             styleOverrides={{
               paddingTop: "0.5em",
               paddingBottom: "0.5em"
@@ -182,7 +145,7 @@ var RecipeForm = React.createClass({
           </GridCell>
 
           <GridCell
-            width={1/5}
+            width={1 / 5}
             styleOverrides={{
               paddingTop: "0.5em",
               paddingBottom: "0.5em"
@@ -205,7 +168,7 @@ var RecipeForm = React.createClass({
               paddingTop: "0.5em",
               paddingBottom: "0.5em"
             }}
-            width={4/5}
+            width={4 / 5}
             >
             <IngredientFormInput
               _id={this.state._id}

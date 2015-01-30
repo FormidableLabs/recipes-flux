@@ -1,17 +1,11 @@
-/*jshint unused:false */
+// React
 var React = require("react");
-
 var RecipeActions = require("../actions");
 
-/**
-Child Components
-*/
-
-var Input = require("./input");
-var Button = require("./button");
-var RadiumButton = require("../radium/components/button");
+// Child Components
 var RadiumInput = require("../radium/components/input");
 
+// Component
 var IngredientFormInput = React.createClass({
   getInitialState: function () {
     return {
@@ -43,14 +37,14 @@ var IngredientFormInput = React.createClass({
   render: function () {
     var value = this.state.value || this.props.value;
 
-    return (/*jshint ignore:start*/
+    return (
       <RadiumInput
         {...this.props}
         value={value}
         ref="input"
         onChange={this.handleChange}
-        />
-    /*jshint ignore:end*/);
+      />
+    );
   }
 });
 
