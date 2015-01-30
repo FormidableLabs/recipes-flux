@@ -32,7 +32,7 @@ var RecipeDetails = React.createClass({
 
   onChange: function () {},
 
-  servingChanged: function (ev) {
+  portionsChanged: function (ev) {
     var portions = ev.target.value.trim();
 
     this.setState({
@@ -75,7 +75,7 @@ var RecipeDetails = React.createClass({
     return (
       <div className="Recipe">
         <p className="Recipe-title">{this.state.title}</p>
-        <p> Serves: <input value={this.state.portions} onChange={this.servingChanged} />
+        <p> Serves: <input value={this.state.portions} onChange={this.portionsChanged} />
         <button onClick={this.savePortions}>Make Default</button>
         </p>
         <div className="row">
