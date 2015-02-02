@@ -1,7 +1,10 @@
+// React
 var React = require("react/addons");
 
+// Mixins
 var RadiumBrowserState = require("../mixins/radium-browser-state");
 
+// Component
 var ButtonGroup = React.createClass({
   mixins: [RadiumBrowserState],
 
@@ -28,11 +31,11 @@ var ButtonGroup = React.createClass({
   },
 
   render: function () {
-    return (/*jshint ignore:start*/
+    return (
       <div>
         {this.buildChildren(this.props.children)}
       </div>
-    /*jshint ignore:end*/);
+    );
   }
 });
 
