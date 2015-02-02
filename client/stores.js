@@ -34,6 +34,20 @@ var RecipeStore = McFly.createStore({
     }
   },
 
+  updatePortions: function (data) {
+    // TODO: validate data
+    var recipe = this.getRecipe(data._id);
+
+    if (recipe.portions !== data.portions) {
+      var multiplier = data.portions / recipe.portions;
+      recipe.ingredients.map(function (ing) {
+        ing.quantity = ing.quantity * multiplier;
+      });
+
+      recipe.portions = data.portions;
+    }
+  },
+
   createRecipe: function (recipe) {
     this._recipes.push(recipe);
   },
@@ -77,6 +91,10 @@ var RecipeStore = McFly.createStore({
   }
   if (payload.actionType === "INGREDIENT_CREATED") {
     RecipeStore.updateRecipeIngredientList(payload.data._id);
+    RecipeStore.emitChange();
+  }
+  if (payload.actionType === "PORTIONS_CHANGED") {
+    RecipeStore.updatePortions(payload.data);
     RecipeStore.emitChange();
   }
 });
