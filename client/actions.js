@@ -13,6 +13,12 @@ var RecipeActions = McFly.createActions({
       data: data
     };
   },
+  portionsChanged: function (data) {
+    return {
+      actionType: "PORTIONS_CHANGED",
+      data: data
+    };
+  },
   inputChanged: function (data) {
     return {
       actionType: "INPUT_CHANGED",

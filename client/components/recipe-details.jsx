@@ -9,8 +9,9 @@ var RouteHandler = Router.RouteHandler;
 // Child Components
 var Ingredient = require("./ingredient");
 
+var RecipeActions = require("../actions");
 // Component
-function getState(id) {
+function getRecipeById(id) {
   return RecipeStore.getRecipe(id);
 }
 
@@ -20,7 +21,7 @@ var RecipeDetails = React.createClass({
   mixins: [RecipeStore.mixin],
 
   getInitialState: function () {
-    return getState(this.props.params._id);
+    return getRecipeById(this.props.params._id);
   },
 
   componentWillMount: function () {
@@ -29,8 +30,25 @@ var RecipeDetails = React.createClass({
 
   componentWillUnmount: function () {},
 
-  onChange: function () {
-    this.setState(getState(this.props.params._id));
+  onChange: function () {},
+
+  portionsChanged: function (ev) {
+    var portions = ev.target.value.trim();
+
+    this.setState({
+      portions: portions,
+      multiplier: portions !== "" && !isNaN(portions) ?
+        portions / getRecipeById(this.props.params._id).portions :
+        1
+    });
+  },
+
+  savePortions: function () {
+    // TODO: Check for not valid values and unchanged values
+    RecipeActions.portionsChanged({
+      portions: this.state.portions,
+      _id: this.props.params._id
+    });
   },
 
   parseInstructions: function () {
@@ -44,9 +62,11 @@ var RecipeDetails = React.createClass({
   },
 
   render: function () {
+    var self = this;
+
     function createNodes(ingredient, index) {
       return (
-        <Ingredient key={index} ingredient={ingredient}/>
+        <Ingredient key={index} ingredient={ingredient} multiplier={self.state.multiplier}/>
       );
     }
 
@@ -55,7 +75,9 @@ var RecipeDetails = React.createClass({
     return (
       <div className="Recipe">
         <p className="Recipe-title">{this.state.title}</p>
-        <p> Serves: {this.state.portions} (change)</p>
+        <p> Serves: <input value={this.state.portions} onChange={this.portionsChanged} />
+        <button onClick={this.savePortions}>Make Default</button>
+        </p>
         <div className="row">
           <div className="col-lg-4">
             {ingredientNodes}
