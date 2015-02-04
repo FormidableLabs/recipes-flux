@@ -1,6 +1,7 @@
 // React
 var React = require("react");
 var RecipeStore = require("../stores");
+var RecipeActions = require("../actions");
 
 // Router
 var Router = require("react-router");
@@ -9,7 +10,6 @@ var RouteHandler = Router.RouteHandler;
 // Child Components
 var Ingredient = require("./ingredient");
 
-var RecipeActions = require("../actions");
 // Component
 function getRecipeById(id) {
   return RecipeStore.getRecipe(id);
@@ -66,7 +66,7 @@ var RecipeDetails = React.createClass({
 
     function createNodes(ingredient, index) {
       return (
-        <Ingredient key={index} ingredient={ingredient} multiplier={self.state.multiplier}/>
+        <Ingredient key={index} ingredient={ingredient} multiplier={self.state.multiplier} />
       );
     }
 
@@ -75,8 +75,8 @@ var RecipeDetails = React.createClass({
     return (
       <div className="Recipe">
         <p className="Recipe-title">{this.state.title}</p>
-        <p> Serves: <input value={this.state.portions} onChange={this.portionsChanged} />
-        <button onClick={this.savePortions}>Make Default</button>
+        <p>Serves: <input value={this.state.portions} onChange={this.portionsChanged} />
+          <button onClick={this.savePortions}>Make Default</button>
         </p>
         <div className="row">
           <div className="col-lg-4">
@@ -87,7 +87,7 @@ var RecipeDetails = React.createClass({
             dangerouslySetInnerHTML={{__html: this.state.parsedInstructions}}
           />
         </div>
-        <RouteHandler {...this.props}/>
+        <RouteHandler {...this.props} />
       </div>
     );
   }

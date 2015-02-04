@@ -41,9 +41,10 @@ var Recipes = React.createClass({
 
   render: function () {
     var recipeNodes = this.createRecipeNodes();
+
     return (
       <div className="Recipes">
-        <p className="Recipes-title">Recipe Bank: </p>
+        <p className="Recipes-title">Recipe Bank:</p>
         {recipeNodes}
         <RouteHandler {...this.props} />
       </div>
