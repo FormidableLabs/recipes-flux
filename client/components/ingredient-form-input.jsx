@@ -20,7 +20,7 @@ var IngredientFormInput = React.createClass({
   },
 
   handleChange: function () {
-    var newValue = this.refs.input.getInputElement().value;
+    var newValue = this.refs.input.getDOMNode().value;
 
     RecipeActions.inputChanged({
       _id: this.props._id,
@@ -42,7 +42,7 @@ var IngredientFormInput = React.createClass({
         {...this.props}
         value={value}
         ref="input"
-        onChange={this.handleChange} />
+        inputCallback={this.handleChange} />
     );
   }
 });
