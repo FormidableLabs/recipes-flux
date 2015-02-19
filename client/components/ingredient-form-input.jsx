@@ -19,18 +19,11 @@ var IngredientFormInput = React.createClass({
     };
   },
 
-  handleChange: function () {
-    var newValue = this.refs.input.getDOMNode().value;
-
-    RecipeActions.inputChanged({
-      _id: this.props._id,
-      accessor: this.props.accessor,
-      index: this.props.index,
-      value: newValue
-    });
+  handleChange: function (data) {
+    RecipeActions.inputChanged(data);
 
     this.setState({
-      value: newValue
+      value: data.value
     });
   },
 
