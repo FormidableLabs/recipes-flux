@@ -1,7 +1,7 @@
 // React
 var React = require("react");
 var Recipe = require("./recipe");
-var RecipeStore = require("../stores");
+var RecipeStore = require("../stores/recipe-store");
 
 // Router
 var Router = require("react-router");

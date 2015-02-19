@@ -1,4 +1,4 @@
-var McFly = require("./McFly");
+var McFly = require("../McFly");
 
 var RecipeActions = McFly.createActions({
   recipeCreated: function (data) {

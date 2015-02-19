@@ -1,6 +1,6 @@
 // React
 var React = require("react");
-var RecipeActions = require("../actions");
+var RecipeActions = require("../actions/recipe-actions");
 
 // Child Components
 var Button = require("./button");

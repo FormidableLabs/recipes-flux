@@ -1,7 +1,7 @@
 // React
 var React = require("react");
-var RecipeStore = require("../stores");
-var RecipeActions = require("../actions");
+var RecipeStore = require("../stores/recipe-store");
+var RecipeActions = require("../actions/recipe-actions");
 var uuid = require("uuid");
 
 // Router

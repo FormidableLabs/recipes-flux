@@ -1,5 +1,5 @@
-var McFly = require("./McFly");
-var db = require("./mock-db");
+var McFly = require("../McFly");
+var db = require("../mock-db");
 var _ = require("lodash");
 
 // Creates a DataStore
