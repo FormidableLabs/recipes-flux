@@ -7,6 +7,7 @@ var jsxcs = require("gulp-jsxcs");
 var eslint = require("gulp-eslint");
 var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
+var shell = require("gulp-shell");
 var webpack = require("webpack");
 var rimraf = require("gulp-rimraf");
 
@@ -168,6 +169,9 @@ gulp.task("server", function () {
   });
 });
 
+// Hot reload webpack server
+gulp.task("webpack-server", shell.task(["node ./hot/server"]));
+
 // Source maps server
 gulp.task("server:sources", function () {
   connect.server({
@@ -181,6 +185,7 @@ gulp.task("server:sources", function () {
 // ----------------------------------------------------------------------------
 gulp.task("ls",       ["build:ls", "watch:ls", "server:sources"]);
 gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
+gulp.task("hot",      ["webpack-server"]);
 gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
 gulp.task("build",    ["build:prod-full"]);
 gulp.task("default",  ["build:dev", "check"]);

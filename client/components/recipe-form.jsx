@@ -75,7 +75,7 @@ var RecipeForm = React.createClass({
     });
   },
 
-  onChange: function () {
+  storeDidChange: function () {
     this.setState(getState(this.state._id));
   },
 
