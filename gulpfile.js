@@ -9,6 +9,7 @@ var nodemon = require("gulp-nodemon");
 var connect = require("gulp-connect");
 var webpack = require("webpack");
 var rimraf = require("gulp-rimraf");
+var sass = require('gulp-sass');
 
 var buildCfg = require("./webpack.config");
 var buildDevCfg = require("./webpack.dev-config");
@@ -75,6 +76,15 @@ gulp.task("jscs", function () {
       BACKEND_FILES
     ))
     .pipe(jsxcs(_jsonCfg(".jscsrc")));
+});
+
+// ----------------------------------------------------------------------------
+// Build Sass
+// ----------------------------------------------------------------------------
+gulp.task('sass', function () {
+    gulp.src('./styles/main.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('app/css-dist/'));
 });
 
 // ----------------------------------------------------------------------------
@@ -180,7 +190,7 @@ gulp.task("server:sources", function () {
 // Aggregations
 // ----------------------------------------------------------------------------
 gulp.task("ls",       ["build:ls", "watch:ls", "server:sources"]);
-gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
-gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
+gulp.task("dev",      ["build:dev", "watch:dev", "sass", "server", "server:sources"]);
+gulp.task("prod",     ["build:prod", "watch:prod", "sass", "server", "server:sources"]);
 gulp.task("build",    ["build:prod-full"]);
 gulp.task("default",  ["build:dev", "check"]);

@@ -29,7 +29,8 @@
     "gulp-jsxcs": "0.1.6",
     "gulp-nodemon": "1.0.4",
     "gulp-rimraf": "0.1.0",
-    "gulp-util": "3.0.1"
+    "gulp-util": "3.0.1",
+    "gulp-sass": "1.3.3"
   },
   "scripts": {
     "test": "gulp build check",
