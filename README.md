@@ -2,6 +2,7 @@ Recipes! (w/ Flux)
 ==================
 
 [![Build Status][trav_img]][trav_site]
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/seattlejs/seattlejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## Server
 
