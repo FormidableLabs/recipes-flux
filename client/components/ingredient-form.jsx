@@ -51,6 +51,7 @@ var IngredientForm = React.createClass({
     var ingredients = ingredientFields.map(this.buildField);
     var button = (
       <Button
+        key="-1"
         buttonCallback={this.deleteIngredient}
         value="Delete" />
     );
