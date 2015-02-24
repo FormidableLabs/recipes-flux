@@ -35,7 +35,7 @@ var Recipes = React.createClass({
     return nodes;
   },
 
-  onChange: function () {
+  storeDidChange: function () {
     this.setState(getState());
   },
 

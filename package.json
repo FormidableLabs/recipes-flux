@@ -12,13 +12,13 @@
     "lb-ratio": "0.4.1",
     "lodash": "2.4.1",
     "markdown": "0.5.0",
-    "mcfly": "0.0.8",
+    "mcfly": "0.0.10",
     "node-jsx": "0.12.0",
     "node-sass": "2.0.0-beta",
     "ps-tree": "0.0.3",
     "react-router": "0.11.6",
     "vulgarities": "0.0.2",
-    "webpack": "1.4.11",
+    "webpack": "^1.5.1",
     "superagent": "0.21.0",
     "uuid": "2.0.1"
   },
@@ -29,7 +29,13 @@
     "gulp-jsxcs": "0.1.6",
     "gulp-nodemon": "1.0.4",
     "gulp-rimraf": "0.1.0",
-    "gulp-util": "3.0.1"
+    "gulp-util": "3.0.1",
+    "react-hot-loader": "^1.1.1",
+    "webpack-dev-server": "1.6.4",
+    "gulp-shell": "~0.3.0",
+    "sass-loader": "~0.4.0-beta.1",
+    "style-loader": "~0.8.3",
+    "css-loader": "~0.9.1"
   },
   "scripts": {
     "test": "gulp build check",
