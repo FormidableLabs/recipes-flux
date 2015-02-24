@@ -14,11 +14,17 @@ Install, setup.
 $ npm install
 ```
 
-Run the watchers, dev and source maps servers
+**Option 1** Run the watchers, dev and source maps servers
 
 ```
 $ gulp dev
 ```
+
+**Option 2** To use the webpack hot reload for React and SASS
+
+````
+$ gulp hot
+````
 
 URLS to test things out:
 
