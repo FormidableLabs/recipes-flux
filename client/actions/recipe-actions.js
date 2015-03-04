@@ -1,16 +1,50 @@
 var Biff = require("../biff");
 
+// Request
+var request = require('superagent');
+
 var RecipeActions = Biff.createActions({
   recipeCreated: function (data) {
-    this.dispatch({
-      actionType: "RECIPE_CREATE",
-      data: data
-    });
+    var self = this;
+
+    request
+      .post('/recipes/create')
+      .send({recipe: data})
+      .set('Accept', 'application/json')
+      .end(function(error, res){
+        self.dispatch({
+          actionType: "RECIPE_CREATE",
+          data: data
+        });
+      });
   },
   recipeDeleted: function (data) {
+    var self = this;
+
+    request
+      .del('/recipes/delete')
+      .send({_id: data._id})
+      .set('Accept', 'application/json')
+      .end(function(error, res){
+        self.dispatch({
+          actionType: "RECIPE_DELETE",
+          data: data
+        });
+      });
+  },
+  syncRecipe: function (data) {
+    request
+      .put('/recipes/update')
+      .send({recipe: data})
+      .set('Accept', 'application/json')
+      .end(function(error, res){});
+  },
+  loadRecipes: function (data) {
+    var self = this;
+
     this.dispatch({
-      actionType: "RECIPE_DELETE",
-      data: data
+      actionType: "RECIPES_LOAD",
+      data: JSON.parse(data)
     });
   },
   portionsChanged: function (data) {

@@ -1,11 +1,10 @@
 var Biff = require("../biff");
-var db = require("../mock-db");
 var _ = require("lodash");
 
 // Creates a DataStore
 var RecipeStore = Biff.createStore({
   // Initial setup
-  _recipes: db,
+  _recipes: [],
 
   updateRecipeIngredientList: function (_id, index) {
     var recipe = this.getRecipe(_id);
@@ -48,6 +47,10 @@ var RecipeStore = Biff.createStore({
     }
   },
 
+  loadRecipes: function (recipes) {
+    this._recipes = recipes;
+  },
+
   createRecipe: function (recipe) {
     this._recipes.push(recipe);
   },
@@ -67,27 +70,31 @@ var RecipeStore = Biff.createStore({
   }
 }, function (payload) {
   if (payload.actionType === "RECIPE_CREATE") {
-    RecipeStore.createRecipe(payload.data);
-    RecipeStore.emitChange();
+    this.createRecipe(payload.data);
+    this.emitChange();
   }
   if (payload.actionType === "RECIPE_DELETE") {
-    RecipeStore.deleteRecipe(payload.data._id);
-    RecipeStore.emitChange();
+    this.deleteRecipe(payload.data._id);
+    this.emitChange();
+  }
+  if (payload.actionType === "RECIPES_LOAD") {
+    this.loadRecipes(payload.data);
+    this.emitChange();
   }
   if (payload.actionType === "INPUT_CHANGED") {
-    RecipeStore.updateRecipe({
+    this.updateRecipe({
       _id: payload.data._id,
       accessor: payload.data.accessor,
       index: payload.data.index,
       value: payload.data.value
     });
-    RecipeStore.emitChange();
+    this.emitChange();
   }
   if (payload.actionType === "INGREDIENT_DELETED") {
-    RecipeStore.updateRecipeIngredientList(
+    this.updateRecipeIngredientList(
       payload.data._id, payload.data.index
     );
-    RecipeStore.emitChange();
+    this.emitChange();
   }
   if (payload.actionType === "INGREDIENT_CREATED") {
     RecipeStore.updateRecipeIngredientList(payload.data._id);

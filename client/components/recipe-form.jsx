@@ -66,16 +66,8 @@ var RecipeForm = React.createClass({
 
   componentWillUnmount: function () {},
 
-  inputCallback: function (data) {
-    RecipeActions.inputChanged({
-      _id: data._id,
-      accessor: data.accessor,
-      index: data.index,
-      value: data.value
-    });
-  },
-
   storeDidChange: function () {
+    RecipeActions.syncRecipe(this.state)
     this.setState(getState(this.state._id));
   },
 

@@ -30,7 +30,9 @@ var RecipeDetails = React.createClass({
 
   componentWillUnmount: function () {},
 
-  storeDidChange: function () {},
+  storeDidChange: function () {
+    getRecipeById(this.props.params._id);
+  },
 
   portionsChanged: function (ev) {
     var portions = ev.target.value.trim();

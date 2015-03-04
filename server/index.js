@@ -8,6 +8,9 @@ var compress = require("compression");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 
+// DB
+var db = require("../db/db");
+
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -53,6 +56,30 @@ app.use("/app/css-dist", express.static("app/css-dist"));
 // ----------------------------------------------------------------------------
 app.get("/", function (req, res) {
   return res.render("index", {});
+});
+
+// ----------------------------------------------------------------------------
+// Recipes crud
+// ----------------------------------------------------------------------------
+
+app.get("/recipes", function (req, res) {
+  return res.json(db.getRecipes());
+});
+
+app.get("/recipes/get/:id", function (req, res) {
+  return res.json(db.getRecipe(req.params.id));
+});
+
+app.post("/recipes/create", function (req, res) {
+  return res.json(db.createRecipe(req.body.recipe));
+});
+
+app.put("/recipes/update", function (req, res) {
+  return res.json(db.updateRecipe(req.body.recipe));
+});
+
+app.delete("/recipes/delete", function (req, res) {
+  return res.json(db.deleteRecipe(req.body._id));
 });
 
 // ----------------------------------------------------------------------------
