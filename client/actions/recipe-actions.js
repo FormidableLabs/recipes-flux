@@ -1,41 +1,41 @@
-var McFly = require("../McFly");
+var Biff = require("../biff");
 
-var RecipeActions = McFly.createActions({
+var RecipeActions = Biff.createActions({
   recipeCreated: function (data) {
-    return {
+    this.dispatch({
       actionType: "RECIPE_CREATE",
       data: data
-    };
+    });
   },
   recipeDeleted: function (data) {
-    return {
+    this.dispatch({
       actionType: "RECIPE_DELETE",
       data: data
-    };
+    });
   },
   portionsChanged: function (data) {
-    return {
+    this.dispatch({
       actionType: "PORTIONS_CHANGED",
       data: data
-    };
+    });
   },
   inputChanged: function (data) {
-    return {
+    this.dispatch({
       actionType: "INPUT_CHANGED",
       data: data
-    };
+    });
   },
   ingredientDeleted: function (data) {
-    return {
+    this.dispatch({
       actionType: "INGREDIENT_DELETED",
       data: data
-    };
+    });
   },
   ingredientCreated: function (data) {
-    return {
+    this.dispatch({
       actionType: "INGREDIENT_CREATED",
       data: data
-    };
+    });
   }
 });
 

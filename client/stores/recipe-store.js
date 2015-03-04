@@ -1,9 +1,9 @@
-var McFly = require("../McFly");
+var Biff = require("../biff");
 var db = require("../mock-db");
 var _ = require("lodash");
 
 // Creates a DataStore
-var RecipeStore = McFly.createStore({
+var RecipeStore = Biff.createStore({
   // Initial setup
   _recipes: db,
 
