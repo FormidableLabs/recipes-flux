@@ -1,4 +1,5 @@
 var Biff = require("../biff");
+var Config = require("../config");
 
 // Request
 var request = require("superagent");
@@ -8,7 +9,7 @@ var RecipeActions = Biff.createActions({
     var self = this;
 
     request
-      .post("/recipes/create")
+      .post(Config.apiServer + "/recipes/create")
       .send({ recipe: data })
       .set("Accept", "application/json")
       .end(function () {
@@ -22,7 +23,7 @@ var RecipeActions = Biff.createActions({
     var self = this;
 
     request
-      .del("/recipes/delete")
+      .del(Config.apiServer + "/recipes/delete")
       .send({ _id: data._id })
       .set("Accept", "application/json")
       .end(function () {
@@ -34,7 +35,7 @@ var RecipeActions = Biff.createActions({
   },
   syncRecipe: function (data) {
     request
-      .put("/recipes/update")
+      .put(Config.apiServer + "/recipes/update")
       .send({ recipe: data })
       .set("Accept", "application/json")
       .end(function () {});
