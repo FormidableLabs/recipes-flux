@@ -5,7 +5,7 @@ module.exports = {
   devtool: "eval",
   cache: true,
   entry: [
-    "webpack-dev-server/client?http://localhost:3000",
+    "webpack-dev-server/client?http://localhost:3001",
     "webpack/hot/only-dev-server",
     "./hot/entry"
   ],
