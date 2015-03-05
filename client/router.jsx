@@ -10,7 +10,7 @@ var NotFound = require("./components/notfound");
 var RecipeActions = require("./actions/recipe-actions");
 
 // Request
-var request = require('superagent');
+var request = require("superagent");
 
 // Set up Router object
 var Route = Router.Route;
@@ -32,13 +32,14 @@ var routes = (
 module.exports = {
   run: function (el) {
     request
-      .get('/recipes')
-      .set('Accept', 'application/json')
-      .end(function(error, res){
+      .get("/recipes")
+      .set("Accept", "application/json")
+      .end(function (error, res) {
         RecipeActions.loadRecipes(res.text);
         Router.run(routes, function (Handler, state) {
           // "Alternatively, you can pass the param data down..."
-          // https://github.com/rackt/react-router/blob/master/docs/guides/overview.md#dynamic-segments
+          // https://github.com/rackt/react-router/blob/master/docs/guides/
+          // overview.md#dynamic-segments
           var params = state.params;
           React.render(<Handler params={params} />, el);
         });

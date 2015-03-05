@@ -1,17 +1,17 @@
 var Biff = require("../biff");
 
 // Request
-var request = require('superagent');
+var request = require("superagent");
 
 var RecipeActions = Biff.createActions({
   recipeCreated: function (data) {
     var self = this;
 
     request
-      .post('/recipes/create')
-      .send({recipe: data})
-      .set('Accept', 'application/json')
-      .end(function(error, res){
+      .post("/recipes/create")
+      .send({ recipe: data })
+      .set("Accept", "application/json")
+      .end(function () {
         self.dispatch({
           actionType: "RECIPE_CREATE",
           data: data
@@ -22,10 +22,10 @@ var RecipeActions = Biff.createActions({
     var self = this;
 
     request
-      .del('/recipes/delete')
-      .send({_id: data._id})
-      .set('Accept', 'application/json')
-      .end(function(error, res){
+      .del("/recipes/delete")
+      .send({ _id: data._id })
+      .set("Accept", "application/json")
+      .end(function () {
         self.dispatch({
           actionType: "RECIPE_DELETE",
           data: data
@@ -34,14 +34,12 @@ var RecipeActions = Biff.createActions({
   },
   syncRecipe: function (data) {
     request
-      .put('/recipes/update')
-      .send({recipe: data})
-      .set('Accept', 'application/json')
-      .end(function(error, res){});
+      .put("/recipes/update")
+      .send({ recipe: data })
+      .set("Accept", "application/json")
+      .end(function () {});
   },
   loadRecipes: function (data) {
-    var self = this;
-
     this.dispatch({
       actionType: "RECIPES_LOAD",
       data: JSON.parse(data)

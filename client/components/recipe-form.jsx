@@ -67,7 +67,7 @@ var RecipeForm = React.createClass({
   componentWillUnmount: function () {},
 
   storeDidChange: function () {
-    RecipeActions.syncRecipe(this.state)
+    RecipeActions.syncRecipe(this.state);
     this.setState(getState(this.state._id));
   },
 
