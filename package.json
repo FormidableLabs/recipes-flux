@@ -21,8 +21,8 @@
     "superagent": "0.21.0",
     "uuid": "2.0.1",
     "vulgarities": "0.0.2",
-    "webpack": "^1.5.1"
-    "dropbox" "~0.10.3"
+    "webpack": "^1.5.1",
+    "dropbox": "~0.10.3"
   },
   "devDependencies": {
     "gulp": "3.8.7",
