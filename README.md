@@ -14,7 +14,7 @@ Install, setup.
 $ npm install
 ```
 
-Run the watchers, dev and source maps servers
+**Option 1** Run the watchers, dev and source maps servers
 
 ```
 $ gulp dev
@@ -23,6 +23,16 @@ $ gulp dev
 URLS to test things out:
 
 * `http://127.0.0.1:3000/`: Server-side bootstrap, JS takes over.
+
+**Option 2** To use the webpack hot reload for React and SASS
+
+````
+$ gulp hot
+````
+
+URLS to test things out:
+
+* `http://127.0.0.1:3001/`: Runs the hotreload server side by side with api server
 
 ### Production
 
