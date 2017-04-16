@@ -8,6 +8,7 @@ var RecipeDetails = require("./components/recipe-details");
 var RecipeForm = require("./components/recipe-form");
 var NotFound = require("./components/notfound");
 var RecipeActions = require("./actions/recipe-actions");
+var Config = require("./config");
 
 // Request
 var request = require("superagent");
@@ -32,7 +33,7 @@ var routes = (
 module.exports = {
   run: function (el) {
     request
-      .get("/recipes")
+      .get(Config.apiServer + "/recipes")
       .set("Accept", "application/json")
       .end(function (error, res) {
         RecipeActions.loadRecipes(res.text);
